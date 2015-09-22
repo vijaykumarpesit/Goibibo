@@ -20,6 +20,8 @@
 		B1EDDEF21BB1118200518E0C /* DigitsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1EDDEEE1BB1118200518E0C /* DigitsKit.framework */; };
 		B1EDDEF31BB1118200518E0C /* DigitsKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B1EDDEEF1BB1118200518E0C /* DigitsKitResources.bundle */; };
 		B1EDDEF41BB1118200518E0C /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1EDDEF01BB1118200518E0C /* TwitterCore.framework */; };
+		B1EDDEF81BB14C9D00518E0C /* GoContactSync.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EDDEF71BB14C9D00518E0C /* GoContactSync.m */; };
+		B1EDDEFB1BB14CBE00518E0C /* GoContactSyncEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EDDEFA1BB14CBE00518E0C /* GoContactSyncEntry.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,10 @@
 		B1EDDEEE1BB1118200518E0C /* DigitsKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DigitsKit.framework; sourceTree = SOURCE_ROOT; };
 		B1EDDEEF1BB1118200518E0C /* DigitsKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DigitsKitResources.bundle; path = DigitsKit.framework/Versions/A/Resources/DigitsKitResources.bundle; sourceTree = SOURCE_ROOT; };
 		B1EDDEF01BB1118200518E0C /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = SOURCE_ROOT; };
+		B1EDDEF61BB14C9D00518E0C /* GoContactSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoContactSync.h; path = ../GoContactSync.h; sourceTree = "<group>"; };
+		B1EDDEF71BB14C9D00518E0C /* GoContactSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoContactSync.m; path = ../GoContactSync.m; sourceTree = "<group>"; };
+		B1EDDEF91BB14CBE00518E0C /* GoContactSyncEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoContactSyncEntry.h; sourceTree = "<group>"; };
+		B1EDDEFA1BB14CBE00518E0C /* GoContactSyncEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoContactSyncEntry.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,10 @@
 		B1EDDEC81BB10A4000518E0C /* GoIbibo */ = {
 			isa = PBXGroup;
 			children = (
+				B1EDDEF61BB14C9D00518E0C /* GoContactSync.h */,
+				B1EDDEF71BB14C9D00518E0C /* GoContactSync.m */,
+				B1EDDEF91BB14CBE00518E0C /* GoContactSyncEntry.h */,
+				B1EDDEFA1BB14CBE00518E0C /* GoContactSyncEntry.m */,
 				B1EDDECC1BB10A4100518E0C /* AppDelegate.h */,
 				B1EDDECD1BB10A4100518E0C /* AppDelegate.m */,
 				B1EDDECF1BB10A4100518E0C /* GoHomeViewController.h */,
@@ -205,9 +215,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1EDDEFB1BB14CBE00518E0C /* GoContactSyncEntry.m in Sources */,
 				B1EDDED11BB10A4100518E0C /* GoHomeViewController.m in Sources */,
 				B1EDDECE1BB10A4100518E0C /* AppDelegate.m in Sources */,
 				B1EDDECB1BB10A4100518E0C /* main.m in Sources */,
+				B1EDDEF81BB14C9D00518E0C /* GoContactSync.m in Sources */,
 				B1EDDEE81BB10C6400518E0C /* RESideMenu.m in Sources */,
 				B1EDDEE71BB10C6400518E0C /* RECommonFunctions.m in Sources */,
 				B1EDDEE91BB10C6400518E0C /* UIViewController+RESideMenu.m in Sources */,
