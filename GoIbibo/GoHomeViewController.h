@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <DigitsKit/DigitsKit.h>
 
-@interface GoHomeViewController : UIViewController
+
+@interface GoHomeViewController : UIViewController<DGTCompletionViewController>
 
 
 @end

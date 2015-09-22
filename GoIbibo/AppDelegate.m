@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "GoHomeViewController.h"
 #import "RESideMenu.h"
+#import <Fabric/Fabric.h>
+#import <DigitsKit/DigitsKit.h>
 
 @interface AppDelegate ()
 
@@ -19,6 +21,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [Fabric with:@[[Digits class]]];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self showHomeScreen];
     [self.window makeKeyAndVisible];
@@ -26,11 +30,15 @@
 }
 
 - (void)showHomeScreen {
-    GoHomeViewController *homeScreen = [[GoHomeViewController alloc] initWithNibName:@"GoHomeViewController" bundle:nil];
-    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:homeScreen];
+    //Call this whenever you want to test twitter digits login
+    //[[Digits sharedInstance] logOut];
     
+    GoHomeViewController *homeScreen = [[GoHomeViewController alloc] initWithNibName:@"GoHomeViewController" bundle:nil];
+    UINavigationController *navigationVC = [[UINavigationController alloc] init];
     RESideMenu *slideMenu = [[RESideMenu alloc] initWithContentViewController:navigationVC leftMenuViewController:nil rightMenuViewController:nil];
     slideMenu.contentViewInPortraitOffsetCenterX = -50;
+    Digits *digits = [Digits sharedInstance];
+    [digits authenticateWithNavigationViewController:navigationVC phoneNumber:@"+91" digitsAppearance:nil title:nil completionViewController:homeScreen];
     self.window.rootViewController = slideMenu;
 }
 
@@ -41,6 +49,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
@@ -54,6 +63,8 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    //Move this to proper place
+
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

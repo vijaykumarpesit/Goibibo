@@ -16,6 +16,10 @@
 		B1EDDEE81BB10C6400518E0C /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EDDEE41BB10C6400518E0C /* RESideMenu.m */; };
 		B1EDDEE91BB10C6400518E0C /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EDDEE61BB10C6400518E0C /* UIViewController+RESideMenu.m */; };
 		B1EDDEEB1BB10D9A00518E0C /* GoHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1EDDEEA1BB10D9A00518E0C /* GoHomeViewController.xib */; };
+		B1EDDEF11BB1118200518E0C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1EDDEED1BB1118200518E0C /* Fabric.framework */; };
+		B1EDDEF21BB1118200518E0C /* DigitsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1EDDEEE1BB1118200518E0C /* DigitsKit.framework */; };
+		B1EDDEF31BB1118200518E0C /* DigitsKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B1EDDEEF1BB1118200518E0C /* DigitsKitResources.bundle */; };
+		B1EDDEF41BB1118200518E0C /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1EDDEF01BB1118200518E0C /* TwitterCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,10 @@
 		B1EDDEE51BB10C6400518E0C /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
 		B1EDDEE61BB10C6400518E0C /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
 		B1EDDEEA1BB10D9A00518E0C /* GoHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoHomeViewController.xib; sourceTree = "<group>"; };
+		B1EDDEED1BB1118200518E0C /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		B1EDDEEE1BB1118200518E0C /* DigitsKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DigitsKit.framework; sourceTree = SOURCE_ROOT; };
+		B1EDDEEF1BB1118200518E0C /* DigitsKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DigitsKitResources.bundle; path = DigitsKit.framework/Versions/A/Resources/DigitsKitResources.bundle; sourceTree = SOURCE_ROOT; };
+		B1EDDEF01BB1118200518E0C /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +50,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1EDDEF11BB1118200518E0C /* Fabric.framework in Frameworks */,
+				B1EDDEF41BB1118200518E0C /* TwitterCore.framework in Frameworks */,
+				B1EDDEF21BB1118200518E0C /* DigitsKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +83,10 @@
 				B1EDDECF1BB10A4100518E0C /* GoHomeViewController.h */,
 				B1EDDED01BB10A4100518E0C /* GoHomeViewController.m */,
 				B1EDDEEA1BB10D9A00518E0C /* GoHomeViewController.xib */,
+				B1EDDEED1BB1118200518E0C /* Fabric.framework */,
+				B1EDDEEE1BB1118200518E0C /* DigitsKit.framework */,
+				B1EDDEEF1BB1118200518E0C /* DigitsKitResources.bundle */,
+				B1EDDEF01BB1118200518E0C /* TwitterCore.framework */,
 				B1EDDEE01BB10C5200518E0C /* Side Menu */,
 				B1EDDED51BB10A4100518E0C /* Assets.xcassets */,
 				B1EDDED71BB10A4100518E0C /* LaunchScreen.storyboard */,
@@ -112,6 +127,7 @@
 				B1EDDEC21BB10A4000518E0C /* Sources */,
 				B1EDDEC31BB10A4000518E0C /* Frameworks */,
 				B1EDDEC41BB10A4000518E0C /* Resources */,
+				B1EDDEEC1BB1116600518E0C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -159,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1EDDEF31BB1118200518E0C /* DigitsKitResources.bundle in Resources */,
 				B1EDDED91BB10A4100518E0C /* LaunchScreen.storyboard in Resources */,
 				B1EDDEEB1BB10D9A00518E0C /* GoHomeViewController.xib in Resources */,
 				B1EDDED61BB10A4100518E0C /* Assets.xcassets in Resources */,
@@ -166,6 +183,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B1EDDEEC1BB1116600518E0C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run a158ed92adc33849add174bc6f7fb20fc8ba2fa6 60ebe5f7c0afae81320b2d59dccc1285dfe88b14eb75d9e775447f0487921899";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B1EDDEC21BB10A4000518E0C /* Sources */ = {
@@ -281,6 +314,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = GoIbibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -293,6 +330,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = GoIbibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

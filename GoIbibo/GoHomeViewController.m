@@ -25,4 +25,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+//Implement this 
+-(void)digitsAuthenticationFinishedWithSession:(DGTSession *)aSession error:(NSError *)error {
+ 
+}
+
+
 @end
