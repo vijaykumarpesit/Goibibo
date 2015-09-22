@@ -12,6 +12,9 @@
 		B1EDDED11BB10A4100518E0C /* GoHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EDDED01BB10A4100518E0C /* GoHomeViewController.m */; };
 		B1EDDED61BB10A4100518E0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1EDDED51BB10A4100518E0C /* Assets.xcassets */; };
 		B1EDDED91BB10A4100518E0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1EDDED71BB10A4100518E0C /* LaunchScreen.storyboard */; };
+		B1EDDEE71BB10C6400518E0C /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EDDEE21BB10C6400518E0C /* RECommonFunctions.m */; };
+		B1EDDEE81BB10C6400518E0C /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EDDEE41BB10C6400518E0C /* RESideMenu.m */; };
+		B1EDDEE91BB10C6400518E0C /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EDDEE61BB10C6400518E0C /* UIViewController+RESideMenu.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,12 @@
 		B1EDDED51BB10A4100518E0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1EDDED81BB10A4100518E0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1EDDEDA1BB10A4100518E0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1EDDEE11BB10C6400518E0C /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		B1EDDEE21BB10C6400518E0C /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		B1EDDEE31BB10C6400518E0C /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
+		B1EDDEE41BB10C6400518E0C /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
+		B1EDDEE51BB10C6400518E0C /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
+		B1EDDEE61BB10C6400518E0C /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +69,7 @@
 				B1EDDECD1BB10A4100518E0C /* AppDelegate.m */,
 				B1EDDECF1BB10A4100518E0C /* GoHomeViewController.h */,
 				B1EDDED01BB10A4100518E0C /* GoHomeViewController.m */,
+				B1EDDEE01BB10C5200518E0C /* Side Menu */,
 				B1EDDED51BB10A4100518E0C /* Assets.xcassets */,
 				B1EDDED71BB10A4100518E0C /* LaunchScreen.storyboard */,
 				B1EDDEDA1BB10A4100518E0C /* Info.plist */,
@@ -74,6 +84,19 @@
 				B1EDDECA1BB10A4100518E0C /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B1EDDEE01BB10C5200518E0C /* Side Menu */ = {
+			isa = PBXGroup;
+			children = (
+				B1EDDEE11BB10C6400518E0C /* RECommonFunctions.h */,
+				B1EDDEE21BB10C6400518E0C /* RECommonFunctions.m */,
+				B1EDDEE31BB10C6400518E0C /* RESideMenu.h */,
+				B1EDDEE41BB10C6400518E0C /* RESideMenu.m */,
+				B1EDDEE51BB10C6400518E0C /* UIViewController+RESideMenu.h */,
+				B1EDDEE61BB10C6400518E0C /* UIViewController+RESideMenu.m */,
+			);
+			name = "Side Menu";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +171,9 @@
 				B1EDDED11BB10A4100518E0C /* GoHomeViewController.m in Sources */,
 				B1EDDECE1BB10A4100518E0C /* AppDelegate.m in Sources */,
 				B1EDDECB1BB10A4100518E0C /* main.m in Sources */,
+				B1EDDEE81BB10C6400518E0C /* RESideMenu.m in Sources */,
+				B1EDDEE71BB10C6400518E0C /* RECommonFunctions.m in Sources */,
+				B1EDDEE91BB10C6400518E0C /* UIViewController+RESideMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +314,7 @@
 				B1EDDEDF1BB10A4100518E0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
