@@ -13,7 +13,7 @@
 @property (nonatomic, copy) NSString *imageName;
 @property (nonatomic, copy) NSString *optiontext;
 @property (nonatomic, getter=shouldShowDisclosureIndicator) BOOL showDisclosureIndicator;
-@property (nonatomic) NSInteger identationLevel;
+@property (nonatomic) NSInteger indentationLevel;
 @property (nonatomic, getter=isExpanded) BOOL expanded;
 
 @end

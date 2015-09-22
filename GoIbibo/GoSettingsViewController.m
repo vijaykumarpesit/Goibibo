@@ -26,7 +26,8 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.tableView.contentInset = UIEdgeInsetsMake(110, 0, 10, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(65, 0, 10, 0);
+    self.tableView.backgroundColor = [UIColor colorWithRed:(245.0f/255.0f) green:(250.0f/255.0f) blue:(255.0f/255.0f) alpha:1.0f];
     
     self.settingOptions = [NSMutableArray array];
     [self configureDataSourceForSelectedMenuItem:0];
@@ -46,20 +47,20 @@
     GoSettingsOption *logoutOption = [[GoSettingsOption alloc] init];
     logoutOption.imageName = @"";
     logoutOption.optiontext = @"Logout";
-    logoutOption.identationLevel = 0;
+    logoutOption.indentationLevel = 0;
     [self.settingOptions addObject:logoutOption];
     
     GoSettingsOption *settingsOption = [[GoSettingsOption alloc] init];
     settingsOption.imageName = @"IconSettings";
     settingsOption.optiontext = @"Settings";
     settingsOption.showDisclosureIndicator = YES;
-    settingsOption.identationLevel = 0;
+    settingsOption.indentationLevel = 0;
     [self.settingOptions addObject:settingsOption];
     
     GoSettingsOption *privacyOption = [[GoSettingsOption alloc] init];
     privacyOption.imageName = @"";
     privacyOption.optiontext = @"Privacy";
-    privacyOption.identationLevel = 1;
+    privacyOption.indentationLevel = 1;
     if (selectedMenuItem == 1) {
         [self.settingOptions addObject:privacyOption];
     }
@@ -67,7 +68,7 @@
     GoSettingsOption *profileOption = [[GoSettingsOption alloc] init];
     profileOption.imageName = @"IconProfile";
     profileOption.optiontext = @"Profile";
-    profileOption.identationLevel = 1;
+    profileOption.indentationLevel = 1;
     if (selectedMenuItem == 1) {
         [self.settingOptions addObject:profileOption];
     }
@@ -90,14 +91,13 @@
     }
     UIColor *backGroundColor = [UIColor colorWithRed:(42.0f/255.0f) green:(159.0f/255.0f) blue:(238.0f/255.0f) alpha:1.0f];
     cell.contentView.backgroundColor = backGroundColor;
-    cell.imageView.image = [UIImage imageNamed:settingOption.imageName];
-    if (cell.indentationLevel > 0) {
-        cell.textLabel.frame = (CGRect){
-            .origin = CGPointMake(cell.indentationLevel * 5 + cell.detailTextLabel.frame.origin.x, cell.detailTextLabel.frame.origin.y),
-            .size = CGSizeMake(cell.detailTextLabel.frame.size.width - (cell.indentationLevel * 5), cell.detailTextLabel.frame.size.height)};
+    if (settingOption.imageName) {
+        cell.imageView.image = [UIImage imageNamed:settingOption.imageName];
+        cell.imageView.highlightedImage = [self highlightedImage:[UIImage imageNamed:settingOption.imageName] highligthedColor:[UIColor blackColor]];
     }
     cell.textLabel.text = settingOption.optiontext;
     cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.highlightedTextColor = [UIColor blackColor];
     if (settingOption.shouldShowDisclosureIndicator) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
@@ -116,7 +116,9 @@
             [self configureDataSourceForSelectedMenuItem:1];
             ((GoSettingsOption *)[self.settingOptions objectAtIndex:indexPath.row]).expanded = YES;
         }
-        [self.tableView reloadData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[self tableView] reloadData];
+        });
     }
 }
 
@@ -129,5 +131,31 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (UIImage *)highlightedImage:(UIImage *)image highligthedColor:(UIColor *)highlightedColor {
+    UIGraphicsBeginImageContextWithOptions(image.size, NO, image.scale);
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    [highlightedColor setFill];
+    
+    CGContextTranslateCTM(context, 0, image.size.height);
+    CGContextScaleCTM(context, 1.0, -1.0);
+    
+    // set the blend mode to color burn, and the original image
+    CGContextSetBlendMode(context, kCGBlendModeNormal);
+    CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
+    CGContextDrawImage(context, rect, image.CGImage);
+    
+    CGContextClipToMask(context, rect, image.CGImage);
+    CGContextAddRect(context, rect);
+    CGContextDrawPath(context,kCGPathFill);
+    
+    UIImage *coloredImg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    //return the color-burned image
+    return coloredImg;
+}
 
 @end
