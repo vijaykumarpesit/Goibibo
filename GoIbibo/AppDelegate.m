@@ -7,8 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "GoHomeViewController.h"
-#import "RESideMenu.h"
+#import "GoLayoutHandler.h"
 #import <Fabric/Fabric.h>
 #import <DigitsKit/DigitsKit.h>
 
@@ -32,14 +31,7 @@
 - (void)showHomeScreen {
     //Call this whenever you want to test twitter digits login
     //[[Digits sharedInstance] logOut];
-    
-    GoHomeViewController *homeScreen = [[GoHomeViewController alloc] initWithNibName:@"GoHomeViewController" bundle:nil];
-    UINavigationController *navigationVC = [[UINavigationController alloc] init];
-    RESideMenu *slideMenu = [[RESideMenu alloc] initWithContentViewController:navigationVC leftMenuViewController:nil rightMenuViewController:nil];
-    slideMenu.contentViewInPortraitOffsetCenterX = -50;
-    Digits *digits = [Digits sharedInstance];
-    [digits authenticateWithNavigationViewController:navigationVC phoneNumber:@"+91" digitsAppearance:nil title:nil completionViewController:homeScreen];
-    self.window.rootViewController = slideMenu;
+    self.window.rootViewController = [[GoLayoutHandler sharedInstance] sideMenu];
 }
 
 

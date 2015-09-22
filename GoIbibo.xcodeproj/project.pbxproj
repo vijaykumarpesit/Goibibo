@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54A550CB1BB138A60000561B /* left-side-bar-hamburger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550C91BB138A60000561B /* left-side-bar-hamburger@2x.png */; settings = {ASSET_TAGS = (); }; };
+		54A550CC1BB138A60000561B /* left-side-bar-hamburger@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550CA1BB138A60000561B /* left-side-bar-hamburger@3x.png */; settings = {ASSET_TAGS = (); }; };
+		54A550D51BB148480000561B /* GoSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A550D31BB148480000561B /* GoSettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		54A550D61BB148480000561B /* GoSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54A550D41BB148480000561B /* GoSettingsViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		54A550DC1BB14A570000561B /* GoLayoutHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A550DB1BB14A570000561B /* GoLayoutHandler.m */; settings = {ASSET_TAGS = (); }; };
+		54A550EC1BB154060000561B /* GoSettingsOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A550EB1BB154060000561B /* GoSettingsOption.m */; settings = {ASSET_TAGS = (); }; };
+		54A550F91BB160370000561B /* IconProfile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550F71BB160370000561B /* IconProfile@2x.png */; settings = {ASSET_TAGS = (); }; };
+		54A550FA1BB160370000561B /* IconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550F81BB160370000561B /* IconSettings@2x.png */; settings = {ASSET_TAGS = (); }; };
 		B1EDDECB1BB10A4100518E0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EDDECA1BB10A4100518E0C /* main.m */; };
 		B1EDDECE1BB10A4100518E0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EDDECD1BB10A4100518E0C /* AppDelegate.m */; };
 		B1EDDED11BB10A4100518E0C /* GoHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EDDED01BB10A4100518E0C /* GoHomeViewController.m */; };
@@ -25,6 +33,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		54A550C91BB138A60000561B /* left-side-bar-hamburger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-side-bar-hamburger@2x.png"; sourceTree = "<group>"; };
+		54A550CA1BB138A60000561B /* left-side-bar-hamburger@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-side-bar-hamburger@3x.png"; sourceTree = "<group>"; };
+		54A550D21BB148480000561B /* GoSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoSettingsViewController.h; sourceTree = "<group>"; };
+		54A550D31BB148480000561B /* GoSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoSettingsViewController.m; sourceTree = "<group>"; };
+		54A550D41BB148480000561B /* GoSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoSettingsViewController.xib; sourceTree = "<group>"; };
+		54A550DA1BB14A570000561B /* GoLayoutHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoLayoutHandler.h; sourceTree = "<group>"; };
+		54A550DB1BB14A570000561B /* GoLayoutHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoLayoutHandler.m; sourceTree = "<group>"; };
+		54A550EA1BB154060000561B /* GoSettingsOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoSettingsOption.h; sourceTree = "<group>"; };
+		54A550EB1BB154060000561B /* GoSettingsOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoSettingsOption.m; sourceTree = "<group>"; };
+		54A550F71BB160370000561B /* IconProfile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconProfile@2x.png"; sourceTree = "<group>"; };
+		54A550F81BB160370000561B /* IconSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconSettings@2x.png"; sourceTree = "<group>"; };
 		B1EDDEC61BB10A4000518E0C /* GoIbibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoIbibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1EDDECA1BB10A4100518E0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B1EDDECC1BB10A4100518E0C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -93,6 +112,13 @@
 				B1EDDECF1BB10A4100518E0C /* GoHomeViewController.h */,
 				B1EDDED01BB10A4100518E0C /* GoHomeViewController.m */,
 				B1EDDEEA1BB10D9A00518E0C /* GoHomeViewController.xib */,
+				54A550EA1BB154060000561B /* GoSettingsOption.h */,
+				54A550EB1BB154060000561B /* GoSettingsOption.m */,
+				54A550D21BB148480000561B /* GoSettingsViewController.h */,
+				54A550D31BB148480000561B /* GoSettingsViewController.m */,
+				54A550D41BB148480000561B /* GoSettingsViewController.xib */,
+				54A550DA1BB14A570000561B /* GoLayoutHandler.h */,
+				54A550DB1BB14A570000561B /* GoLayoutHandler.m */,
 				B1EDDEED1BB1118200518E0C /* Fabric.framework */,
 				B1EDDEEE1BB1118200518E0C /* DigitsKit.framework */,
 				B1EDDEEF1BB1118200518E0C /* DigitsKitResources.bundle */,
@@ -109,6 +135,10 @@
 		B1EDDEC91BB10A4100518E0C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				54A550F71BB160370000561B /* IconProfile@2x.png */,
+				54A550F81BB160370000561B /* IconSettings@2x.png */,
+				54A550C91BB138A60000561B /* left-side-bar-hamburger@2x.png */,
+				54A550CA1BB138A60000561B /* left-side-bar-hamburger@3x.png */,
 				B1EDDECA1BB10A4100518E0C /* main.m */,
 			);
 			name = "Supporting Files";
@@ -185,10 +215,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54A550D61BB148480000561B /* GoSettingsViewController.xib in Resources */,
+				54A550F91BB160370000561B /* IconProfile@2x.png in Resources */,
 				B1EDDEF31BB1118200518E0C /* DigitsKitResources.bundle in Resources */,
+				54A550FA1BB160370000561B /* IconSettings@2x.png in Resources */,
 				B1EDDED91BB10A4100518E0C /* LaunchScreen.storyboard in Resources */,
+				54A550CB1BB138A60000561B /* left-side-bar-hamburger@2x.png in Resources */,
 				B1EDDEEB1BB10D9A00518E0C /* GoHomeViewController.xib in Resources */,
 				B1EDDED61BB10A4100518E0C /* Assets.xcassets in Resources */,
+				54A550CC1BB138A60000561B /* left-side-bar-hamburger@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,11 +252,14 @@
 			files = (
 				B1EDDEFB1BB14CBE00518E0C /* GoContactSyncEntry.m in Sources */,
 				B1EDDED11BB10A4100518E0C /* GoHomeViewController.m in Sources */,
+				54A550D51BB148480000561B /* GoSettingsViewController.m in Sources */,
+				54A550EC1BB154060000561B /* GoSettingsOption.m in Sources */,
 				B1EDDECE1BB10A4100518E0C /* AppDelegate.m in Sources */,
 				B1EDDECB1BB10A4100518E0C /* main.m in Sources */,
 				B1EDDEF81BB14C9D00518E0C /* GoContactSync.m in Sources */,
 				B1EDDEE81BB10C6400518E0C /* RESideMenu.m in Sources */,
 				B1EDDEE71BB10C6400518E0C /* RECommonFunctions.m in Sources */,
+				54A550DC1BB14A570000561B /* GoLayoutHandler.m in Sources */,
 				B1EDDEE91BB10C6400518E0C /* UIViewController+RESideMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
