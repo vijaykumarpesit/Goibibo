@@ -8,10 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import <DigitsKit/DigitsKit.h>
+#import <JTCalendar/JTCalendar.h>
 
 
-@interface GoHomeViewController : UIViewController<DGTCompletionViewController>
+@interface GoHomeViewController : UIViewController<DGTCompletionViewController, JTCalendarDelegate>
 
+
+@property (weak, nonatomic) IBOutlet JTCalendarMenuView *calendarMenuView;
+@property (weak, nonatomic) IBOutlet JTHorizontalCalendarView *calendarContentView;
+
+@property (strong, nonatomic) JTCalendarManager *calendarManager;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarContentViewHeight;
 
 @end
+
 
