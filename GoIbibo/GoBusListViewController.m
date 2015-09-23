@@ -114,6 +114,7 @@
         busDetails.busType = bus[@"BusType"];
         busDetails.departureTime = bus[@"DepartureTime"];
         busDetails.arrivalTime = bus[@"ArrivalTime"];
+        busDetails.rowID = bus[@"rowid"];
         
         NSDictionary *routeSeatTypeDetail = bus[@"RouteSeatTypeDetail"];
         busDetails.noOfSeatsAvailable = routeSeatTypeDetail[@"SeatsAvailable"];
