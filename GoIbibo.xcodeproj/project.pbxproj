@@ -31,6 +31,8 @@
 		B1EA1FE31BB2CED300A6B580 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1EA1FE21BB2CED300A6B580 /* SystemConfiguration.framework */; };
 		B1EA1FE51BB2CEEB00A6B580 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B1EA1FE41BB2CEEB00A6B580 /* libz.tbd */; };
 		B1EA1FE71BB2CEF400A6B580 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B1EA1FE61BB2CEF400A6B580 /* libsqlite3.tbd */; };
+		B1EA1FEB1BB2F00600A6B580 /* GoUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EA1FEA1BB2F00600A6B580 /* GoUser.m */; settings = {ASSET_TAGS = (); }; };
+		B1EA1FEE1BB2F1BA00A6B580 /* GoUserModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EA1FED1BB2F1BA00A6B580 /* GoUserModelManager.m */; settings = {ASSET_TAGS = (); }; };
 		B1EDDECB1BB10A4100518E0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EDDECA1BB10A4100518E0C /* main.m */; };
 		B1EDDECE1BB10A4100518E0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EDDECD1BB10A4100518E0C /* AppDelegate.m */; };
 		B1EDDED11BB10A4100518E0C /* GoHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EDDED01BB10A4100518E0C /* GoHomeViewController.m */; };
@@ -80,6 +82,10 @@
 		B1EA1FE21BB2CED300A6B580 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B1EA1FE41BB2CEEB00A6B580 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		B1EA1FE61BB2CEF400A6B580 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		B1EA1FE91BB2F00600A6B580 /* GoUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoUser.h; sourceTree = "<group>"; };
+		B1EA1FEA1BB2F00600A6B580 /* GoUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoUser.m; sourceTree = "<group>"; };
+		B1EA1FEC1BB2F1BA00A6B580 /* GoUserModelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoUserModelManager.h; sourceTree = "<group>"; };
+		B1EA1FED1BB2F1BA00A6B580 /* GoUserModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoUserModelManager.m; sourceTree = "<group>"; };
 		B1EDDEC61BB10A4000518E0C /* GoIbibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoIbibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1EDDECA1BB10A4100518E0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B1EDDECC1BB10A4100518E0C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -162,8 +168,12 @@
 		B1EA1FC61BB276CF00A6B580 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B1EA1FE91BB2F00600A6B580 /* GoUser.h */,
+				B1EA1FEA1BB2F00600A6B580 /* GoUser.m */,
 				B1EA1FC71BB276EB00A6B580 /* GoBusDetails.h */,
 				B1EA1FC81BB276EB00A6B580 /* GoBusDetails.m */,
+				B1EA1FEC1BB2F1BA00A6B580 /* GoUserModelManager.h */,
+				B1EA1FED1BB2F1BA00A6B580 /* GoUserModelManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -401,10 +411,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1EA1FEE1BB2F1BA00A6B580 /* GoUserModelManager.m in Sources */,
 				B1EDDEFB1BB14CBE00518E0C /* GoContactSyncEntry.m in Sources */,
 				B1EDDED11BB10A4100518E0C /* GoHomeViewController.m in Sources */,
 				54A550D51BB148480000561B /* GoSettingsViewController.m in Sources */,
 				54A550EC1BB154060000561B /* GoSettingsOption.m in Sources */,
+				B1EA1FEB1BB2F00600A6B580 /* GoUser.m in Sources */,
 				B1EDDECE1BB10A4100518E0C /* AppDelegate.m in Sources */,
 				B1EDDECB1BB10A4100518E0C /* main.m in Sources */,
 				B1EA1FCD1BB2AA9E00A6B580 /* GoBusInfoCell.m in Sources */,

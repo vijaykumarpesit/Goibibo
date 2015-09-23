@@ -15,15 +15,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="481" height="94.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvO-5y-aRM">
-                        <rect key="frame" x="13" y="13" width="42" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvO-5y-aRM">
+                        <rect key="frame" x="13" y="13" width="403" height="20.5"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM4-j9-SNo">
-                        <rect key="frame" x="13" y="38" width="42" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM4-j9-SNo">
+                        <rect key="frame" x="13" y="38" width="403" height="20.5"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -53,12 +53,14 @@
                 </subviews>
                 <animations/>
                 <constraints>
+                    <constraint firstItem="JRK-HY-vNI" firstAttribute="leading" relation="lessThanOrEqual" secondItem="AvO-5y-aRM" secondAttribute="trailing" constant="10" id="MV7-Hu-f2I"/>
                     <constraint firstItem="aM4-j9-SNo" firstAttribute="top" secondItem="AvO-5y-aRM" secondAttribute="bottom" constant="5" id="OZ1-0C-7or"/>
                     <constraint firstItem="Zq7-U5-0am" firstAttribute="top" secondItem="JRK-HY-vNI" secondAttribute="bottom" constant="5" id="Vw8-SV-eoE"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Zq7-U5-0am" secondAttribute="trailing" constant="5" id="W2r-vE-AzX"/>
                     <constraint firstItem="AvO-5y-aRM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="YRm-vk-VeR"/>
                     <constraint firstItem="JRK-HY-vNI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="cTJ-3y-QTE"/>
                     <constraint firstAttribute="trailingMargin" secondItem="SJB-n9-McP" secondAttribute="trailing" constant="5" id="chL-Bd-J2W"/>
+                    <constraint firstItem="Zq7-U5-0am" firstAttribute="leading" relation="lessThanOrEqual" secondItem="aM4-j9-SNo" secondAttribute="trailing" constant="10" id="dNR-f9-D6q"/>
                     <constraint firstAttribute="bottomMargin" secondItem="SJB-n9-McP" secondAttribute="bottom" constant="5" id="k54-OI-REd"/>
                     <constraint firstAttribute="trailingMargin" secondItem="JRK-HY-vNI" secondAttribute="trailing" constant="5" id="ozW-Dr-P6i"/>
                     <constraint firstItem="AvO-5y-aRM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="sjY-io-6Zq"/>

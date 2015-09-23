@@ -9,6 +9,8 @@
 #import "GoHomeViewController.h"
 #import "GoLayoutHandler.h"
 #import "GoBusListViewController.h"
+#import "GoUserModelManager.h"
+#import "GoUser.h"
 
 @interface GoHomeViewController ()
 
@@ -222,9 +224,12 @@
     [[[GoLayoutHandler sharedInstance] sideMenu] presentLeftMenuViewController];
 }
 
-//Implement this 
 -(void)digitsAuthenticationFinishedWithSession:(DGTSession *)aSession error:(NSError *)error {
- 
+    
+    GoUser *user = [[GoUserModelManager sharedManager] currentUser];
+    user.phoneNumber = aSession.phoneNumber;
+    user.userID = aSession.userID;
+    [user saveUser];
 }
 
 
