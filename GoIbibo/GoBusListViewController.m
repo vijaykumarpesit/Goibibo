@@ -111,6 +111,10 @@
         [self.tableView setHidden:NO];
         [self.searchingLabel setHidden:YES];
         
+        if (self.busResults.count == 0) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No of buses retuned by API is 0" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
         [self.tableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

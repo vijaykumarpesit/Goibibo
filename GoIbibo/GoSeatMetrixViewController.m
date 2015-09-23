@@ -72,12 +72,17 @@
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self saveBusSeatLayoutFromResponseObject:responseObject];
         
+        if (self.seats.count == 0) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No of seats retuned by API is 0" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
         [self.collectionView setHidden:NO];
         [self.searchingLabel setHidden:YES];
         [self.collectionView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Error in Fetching seat matrix" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
     }];
     
     [operation start];
