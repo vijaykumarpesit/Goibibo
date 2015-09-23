@@ -10,7 +10,7 @@
 #import "GoSeatCollectionViewCell.h"
 #import <AFNetworking/AFNetworking.h>
 #import "GoBusSeatLayout.h"
-
+#import "GoPaymentConfirmation.h"
 
 @interface GoSeatMetrixViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, strong) NSMutableArray *seats;
@@ -56,6 +56,11 @@
     CGRect mainScreenBounds = [[UIScreen mainScreen] bounds];
     return CGSizeMake(mainScreenBounds.size.width/3 -2,
                       mainScreenBounds.size.width/2.5) ;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    GoPaymentConfirmation *paymentVC = [[GoPaymentConfirmation alloc] initWithNibName:@"GoPaymentConfirmation" bundle:nil];
+    [self.navigationController pushViewController:paymentVC animated:YES];
 }
 
 - (void)loadBusLayoutMetrix {
