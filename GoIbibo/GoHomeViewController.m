@@ -27,20 +27,13 @@
 @property (nonatomic) NSUInteger selectedSource;
 @property (nonatomic) NSUInteger selectedDestination;
 
--(IBAction)clickedDate:(id)sender;
 @end
 
 @implementation GoHomeViewController
 
--(IBAction)clickedDate:(id)sender {
-    
-    GoBusListViewController *vc = [[GoBusListViewController alloc] initWithSource:@"bangalore" destination:@"hyderabad" departureDate:[NSDate date] arrivalDate:nil];
-    [self.navigationController pushViewController:vc animated:YES];
-    
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"KWRU";
+    self.title = @"Search Buses";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left-side-bar-hamburger.png"] landscapeImagePhone:nil style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonItemPressed:)];
     _calendarManager = [JTCalendarManager new];
     _calendarManager.delegate = self;
@@ -59,23 +52,24 @@
     _sourcePickerView.showsSelectionIndicator = YES;
     _destinationPickerView.showsSelectionIndicator = YES;
     [self configureSourceAndDestination];
+    self.sourcePickerView.layer.cornerRadius = 8.0f;
+    self.destinationPickerView.layer.cornerRadius = 8.0f;
+
     // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)configureSourceAndDestination {
     _sourcePlaces = [NSMutableArray array];
-    [_sourcePlaces addObject:@"Source"];
     [_sourcePlaces addObject:@"Bangalore"];
     [_sourcePlaces addObject:@"Chennai"];
     [_sourcePlaces addObject:@"Delhi"];
     [_sourcePlaces addObject:@"Hyderbad"];
     
     _destinationPlaces = [NSMutableArray array];
-    [_destinationPlaces addObject:@"Destination"];
-    [_destinationPlaces addObject:@"Bangalore"];
-    [_destinationPlaces addObject:@"Chennai"];
-    [_destinationPlaces addObject:@"Delhi"];
     [_destinationPlaces addObject:@"Hyderbad"];
+    [_destinationPlaces addObject:@"Delhi"];
+    [_destinationPlaces addObject:@"Chennai"];
+    [_destinationPlaces addObject:@"Bangalore"];
 }
 
 #pragma mark - Buttons callback
@@ -98,20 +92,24 @@
         self.overlayView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:1.0f];
         [self.view sendSubviewToBack:self.overlayView];
     }
-    
-    self.calendarContentViewHeight.constant = newHeight;
-    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:0.2f animations:^{
+        self.calendarContentViewHeight.constant = newHeight;
+        [self.view layoutIfNeeded];
+    }];
 }
 
 - (IBAction)submitButtonClicked:(id)sender {
-    if (self.selectedSource == 0 || self.selectedDestination == 0) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:(self.selectedSource == 0 ? @"Source": @"Destination") message:[NSString stringWithFormat:@"Please set the %@", ((self.selectedSource == 0) ? @"Source" : @"Destination")] preferredStyle:UIAlertControllerStyleAlert];
+    NSString *source = [self.sourcePlaces[self.selectedSource] lowercaseString];
+    NSString *destination = [self.destinationPlaces[self.selectedDestination] lowercaseString];
+    if ([source isEqualToString:destination]) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Same Destination" message:[NSString stringWithFormat:@"Please set the proper source/destination"] preferredStyle:UIAlertControllerStyleAlert];
         [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             [alertController dismissViewControllerAnimated:YES completion:nil];
         }]];
         [self.navigationController presentViewController:alertController animated:YES completion:nil];
     } else {
-        
+        GoBusListViewController *vc = [[GoBusListViewController alloc] initWithSource:source destination:destination departureDate:(_dateSelected ? _dateSelected : _todayDate) arrivalDate:nil];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
@@ -275,7 +273,11 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    
+    if ([pickerView isEqual:self.sourcePickerView]) {
+         self.selectedSource = row;
+    } else {
+        self.selectedDestination = row;
+    }
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -290,12 +292,15 @@
     }
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    NSString *placeName = nil;
     if ([pickerView isEqual:self.sourcePickerView]) {
-        return self.sourcePlaces[row];
+        placeName = self.sourcePlaces[row];
     } else {
-        return self.destinationPlaces[row];
+        placeName = self.destinationPlaces[row];
     }
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:placeName attributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:(50.0f/255.0f) green:(50.0f/255.0f) blue:(50.0f/255.0f) alpha:1.0f]}];
+    return attributedString;
 }
 
 @end
