@@ -10,6 +10,7 @@
 #import "GoLayoutHandler.h"
 #import <Fabric/Fabric.h>
 #import <DigitsKit/DigitsKit.h>
+#import <Parse/Parse.h>
 
 @interface AppDelegate ()
 
@@ -22,6 +23,15 @@
     // Override point for customization after application launch.
     
     [Fabric with:@[[Digits class]]];
+    [Parse enableLocalDatastore];
+    
+    // Initialize Parse.
+    [Parse setApplicationId:@"uxi076jAeUCcraZcA9WyF9vHVPqTzChkyrowXPkE"
+                  clientKey:@"XOoJ6M8BodHnfQP5T6yngu8lqGrC6oyWhW41Vvwd"];
+    
+    // [Optional] Track statistics around application opens.
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self showHomeScreen];
     [self.window makeKeyAndVisible];
