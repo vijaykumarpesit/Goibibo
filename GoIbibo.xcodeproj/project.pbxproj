@@ -22,6 +22,8 @@
 		B10D989F1BB24E97005D74D1 /* GoBusListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10D989D1BB24E97005D74D1 /* GoBusListViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		B151F67B1BB31E360017D908 /* GoBookedBusDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = B151F67A1BB31E360017D908 /* GoBookedBusDetail.m */; settings = {ASSET_TAGS = (); }; };
 		B151F6811BB32D590017D908 /* contacts.plist in Resources */ = {isa = PBXBuildFile; fileRef = B151F6801BB32D590017D908 /* contacts.plist */; settings = {ASSET_TAGS = (); }; };
+		B151F6841BB3353B0017D908 /* GoSeatMetrixViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B151F6831BB3353B0017D908 /* GoSeatMetrixViewController.m */; settings = {ASSET_TAGS = (); }; };
+		B151F6861BB335750017D908 /* GoSeatMetrixViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B151F6851BB335750017D908 /* GoSeatMetrixViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		B1EA1FC91BB276EB00A6B580 /* GoBusDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EA1FC81BB276EB00A6B580 /* GoBusDetails.m */; settings = {ASSET_TAGS = (); }; };
 		B1EA1FCD1BB2AA9E00A6B580 /* GoBusInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EA1FCB1BB2AA9E00A6B580 /* GoBusInfoCell.m */; settings = {ASSET_TAGS = (); }; };
 		B1EA1FCE1BB2AA9E00A6B580 /* GoBusInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1EA1FCC1BB2AA9E00A6B580 /* GoBusInfoCell.xib */; settings = {ASSET_TAGS = (); }; };
@@ -76,6 +78,9 @@
 		B151F6791BB31E360017D908 /* GoBookedBusDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoBookedBusDetail.h; sourceTree = "<group>"; };
 		B151F67A1BB31E360017D908 /* GoBookedBusDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoBookedBusDetail.m; sourceTree = "<group>"; };
 		B151F6801BB32D590017D908 /* contacts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = contacts.plist; sourceTree = "<group>"; };
+		B151F6821BB3353B0017D908 /* GoSeatMetrixViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoSeatMetrixViewController.h; sourceTree = "<group>"; };
+		B151F6831BB3353B0017D908 /* GoSeatMetrixViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoSeatMetrixViewController.m; sourceTree = "<group>"; };
+		B151F6851BB335750017D908 /* GoSeatMetrixViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoSeatMetrixViewController.xib; sourceTree = "<group>"; };
 		B1EA1FC71BB276EB00A6B580 /* GoBusDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoBusDetails.h; sourceTree = "<group>"; };
 		B1EA1FC81BB276EB00A6B580 /* GoBusDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoBusDetails.m; sourceTree = "<group>"; };
 		B1EA1FCA1BB2AA9E00A6B580 /* GoBusInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoBusInfoCell.h; sourceTree = "<group>"; };
@@ -222,6 +227,9 @@
 				B10D989B1BB24E97005D74D1 /* GoBusListViewController.h */,
 				B10D989C1BB24E97005D74D1 /* GoBusListViewController.m */,
 				B10D989D1BB24E97005D74D1 /* GoBusListViewController.xib */,
+				B151F6821BB3353B0017D908 /* GoSeatMetrixViewController.h */,
+				B151F6831BB3353B0017D908 /* GoSeatMetrixViewController.m */,
+				B151F6851BB335750017D908 /* GoSeatMetrixViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -372,6 +380,7 @@
 				B1EDDED61BB10A4100518E0C /* Assets.xcassets in Resources */,
 				54A550CC1BB138A60000561B /* left-side-bar-hamburger@3x.png in Resources */,
 				B151F6811BB32D590017D908 /* contacts.plist in Resources */,
+				B151F6861BB335750017D908 /* GoSeatMetrixViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +441,7 @@
 				B1EDDEFB1BB14CBE00518E0C /* GoContactSyncEntry.m in Sources */,
 				B1EDDED11BB10A4100518E0C /* GoHomeViewController.m in Sources */,
 				54A550D51BB148480000561B /* GoSettingsViewController.m in Sources */,
+				B151F6841BB3353B0017D908 /* GoSeatMetrixViewController.m in Sources */,
 				54A550EC1BB154060000561B /* GoSettingsOption.m in Sources */,
 				B1EA1FEB1BB2F00600A6B580 /* GoUser.m in Sources */,
 				B1EDDECE1BB10A4100518E0C /* AppDelegate.m in Sources */,
