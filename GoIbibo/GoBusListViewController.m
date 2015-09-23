@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSDate *departureDate;
 @property (nonatomic, strong) NSDate *arrivalDate;
 @property (nonatomic, strong) NSMutableArray *busResults;
+@property (nonatomic, strong) IBOutlet UILabel *searchingLabel;
 @end
 
 @implementation GoBusListViewController
@@ -42,6 +43,7 @@
     self.busResults = [[NSMutableArray alloc] init];
     [self.tableView registerNib:[UINib nibWithNibName:@"GoBusInfoCell" bundle:nil] forCellReuseIdentifier:@"busInfoCell"];
     [self loadDataFromGoIBibo];
+    [self.tableView setHidden:YES];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -106,10 +108,15 @@
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
     
         [self saveBusInfoFromResponseObject:responseObject];
+        [self.tableView setHidden:NO];
+        [self.searchingLabel setHidden:YES];
+        
         [self.tableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Bus fetch failed " delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
     }];
     
     [operation start];

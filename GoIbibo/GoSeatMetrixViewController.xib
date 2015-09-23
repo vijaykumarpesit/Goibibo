@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GoSeatMetrixViewController">
             <connections>
                 <outlet property="collectionView" destination="n2f-nu-Fwa" id="nb5-gP-abb"/>
+                <outlet property="searchingLabel" destination="R1I-QQ-i7K" id="aC2-YR-acP"/>
                 <outlet property="view" destination="iN0-l3-epB" id="eog-mz-91J"/>
             </connections>
         </placeholder>
@@ -31,11 +32,20 @@
                         <outlet property="delegate" destination="-1" id="8fe-Zn-hCE"/>
                     </connections>
                 </collectionView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Searching....." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1I-QQ-i7K">
+                    <rect key="frame" x="231" y="195" width="42" height="21"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="R1I-QQ-i7K" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="1TT-Ys-yoM"/>
                 <constraint firstAttribute="trailing" secondItem="n2f-nu-Fwa" secondAttribute="trailing" id="RpK-vc-lKI"/>
+                <constraint firstItem="R1I-QQ-i7K" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Sem-ud-UzY"/>
                 <constraint firstItem="n2f-nu-Fwa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="h1a-UI-sub"/>
                 <constraint firstItem="n2f-nu-Fwa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jp4-Om-ubY"/>
                 <constraint firstAttribute="bottom" secondItem="n2f-nu-Fwa" secondAttribute="bottom" id="lH8-au-6UY"/>

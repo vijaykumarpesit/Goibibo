@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSMutableArray *seats;
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSString *skey;
+@property (nonatomic, weak) IBOutlet UILabel *searchingLabel;
 
 @end
 
@@ -35,6 +36,7 @@
     self.seats = [[NSMutableArray alloc] init];
     [self.collectionView registerNib:[UINib nibWithNibName:@"GoSeatCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"busSeatCell"];
     [self loadBusLayoutMetrix];
+    [self.collectionView setHidden:YES];
     // Do any additional setup after loading the view.
 }
 
@@ -69,6 +71,9 @@
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self saveBusSeatLayoutFromResponseObject:responseObject];
+        
+        [self.collectionView setHidden:NO];
+        [self.searchingLabel setHidden:YES];
         [self.collectionView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

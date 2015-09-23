@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GoBusListViewController">
             <connections>
+                <outlet property="searchingLabel" destination="ZZW-LI-0km" id="HWY-u0-juB"/>
                 <outlet property="tableView" destination="qh9-6z-QgX" id="PYx-4K-b3I"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,14 +26,24 @@
                         <outlet property="delegate" destination="-1" id="KPi-2r-AmV"/>
                     </connections>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching........" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZW-LI-0km">
+                    <rect key="frame" x="233.5" y="288" width="133.5" height="24"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="ZZW-LI-0km" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="2Ya-du-alP"/>
                 <constraint firstAttribute="bottom" secondItem="qh9-6z-QgX" secondAttribute="bottom" id="E21-wd-eat"/>
                 <constraint firstItem="qh9-6z-QgX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Iun-M2-fNO"/>
                 <constraint firstItem="qh9-6z-QgX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="PY0-uk-Lsz"/>
                 <constraint firstAttribute="trailing" secondItem="qh9-6z-QgX" secondAttribute="trailing" id="Yln-cr-tfh"/>
+                <constraint firstItem="ZZW-LI-0km" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="ffh-eY-S4J"/>
             </constraints>
         </view>
     </objects>
