@@ -32,6 +32,14 @@
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+    //Test Parse Object
+//    PFObject *object = [PFObject objectWithClassName:@"BusBookingDetails"];
+//    object[@"skey"] = @"123456";
+//    object[@"bookedUserPhoneNo"] = @"9844480550";
+//    object[@"bookedSeatNo"] = @"10L";
+//    object[@"departureTime"] = [NSDate date];
+//    [object saveInBackground];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self showHomeScreen];
     [self.window makeKeyAndVisible];
