@@ -176,6 +176,7 @@ typedef NS_ENUM(NSInteger, JTCalendarPageMode) {
         
         _centerView = [_manager.delegateManager buildMenuItemView];
         if ([_centerView isKindOfClass:[UILabel class]]) {
+            ((UILabel *)_centerView).font = [UIFont fontWithName:@"Helvetica" size:14.0f];
             ((UILabel *)_centerView).textColor = [UIColor whiteColor];
         }
         [_scrollView addSubview:_centerView];

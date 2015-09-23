@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5427F3261BB28AB900410622 /* SrcDest.png in Resources */ = {isa = PBXBuildFile; fileRef = 5427F3251BB28AB900410622 /* SrcDest.png */; settings = {ASSET_TAGS = (); }; };
 		54A550CB1BB138A60000561B /* left-side-bar-hamburger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550C91BB138A60000561B /* left-side-bar-hamburger@2x.png */; };
 		54A550CC1BB138A60000561B /* left-side-bar-hamburger@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550CA1BB138A60000561B /* left-side-bar-hamburger@3x.png */; };
 		54A550D51BB148480000561B /* GoSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A550D31BB148480000561B /* GoSettingsViewController.m */; };
@@ -15,6 +16,7 @@
 		54A550EC1BB154060000561B /* GoSettingsOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A550EB1BB154060000561B /* GoSettingsOption.m */; };
 		54A550F91BB160370000561B /* IconProfile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550F71BB160370000561B /* IconProfile@2x.png */; };
 		54A550FA1BB160370000561B /* IconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550F81BB160370000561B /* IconSettings@2x.png */; };
+		54A8CD111BB315F70091B02A /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A8CD101BB315F70091B02A /* calendar.png */; settings = {ASSET_TAGS = (); }; };
 		8AD3F0CA70A6BFBD52AFEC3D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29DF6E63E872EBD0B024D6DD /* libPods.a */; };
 		B10D989E1BB24E97005D74D1 /* GoBusListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10D989C1BB24E97005D74D1 /* GoBusListViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B10D989F1BB24E97005D74D1 /* GoBusListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10D989D1BB24E97005D74D1 /* GoBusListViewController.xib */; settings = {ASSET_TAGS = (); }; };
@@ -54,6 +56,7 @@
 /* Begin PBXFileReference section */
 		29DF6E63E872EBD0B024D6DD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DB25A0CFB6305D6FF431522 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		5427F3251BB28AB900410622 /* SrcDest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SrcDest.png; sourceTree = "<group>"; };
 		54A550C91BB138A60000561B /* left-side-bar-hamburger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-side-bar-hamburger@2x.png"; sourceTree = "<group>"; };
 		54A550CA1BB138A60000561B /* left-side-bar-hamburger@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-side-bar-hamburger@3x.png"; sourceTree = "<group>"; };
 		54A550D21BB148480000561B /* GoSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoSettingsViewController.h; sourceTree = "<group>"; };
@@ -65,6 +68,7 @@
 		54A550EB1BB154060000561B /* GoSettingsOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoSettingsOption.m; sourceTree = "<group>"; };
 		54A550F71BB160370000561B /* IconProfile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconProfile@2x.png"; sourceTree = "<group>"; };
 		54A550F81BB160370000561B /* IconSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconSettings@2x.png"; sourceTree = "<group>"; };
+		54A8CD101BB315F70091B02A /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
 		B10D989B1BB24E97005D74D1 /* GoBusListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoBusListViewController.h; sourceTree = "<group>"; };
 		B10D989C1BB24E97005D74D1 /* GoBusListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoBusListViewController.m; sourceTree = "<group>"; };
 		B10D989D1BB24E97005D74D1 /* GoBusListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoBusListViewController.xib; sourceTree = "<group>"; };
@@ -267,7 +271,9 @@
 		B1EDDEC91BB10A4100518E0C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				54A8CD101BB315F70091B02A /* calendar.png */,
 				54A550F71BB160370000561B /* IconProfile@2x.png */,
+				5427F3251BB28AB900410622 /* SrcDest.png */,
 				54A550F81BB160370000561B /* IconSettings@2x.png */,
 				54A550C91BB138A60000561B /* left-side-bar-hamburger@2x.png */,
 				54A550CA1BB138A60000561B /* left-side-bar-hamburger@3x.png */,
@@ -350,7 +356,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				54A550D61BB148480000561B /* GoSettingsViewController.xib in Resources */,
+				54A8CD111BB315F70091B02A /* calendar.png in Resources */,
 				54A550F91BB160370000561B /* IconProfile@2x.png in Resources */,
+				5427F3261BB28AB900410622 /* SrcDest.png in Resources */,
 				B1EDDEF31BB1118200518E0C /* DigitsKitResources.bundle in Resources */,
 				54A550FA1BB160370000561B /* IconSettings@2x.png in Resources */,
 				B1EDDED91BB10A4100518E0C /* LaunchScreen.storyboard in Resources */,
