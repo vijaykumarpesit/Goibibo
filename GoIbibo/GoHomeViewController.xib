@@ -307,6 +307,7 @@
         </view>
     </objects>
     <resources>
+        <image name="EBD467A3-E60C-4747-8DB5-98167C4BBFF3" width="46" height="30"/>
         <image name="calendar.png" width="46" height="30"/>
     </resources>
 </document>
