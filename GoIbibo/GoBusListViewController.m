@@ -32,7 +32,7 @@
     if (self) {
         self.source = source;
         self.destination = destination;
-        self.departureDate = departureDate;
+        self.departureDate = [NSDate date];
         self.arrivalDate = arrivalDate;
     }
     return self;
@@ -40,6 +40,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = [NSString stringWithFormat:@"%@ to %@", [self.source capitalizedString], [self.destination capitalizedString]];
     self.busResults = [[NSMutableArray alloc] init];
     [self.tableView registerNib:[UINib nibWithNibName:@"GoBusInfoCell" bundle:nil] forCellReuseIdentifier:@"busInfoCell"];
     [self loadDataFromGoIBibo];
@@ -62,9 +63,11 @@
     GoBusDetails *busDetails = [self.busResults objectAtIndex:indexPath.row];
     
     busInfoCell.travellerName.text = busDetails.travelsName;
-    busInfoCell.departureToArrivalTime.text = [NSString stringWithFormat:@"%@ -->%@",busDetails.departureTime,busDetails.arrivalTime];
-    busInfoCell.minimumFare.text = busDetails.minimumFare;
-    busInfoCell.availableSeats.text = busDetails.noOfSeatsAvailable;
+    NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ -->%@",busDetails.departureTime,busDetails.arrivalTime] attributes:nil];
+    [mutableAttributedString addAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0f]} range:NSMakeRange(0, busDetails.departureTime.length + 4)];
+    busInfoCell.departureToArrivalTime.attributedText = mutableAttributedString;
+    busInfoCell.minimumFare.text = [NSString stringWithFormat:@"\u20B9%@",busDetails.minimumFare];
+    busInfoCell.availableSeats.text = [NSString stringWithFormat:@"%@ seats", busDetails.noOfSeatsAvailable];
     busInfoCell.busTypeName.text= busDetails.busType;
     return busInfoCell;
 }
@@ -78,6 +81,10 @@
     GoBusDetails *busDetails = [self.busResults objectAtIndex:indexPath.row];
     GoSeatMetrixViewController *metrixVC = [[GoSeatMetrixViewController alloc] initWithBusSkey:busDetails.skey];
     [self.navigationController pushViewController:metrixVC animated:YES];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [NSString stringWithFormat:@"None of your friends have booked through this root yet"];
 }
 
 - (void)loadDataFromGoIBibo {
@@ -130,7 +137,7 @@
     
     NSDictionary *data = [responseObject valueForKey:@"data"];
     NSArray *onwardBuses = [data valueForKey:@"onwardflights"];
-   
+    
     for(id bus in onwardBuses) {
         GoBusDetails  *busDetails = [[GoBusDetails alloc] init];
         busDetails.travelsName = bus[@"TravelsName"];
@@ -141,12 +148,14 @@
         busDetails.skey = bus[@"skey"];
         
         NSDictionary *routeSeatTypeDetail = bus[@"RouteSeatTypeDetail"];
-        busDetails.noOfSeatsAvailable = routeSeatTypeDetail[@"SeatsAvailable"];
+        NSArray *list = routeSeatTypeDetail[@"list"];
+        NSDictionary *seatDict = [list firstObject];
+        busDetails.noOfSeatsAvailable = seatDict[@"SeatsAvailable"];
         
         NSDictionary *fare = bus[@"fare"];
         NSNumber *fareValue = fare[@"totalfare"];
         busDetails.minimumFare = [NSString stringWithFormat:@"%@", fareValue];
-
+        
         NSDictionary *feedback = bus[@"feedback"];
         NSNumber *ratingsValue = feedback[@"rating"];
         busDetails.ratings = [NSString stringWithFormat:@"%@", ratingsValue];

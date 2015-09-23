@@ -61,19 +61,23 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.sourcePickerView selectRow:1 inComponent:0 animated:YES];
+    self.selectedSource = 1;
     [self.destinationPickerView selectRow:1 inComponent:0 animated:YES];
+    self.selectedDestination = 1;
 }
 
 - (void)configureSourceAndDestination {
     _sourcePlaces = [NSMutableArray array];
     [_sourcePlaces addObject:@"Bangalore"];
     [_sourcePlaces addObject:@"Chennai"];
-    [_sourcePlaces addObject:@"New Delhi"];
-    [_sourcePlaces addObject:@"Hyderbad"];
+    [_sourcePlaces addObject:@"Sirsi"];
+    [_sourcePlaces addObject:@"Kollam"];
+    [_sourcePlaces addObject:@"Hyderabad"];
     
     _destinationPlaces = [NSMutableArray array];
-    [_destinationPlaces addObject:@"Hyderbad"];
-    [_destinationPlaces addObject:@"New Delhi"];
+    [_destinationPlaces addObject:@"Hyderabad"];
+    [_destinationPlaces addObject:@"Kollam"];
+    [_destinationPlaces addObject:@"Sirsi"];
     [_destinationPlaces addObject:@"Chennai"];
     [_destinationPlaces addObject:@"Bangalore"];
 }
@@ -298,15 +302,16 @@
     }
 }
 
-- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    NSString *placeName = nil;
-    if ([pickerView isEqual:self.sourcePickerView]) {
-        placeName = self.sourcePlaces[row];
-    } else {
-        placeName = self.destinationPlaces[row];
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    UILabel *label = (UILabel *)view;
+    if (!label) {
+        label = [[UILabel alloc] init];
+        label.font = [UIFont fontWithName:@"HelveticaNeue" size:17.0f];
+        label.textColor = [UIColor colorWithRed:(80.0f/255.0f) green:(80.0f/255.0f) blue:(80.0f/255.0f) alpha:1.0f];
+        label.textAlignment = NSTextAlignmentCenter;
     }
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:placeName attributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:(100.0f/255.0f) green:(100.0f/255.0f) blue:(100.0f/255.0f) alpha:1.0f]}];
-    return attributedString;
+    label.text = [pickerView isEqual:self.sourcePickerView] ? self.sourcePlaces[row] : self.destinationPlaces[row];
+    return label;
 }
 
 @end

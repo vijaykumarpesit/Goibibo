@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A282b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -15,46 +15,66 @@
                 <rect key="frame" x="0.0" y="0.0" width="481" height="94.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvO-5y-aRM">
-                        <rect key="frame" x="13" y="13" width="403" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvO-5y-aRM">
+                        <rect key="frame" x="13" y="13" width="405.5" height="20"/>
                         <animations/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Label">
+                                <attributes>
+                                    <color key="NSColor" red="0.0" green="0.30980392156862746" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM4-j9-SNo">
-                        <rect key="frame" x="13" y="38" width="403" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM4-j9-SNo">
+                        <rect key="frame" x="13" y="41" width="409" height="14.5"/>
                         <animations/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Label">
+                                <attributes>
+                                    <color key="NSColor" red="0.39215686274509803" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="12" name="HelveticaNeue-Medium"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRK-HY-vNI">
-                        <rect key="frame" x="426" y="13" width="42" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRK-HY-vNI">
+                        <rect key="frame" x="428" y="13" width="39.5" height="19"/>
                         <animations/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Label">
+                                <attributes>
+                                    <color key="NSColor" red="0.29411765933036804" green="0.68235296010971069" blue="0.15294118225574493" alpha="1" colorSpace="deviceRGB"/>
+                                    <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zq7-U5-0am">
-                        <rect key="frame" x="426" y="38" width="42" height="20.5"/>
+                        <rect key="frame" x="432" y="37" width="35.5" height="17"/>
                         <animations/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.96078431369999995" green="0.0" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJB-n9-McP">
-                        <rect key="frame" x="426" y="61" width="42" height="20.5"/>
+                        <rect key="frame" x="432.5" y="64.5" width="35.5" height="17"/>
                         <animations/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.43137254901960786" green="0.23529411764705882" blue="0.098039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <animations/>
+                <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="JRK-HY-vNI" firstAttribute="leading" relation="lessThanOrEqual" secondItem="AvO-5y-aRM" secondAttribute="trailing" constant="10" id="MV7-Hu-f2I"/>
-                    <constraint firstItem="aM4-j9-SNo" firstAttribute="top" secondItem="AvO-5y-aRM" secondAttribute="bottom" constant="5" id="OZ1-0C-7or"/>
+                    <constraint firstItem="aM4-j9-SNo" firstAttribute="top" secondItem="AvO-5y-aRM" secondAttribute="bottom" constant="8" id="OZ1-0C-7or"/>
                     <constraint firstItem="Zq7-U5-0am" firstAttribute="top" secondItem="JRK-HY-vNI" secondAttribute="bottom" constant="5" id="Vw8-SV-eoE"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Zq7-U5-0am" secondAttribute="trailing" constant="5" id="W2r-vE-AzX"/>
                     <constraint firstItem="AvO-5y-aRM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="YRm-vk-VeR"/>

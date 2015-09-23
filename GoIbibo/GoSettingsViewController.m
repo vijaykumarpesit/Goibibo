@@ -30,7 +30,7 @@
     self.tableView.backgroundColor = [UIColor colorWithRed:(245.0f/255.0f) green:(250.0f/255.0f) blue:(255.0f/255.0f) alpha:1.0f];
     
     self.settingOptions = [NSMutableArray array];
-    [self configureDataSourceForSelectedMenuItem:0];
+    [self configureDataSource];
     [self.tableView reloadData];
 }
 
@@ -41,7 +41,7 @@
 
 #pragma mark - Table view data source
 
-- (void)configureDataSourceForSelectedMenuItem:(NSInteger)selectedMenuItem {
+- (void)configureDataSource {
     [self.settingOptions removeAllObjects];
     
     GoSettingsOption *logoutOption = [[GoSettingsOption alloc] init];
@@ -60,18 +60,14 @@
     GoSettingsOption *privacyOption = [[GoSettingsOption alloc] init];
     privacyOption.imageName = @"";
     privacyOption.optiontext = @"Privacy";
-    privacyOption.indentationLevel = 1;
-    if (selectedMenuItem == 1) {
-        [self.settingOptions addObject:privacyOption];
-    }
+    privacyOption.indentationLevel = 0;
+    [self.settingOptions addObject:privacyOption];
     
     GoSettingsOption *profileOption = [[GoSettingsOption alloc] init];
     profileOption.imageName = @"IconProfile";
     profileOption.optiontext = @"Profile";
-    profileOption.indentationLevel = 1;
-    if (selectedMenuItem == 1) {
-        [self.settingOptions addObject:profileOption];
-    }
+    profileOption.indentationLevel = 0;
+    [self.settingOptions addObject:profileOption];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -98,9 +94,6 @@
     cell.textLabel.text = settingOption.optiontext;
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.highlightedTextColor = [UIColor blackColor];
-    if (settingOption.shouldShowDisclosureIndicator) {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
     return cell;
 }
 
@@ -108,18 +101,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == 1) {
-        if ([[self.settingOptions objectAtIndex:indexPath.row] isExpanded]) {
-            [self configureDataSourceForSelectedMenuItem:0];
-            ((GoSettingsOption *)[self.settingOptions objectAtIndex:indexPath.row]).expanded = NO;
-        } else {
-            [self configureDataSourceForSelectedMenuItem:1];
-            ((GoSettingsOption *)[self.settingOptions objectAtIndex:indexPath.row]).expanded = YES;
-        }
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [[self tableView] reloadData];
-        });
-    }
 }
 
 /*
