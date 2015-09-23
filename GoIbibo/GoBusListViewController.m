@@ -38,6 +38,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.busResults = [[NSMutableArray alloc] init];
     [self.tableView registerNib:[UINib nibWithNibName:@"GoBusInfoCell" bundle:nil] forCellReuseIdentifier:@"busInfoCell"];
     [self loadDataFromGoIBibo];
     // Do any additional setup after loading the view from its nib.
@@ -65,27 +66,30 @@
     return busInfoCell;
 }
 
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return  90;
+}
 
 - (void)loadDataFromGoIBibo {
     
     NSMutableString *urlString = [NSMutableString stringWithString:@"http://developer.goibibo.com/api/bus/search/?app_id=abfac0dc&app_key=5368f504b75224601dccebd153275543&format=json"];
     
-    [urlString stringByAppendingString:[NSString stringWithFormat:@"&source=%@",self.source]];
-    [urlString stringByAppendingString:[NSString stringWithFormat:@"&destination=%@",self.destination]];
+    [urlString appendString:[NSString stringWithFormat:@"&source=%@",self.source]];
+    [urlString appendString:[NSString stringWithFormat:@"&destination=%@",self.destination]];
     
     NSDateFormatter *dateformate=[[NSDateFormatter alloc]init];
-    [dateformate setDateFormat:@"yyyymmdd"];
+    [dateformate setDateFormat:@"yyyyMMdd"];
     NSString *departureDateString = [dateformate stringFromDate:self.departureDate];
-    [urlString stringByAppendingString:[NSString stringWithFormat:@"&dateofdeparture=%@",departureDateString]];
+    [urlString appendString:[NSString stringWithFormat:@"&dateofdeparture=%@",departureDateString]];
     
     if (self.arrivalDate) {
         NSDateFormatter *dateformate=[[NSDateFormatter alloc] init];
-        [dateformate setDateFormat:@"yyyymmdd"];
+        [dateformate setDateFormat:@"yyyyMMdd"];
         NSString *arrivalDateString = [dateformate stringFromDate:self.arrivalDate];
-        [urlString stringByAppendingString:[NSString stringWithFormat:@"&dateofarrival=%@",arrivalDateString]];
+        [urlString appendString:[NSString stringWithFormat:@"&dateofarrival=%@",arrivalDateString]];
     }
     
+    urlString = (NSMutableString *) [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
@@ -120,12 +124,12 @@
         busDetails.noOfSeatsAvailable = routeSeatTypeDetail[@"SeatsAvailable"];
         
         NSDictionary *fare = bus[@"fare"];
-        busDetails.minimumFare = fare[@"totalFare"];
-        
+        NSNumber *fareValue = fare[@"totalfare"];
+        busDetails.minimumFare = [NSString stringWithFormat:@"%@", fareValue];
+
         NSDictionary *feedback = bus[@"feedback"];
-        busDetails.ratings = feedback[@"rating"];
-        
-    
+        NSNumber *ratingsValue = feedback[@"rating"];
+        busDetails.ratings = [NSString stringWithFormat:@"%@", ratingsValue];
         [self.busResults addObject:busDetails];
     }
     
