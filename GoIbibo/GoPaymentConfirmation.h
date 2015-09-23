@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GoBusDetails.h"
 
 @interface GoPaymentConfirmation : UIViewController
 
-- (instancetype)initWithSkey:(NSString *)skey
-                      seatNo:(NSString *)seatNo
-               departureDate:(NSDate *)departureDate;
+- (instancetype)initWithBusDetails:(GoBusDetails *)busDetails withSeatNo:(NSString *)seatNo;
 @end

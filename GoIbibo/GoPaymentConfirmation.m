@@ -14,23 +14,18 @@
 
 @interface GoPaymentConfirmation ()<CardIOPaymentViewControllerDelegate>
 - (IBAction)scanCardClicked:(id)sender;
-@property (nonatomic, strong) NSString * skey;
+@property (nonatomic, strong) GoBusDetails *busDetails;
 @property (nonatomic, strong) NSString *seatNo;
-@property (nonatomic, strong) NSDate *departureDate;
-
 @end
 
 @implementation GoPaymentConfirmation
 
-- (instancetype)initWithSkey:(NSString *)skey
-                      seatNo:(NSString *)seatNo
-               departureDate:(NSDate *)departureDate {
-    
+- (instancetype)initWithBusDetails:(GoBusDetails *)busDetails withSeatNo:(NSString *)seatNo
+ {
     self = [super initWithNibName:@"GoPaymentConfirmation" bundle:nil];
     if (self) {
-        self.skey = skey;
+        self.busDetails = busDetails;
         self.seatNo = seatNo;
-        self.departureDate = departureDate;
     }
     return self;
 }
@@ -75,10 +70,13 @@
     [scanViewController dismissViewControllerAnimated:YES completion:nil];
     
     PFObject *bookedBusDetails = [PFObject objectWithClassName:@"BusBookingDetails"];
-    bookedBusDetails[@"skey"] = self.skey;
+    bookedBusDetails[@"skey"] = self.busDetails.skey;
     bookedBusDetails[@"bookedUserPhoneNo"] = [[[GoUserModelManager sharedManager] currentUser] phoneNumber];
     bookedBusDetails[@"bookedSeatNo"] = self.seatNo;
-    bookedBusDetails[@"departureTime"] = self.departureDate;
+    bookedBusDetails[@"departureTime"] = self.busDetails.departureTime;
+    bookedBusDetails[@"travelsName"] = self.busDetails.travelsName;
+    bookedBusDetails[@"source"] = self.busDetails.source;
+    bookedBusDetails[@"destination"] = self.busDetails.destination;
     [bookedBusDetails saveInBackground];
 }
 @end

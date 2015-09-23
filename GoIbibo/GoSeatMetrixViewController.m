@@ -15,20 +15,18 @@
 @interface GoSeatMetrixViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, strong) NSMutableArray *seats;
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, strong) NSString *skey;
 @property (nonatomic, weak) IBOutlet UILabel *searchingLabel;
-@property (nonatomic, strong) NSDate *departureDate;
+@property (nonatomic, strong) GoBusDetails *busDetails;
 
 @end
 
 @implementation GoSeatMetrixViewController
 
-- (instancetype)initWithBusSkey:(NSString *)skey departureDate:(NSDate *)departureDate{
+- (instancetype)initWithBusDetails:(GoBusDetails *)busDetails {
 
     self = [super initWithNibName:@"GoSeatMetrixViewController" bundle:nil];
     if (self) {
-        self.skey = skey;
-        self.departureDate = departureDate;
+        self.busDetails = busDetails;
     }
     return self;
 }
@@ -67,15 +65,21 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     GoBusSeatLayout *layout = [self.seats objectAtIndex:indexPath.row];
-    GoPaymentConfirmation *paymentVC = [[GoPaymentConfirmation alloc] initWithSkey:self.skey seatNo:layout.seatNo departureDate:self.departureDate];
-    [self.navigationController pushViewController:paymentVC animated:YES];
+    if (layout.isSeatAvailable) {
+        GoPaymentConfirmation *paymentVC = [[GoPaymentConfirmation alloc] initWithBusDetails:self.busDetails withSeatNo:layout.seatNo];
+        [self.navigationController pushViewController:paymentVC animated:YES];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Seat Not Avialble" message:@"Please Select other" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+
 }
 
 - (void)loadBusLayoutMetrix {
  
     NSMutableString *urlString = [NSMutableString stringWithString:@"http://developer.goibibo.com/api/bus/seatmap/?app_id=abfac0dc&app_key=5368f504b75224601dccebd153275543&format=json"];
     
-    [urlString appendString:[NSString stringWithFormat:@"&skey=%@",self.skey]];
+    [urlString appendString:[NSString stringWithFormat:@"&skey=%@",self.busDetails.skey]];
     urlString = (NSMutableString *) [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];

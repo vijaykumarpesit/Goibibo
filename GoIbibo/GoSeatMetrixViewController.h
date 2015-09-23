@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GoBusDetails.h"
 
 @interface GoSeatMetrixViewController : UIViewController
 
-- (instancetype)initWithBusSkey:(NSString *)skey departureDate:(NSDate *)departureDate;
+- (instancetype)initWithBusDetails:(GoBusDetails *)busDetails;
 @end
