@@ -9,7 +9,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>JTCalendar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Parse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,17 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>BBD8C6183A34C7D948E8AC2D89C6E317</key>
+		<key>0C3B4D5E585BE15BFC718B6BFFD7A14B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D9A1A05184537F8868E20F390FA87F88</key>
+		<key>687CEC5616A007A449FB0EBF7B541B42</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F9EA3C9FAFDC1C85AA21F3248BD4A4C5</key>
+		<key>71735AD1C282601DC2B1B43C00DDD7F8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CB1EAF0D9870A0E00D11CAD62D01D153</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ECE2488211FD1FE35B0DE4DABD31272D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
