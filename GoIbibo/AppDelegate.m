@@ -11,6 +11,7 @@
 #import <Fabric/Fabric.h>
 #import <DigitsKit/DigitsKit.h>
 #import <Parse/Parse.h>
+#import "GoContactSync.h"
 
 @interface AppDelegate ()
 
@@ -43,6 +44,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self showHomeScreen];
     [self.window makeKeyAndVisible];
+    [[GoContactSync sharedInstance] syncAddressBookIfNeeded];
     return YES;
 }
 
