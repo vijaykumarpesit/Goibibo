@@ -8,6 +8,10 @@
 
 #import "GoContactSync.h"
 #import "GoContactSyncEntry.h"
+#import <AddressBook/AddressBook.h>
+#import <Contacts/CNContact.h>
+
+#define kContactsFilePath @"contacts.filepath"
 
 @implementation GoContactSync
 
@@ -28,8 +32,19 @@
     return contactSync;
 }
 
-+ (NSSet *)addressBookEntriesFromAddressBook:(CFTypeRef)addressBook {
+- (instancetype) init {
+    self = [super init];
+    if (self) {
+        if(![[NSUserDefaults standardUserDefaults] boolForKey:@"isAddressBookSynced"]){
+            [self syncAddressBookIfNeeded];
+        }
+    }
+    return self;
+}
+
+- (NSSet *)getAllAddressBookEntries {
     
+    ABAddressBookRef addressBook = ABAddressBookCreate();
     CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(addressBook);
     NSArray *pplArray = (NSArray *)CFBridgingRelease(people);
     NSInteger i, max;
@@ -107,4 +122,59 @@
     return addressBookEntries;
 }
 
+- (void)syncAddressBookIfNeeded {
+    
+    ABAuthorizationStatus authStatus = ABAddressBookGetAuthorizationStatus();
+    if (authStatus != kABAuthorizationStatusAuthorized) {
+        ABAddressBookRef adressBoook = ABAddressBookCreate();
+        ABAddressBookRequestAccessWithCompletion(adressBoook, ^(bool granted, CFErrorRef error) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+           NSSet *results =  [self getAllAddressBookEntries];
+            [self writeEntries:results];
+        });
+        });
+    } else {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            NSSet *results =  [self getAllAddressBookEntries];
+            [self writeEntries:results];
+        });
+
+    }
+    
+}
+
+- (void)writeEntries:(NSSet *)entries {
+    NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
+    for(GoContactSyncEntry *entry in entries) {
+        resultDict[entry.phoneNumber] = entry;
+    }
+    NSMutableData *data = [[NSMutableData alloc] init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver encodeObject:resultDict forKey:kContactsFilePath];
+    [archiver finishEncoding];
+    [data writeToFile:[self contactsFilePath] atomically:YES];
+
+}
+
+
+- (NSDictionary *)syncedContacts {
+    
+    if (!_syncedContacts) {
+        NSData *data = [[NSMutableData alloc] initWithContentsOfFile:[self contactsFilePath]];
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+        _syncedContacts = [unarchiver decodeObjectForKey:kContactsFilePath];
+        [unarchiver finishDecoding];
+        return _syncedContacts;
+    }
+    return _syncedContacts;
+}
+
+- (NSString *)contactsFilePath {
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:kContactsFilePath];
+    return filePath;
+}
 @end
+

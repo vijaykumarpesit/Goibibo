@@ -9,7 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface GoContactSync : NSObject
+
 + (instancetype)sharedInstance;
-+ (NSSet *)addressBookEntriesFromAddressBook:(CFTypeRef)addressBook;
+
+@property (nonatomic,strong) NSDictionary *syncedContacts;
+
+- (void)syncAddressBookIfNeeded;
 
 @end
