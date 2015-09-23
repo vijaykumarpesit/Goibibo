@@ -21,4 +21,5 @@
 @property (nonatomic, strong) NSString *noOfSeatsAvailable;
 @property (nonatomic, strong) NSString *ratings;
 @property (nonatomic, strong) NSString *rowID;
+@property (nonatomic, strong) NSString *skey;
 @end

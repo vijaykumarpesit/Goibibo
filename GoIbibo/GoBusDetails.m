@@ -13,7 +13,7 @@
 - (BOOL)isEqual:(id)object {
     if ([object isKindOfClass:[self class]]) {
          GoBusDetails *busDetails = (GoBusDetails *)object;
-        return [busDetails.rowID isEqualToString:self.rowID];
+        return [busDetails.skey isEqualToString:self.skey];
     }
     return NO;
 }
@@ -22,7 +22,7 @@
     NSUInteger result = 1;
     NSUInteger prime = 31;
     
-    result = prime * result + [self.rowID hash];
+    result = prime * result + [self.skey hash];
     return result;
 }
 @end
