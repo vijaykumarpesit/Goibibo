@@ -89,7 +89,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Simple"];
     }
-    UIColor *backGroundColor = [UIColor colorWithRed:(42.0f/255.0f) green:(159.0f/255.0f) blue:(238.0f/255.0f) alpha:1.0f];
+    UIColor *backGroundColor = [UIColor colorWithRed:(44.0f/255.0f) green:(103.0f/255.0f) blue:(178.0f/255.0f) alpha:1.0f];
     cell.contentView.backgroundColor = backGroundColor;
     if (settingOption.imageName) {
         cell.imageView.image = [UIImage imageNamed:settingOption.imageName];

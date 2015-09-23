@@ -20,14 +20,14 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4uO-XU-aBn" customClass="JTCalendarMenuView">
                     <rect key="frame" x="0.0" y="64" width="600" height="50"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.17254901960784313" green="0.40392156862745099" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Vfm-wW-pN5"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elR-MW-ApK" customClass="JTHorizontalCalendarView">
                     <rect key="frame" x="0.0" y="114" width="600" height="300"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="0.66666666666666663" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="300" id="fZB-DI-iqd"/>
                     </constraints>

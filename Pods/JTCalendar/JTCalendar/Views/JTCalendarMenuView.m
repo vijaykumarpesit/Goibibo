@@ -175,6 +175,9 @@ typedef NS_ENUM(NSInteger, JTCalendarPageMode) {
         [_scrollView addSubview:_leftView];
         
         _centerView = [_manager.delegateManager buildMenuItemView];
+        if ([_centerView isKindOfClass:[UILabel class]]) {
+            ((UILabel *)_centerView).textColor = [UIColor whiteColor];
+        }
         [_scrollView addSubview:_centerView];
         
         _rightView = [_manager.delegateManager buildMenuItemView];
