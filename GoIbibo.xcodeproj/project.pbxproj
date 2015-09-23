@@ -20,6 +20,9 @@
 		8AD3F0CA70A6BFBD52AFEC3D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29DF6E63E872EBD0B024D6DD /* libPods.a */; };
 		B10D989E1BB24E97005D74D1 /* GoBusListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10D989C1BB24E97005D74D1 /* GoBusListViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B10D989F1BB24E97005D74D1 /* GoBusListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10D989D1BB24E97005D74D1 /* GoBusListViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		B10ECC971BB33E7900B19D66 /* GoSeatCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B10ECC951BB33E7900B19D66 /* GoSeatCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		B10ECC981BB33E7900B19D66 /* GoSeatCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10ECC961BB33E7900B19D66 /* GoSeatCollectionViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		B10ECC9B1BB342F800B19D66 /* GoBusSeatLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B10ECC9A1BB342F800B19D66 /* GoBusSeatLayout.m */; settings = {ASSET_TAGS = (); }; };
 		B151F67B1BB31E360017D908 /* GoBookedBusDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = B151F67A1BB31E360017D908 /* GoBookedBusDetail.m */; settings = {ASSET_TAGS = (); }; };
 		B151F6811BB32D590017D908 /* contacts.plist in Resources */ = {isa = PBXBuildFile; fileRef = B151F6801BB32D590017D908 /* contacts.plist */; settings = {ASSET_TAGS = (); }; };
 		B151F6841BB3353B0017D908 /* GoSeatMetrixViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B151F6831BB3353B0017D908 /* GoSeatMetrixViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -75,6 +78,11 @@
 		B10D989B1BB24E97005D74D1 /* GoBusListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoBusListViewController.h; sourceTree = "<group>"; };
 		B10D989C1BB24E97005D74D1 /* GoBusListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoBusListViewController.m; sourceTree = "<group>"; };
 		B10D989D1BB24E97005D74D1 /* GoBusListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoBusListViewController.xib; sourceTree = "<group>"; };
+		B10ECC941BB33E7900B19D66 /* GoSeatCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoSeatCollectionViewCell.h; sourceTree = "<group>"; };
+		B10ECC951BB33E7900B19D66 /* GoSeatCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoSeatCollectionViewCell.m; sourceTree = "<group>"; };
+		B10ECC961BB33E7900B19D66 /* GoSeatCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoSeatCollectionViewCell.xib; sourceTree = "<group>"; };
+		B10ECC991BB342F800B19D66 /* GoBusSeatLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoBusSeatLayout.h; sourceTree = "<group>"; };
+		B10ECC9A1BB342F800B19D66 /* GoBusSeatLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoBusSeatLayout.m; sourceTree = "<group>"; };
 		B151F6791BB31E360017D908 /* GoBookedBusDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoBookedBusDetail.h; sourceTree = "<group>"; };
 		B151F67A1BB31E360017D908 /* GoBookedBusDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoBookedBusDetail.m; sourceTree = "<group>"; };
 		B151F6801BB32D590017D908 /* contacts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = contacts.plist; sourceTree = "<group>"; };
@@ -190,6 +198,8 @@
 				B1EA1FED1BB2F1BA00A6B580 /* GoUserModelManager.m */,
 				B151F6791BB31E360017D908 /* GoBookedBusDetail.h */,
 				B151F67A1BB31E360017D908 /* GoBookedBusDetail.m */,
+				B10ECC991BB342F800B19D66 /* GoBusSeatLayout.h */,
+				B10ECC9A1BB342F800B19D66 /* GoBusSeatLayout.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -200,6 +210,9 @@
 				B1EA1FCA1BB2AA9E00A6B580 /* GoBusInfoCell.h */,
 				B1EA1FCB1BB2AA9E00A6B580 /* GoBusInfoCell.m */,
 				B1EA1FCC1BB2AA9E00A6B580 /* GoBusInfoCell.xib */,
+				B10ECC941BB33E7900B19D66 /* GoSeatCollectionViewCell.h */,
+				B10ECC951BB33E7900B19D66 /* GoSeatCollectionViewCell.m */,
+				B10ECC961BB33E7900B19D66 /* GoSeatCollectionViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -373,6 +386,7 @@
 				B1EDDEF31BB1118200518E0C /* DigitsKitResources.bundle in Resources */,
 				54A550FA1BB160370000561B /* IconSettings@2x.png in Resources */,
 				B1EDDED91BB10A4100518E0C /* LaunchScreen.storyboard in Resources */,
+				B10ECC981BB33E7900B19D66 /* GoSeatCollectionViewCell.xib in Resources */,
 				54A550CB1BB138A60000561B /* left-side-bar-hamburger@2x.png in Resources */,
 				B1EDDEEB1BB10D9A00518E0C /* GoHomeViewController.xib in Resources */,
 				B1EA1FCE1BB2AA9E00A6B580 /* GoBusInfoCell.xib in Resources */,
@@ -440,11 +454,13 @@
 				B1EA1FEE1BB2F1BA00A6B580 /* GoUserModelManager.m in Sources */,
 				B1EDDEFB1BB14CBE00518E0C /* GoContactSyncEntry.m in Sources */,
 				B1EDDED11BB10A4100518E0C /* GoHomeViewController.m in Sources */,
+				B10ECC9B1BB342F800B19D66 /* GoBusSeatLayout.m in Sources */,
 				54A550D51BB148480000561B /* GoSettingsViewController.m in Sources */,
 				B151F6841BB3353B0017D908 /* GoSeatMetrixViewController.m in Sources */,
 				54A550EC1BB154060000561B /* GoSettingsOption.m in Sources */,
 				B1EA1FEB1BB2F00600A6B580 /* GoUser.m in Sources */,
 				B1EDDECE1BB10A4100518E0C /* AppDelegate.m in Sources */,
+				B10ECC971BB33E7900B19D66 /* GoSeatCollectionViewCell.m in Sources */,
 				B1EDDECB1BB10A4100518E0C /* main.m in Sources */,
 				B1EA1FCD1BB2AA9E00A6B580 /* GoBusInfoCell.m in Sources */,
 				B1EDDEF81BB14C9D00518E0C /* GoContactSync.m in Sources */,

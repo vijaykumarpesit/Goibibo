@@ -10,4 +10,5 @@
 
 @interface GoSeatMetrixViewController : UIViewController
 
+- (instancetype)initWithBusSkey:(NSString *)skey;
 @end

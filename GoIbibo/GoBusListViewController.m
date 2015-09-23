@@ -10,6 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "GoBusDetails.h"
 #import "GoBusInfoCell.h"
+#import "GoSeatMetrixViewController.h"
 
 @interface GoBusListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -68,6 +69,13 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return  90;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    
+    GoBusDetails *busDetails = [self.busResults objectAtIndex:indexPath.row];
+    GoSeatMetrixViewController *metrixVC = [[GoSeatMetrixViewController alloc] initWithBusSkey:busDetails.skey];
+    [self.navigationController pushViewController:metrixVC animated:YES];
 }
 
 - (void)loadDataFromGoIBibo {

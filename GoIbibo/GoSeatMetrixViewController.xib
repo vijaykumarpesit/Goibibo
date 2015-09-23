@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GoSeatMetrixViewController">
             <connections>
+                <outlet property="collectionView" destination="n2f-nu-Fwa" id="nb5-gP-abb"/>
                 <outlet property="view" destination="iN0-l3-epB" id="eog-mz-91J"/>
             </connections>
         </placeholder>
@@ -14,8 +15,31 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="n2f-nu-Fwa">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="Vkt-cj-Baf">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="jJJ-XS-Smx"/>
+                        <outlet property="delegate" destination="-1" id="8fe-Zn-hCE"/>
+                    </connections>
+                </collectionView>
+            </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="n2f-nu-Fwa" secondAttribute="trailing" id="RpK-vc-lKI"/>
+                <constraint firstItem="n2f-nu-Fwa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="h1a-UI-sub"/>
+                <constraint firstItem="n2f-nu-Fwa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jp4-Om-ubY"/>
+                <constraint firstAttribute="bottom" secondItem="n2f-nu-Fwa" secondAttribute="bottom" id="lH8-au-6UY"/>
+            </constraints>
         </view>
     </objects>
 </document>
