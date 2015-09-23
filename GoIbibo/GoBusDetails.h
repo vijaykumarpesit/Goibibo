@@ -24,4 +24,5 @@
 @property (nonatomic, strong) NSString *skey;
 @property (nonatomic, strong) NSString *source;
 @property (nonatomic, strong) NSString *destination;
+@property (nonatomic, strong) NSString *departureDate;
 @end

@@ -77,6 +77,7 @@
     bookedBusDetails[@"travelsName"] = self.busDetails.travelsName;
     bookedBusDetails[@"source"] = self.busDetails.source;
     bookedBusDetails[@"destination"] = self.busDetails.destination;
+    bookedBusDetails[@"departureDate"] = self.busDetails.departureDate;
     [bookedBusDetails saveInBackground];
 }
 @end

@@ -11,6 +11,8 @@
 #import "GoBusDetails.h"
 #import "GoBusInfoCell.h"
 #import "GoSeatMetrixViewController.h"
+#import <parse/parse.h>
+#import "GoContactSync.h"
 
 @interface GoBusListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -20,6 +22,7 @@
 @property (nonatomic, strong) NSDate *arrivalDate;
 @property (nonatomic, strong) NSMutableArray *busResults;
 @property (nonatomic, strong) IBOutlet UILabel *searchingLabel;
+@property (nonatomic, strong) NSMutableDictionary *friendsDict;
 @end
 
 @implementation GoBusListViewController
@@ -42,9 +45,11 @@
     [super viewDidLoad];
     self.title = [NSString stringWithFormat:@"%@ to %@", [self.source capitalizedString], [self.destination capitalizedString]];
     self.busResults = [[NSMutableArray alloc] init];
+    self.friendsDict = [[NSMutableDictionary alloc] init];
     [self.tableView registerNib:[UINib nibWithNibName:@"GoBusInfoCell" bundle:nil] forCellReuseIdentifier:@"busInfoCell"];
     [self loadDataFromGoIBibo];
     [self.tableView setHidden:YES];
+    [self checkAndConfigureFriends];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -84,7 +89,11 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [NSString stringWithFormat:@"None of your friends have booked through this root yet"];
+    if (self.friendsDict.count == 0) {
+        return [NSString stringWithFormat:@"None of your friends have booked through this root yet"];
+    } else {
+        return [NSString stringWithFormat:@"%lu of your frienda is have booked tickets on same day",(unsigned long)self.friendsDict.count];
+    }
 }
 
 - (void)loadDataFromGoIBibo {
@@ -148,6 +157,7 @@
         busDetails.skey = bus[@"skey"];
         busDetails.source = bus[@"origin"];
         busDetails.destination = bus[@"destination"];
+        busDetails.departureDate = bus[@"depdate"];
         
         NSDictionary *routeSeatTypeDetail = bus[@"RouteSeatTypeDetail"];
         NSArray *list = routeSeatTypeDetail[@"list"];
@@ -165,6 +175,28 @@
     }
     
     NSLog(@"SuccessFully Parserd and saved the results in correct format");
+}
+
+- (void)checkAndConfigureFriends {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        PFQuery *query = [PFQuery queryWithClassName:@"BusBookingDetails"];
+        [query whereKey:@"source" equalTo:self.source];
+        [query whereKey:@"destination" equalTo:self.destination];
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            [objects enumerateObjectsUsingBlock:^(NSDictionary *  _Nonnull dict, NSUInteger idx, BOOL * _Nonnull stop) {
+                NSString *phoneNo = dict[@"bookedUserPhoneNo"];
+                if ([[[[GoContactSync sharedInstance] syncedContacts] allKeys] containsObject:phoneNo]) {
+                    [self.friendsDict setValue:dict forKey:phoneNo];
+                }
+            }];
+            NSLog(@"Friends count %lu",(unsigned long)self.friendsDict.count);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+        }];
+        
+    });
 }
 
 @end
