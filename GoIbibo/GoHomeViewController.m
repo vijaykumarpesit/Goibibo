@@ -61,9 +61,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.sourcePickerView selectRow:1 inComponent:0 animated:YES];
+    [[_sourcePickerView.subviews objectAtIndex:1] setHidden:YES];
+    [[_sourcePickerView.subviews objectAtIndex:2] setHidden:YES];
     self.selectedSource = 1;
     [self.destinationPickerView selectRow:1 inComponent:0 animated:YES];
     self.selectedDestination = 1;
+    [[_destinationPickerView.subviews objectAtIndex:1] setHidden:YES];
+    [[_destinationPickerView.subviews objectAtIndex:2] setHidden:YES];
 }
 
 - (void)configureSourceAndDestination {
@@ -288,6 +292,8 @@
     } else {
         self.selectedDestination = row;
     }
+    UILabel *placeName = (UILabel *)[pickerView viewForRow:row forComponent:component];
+    placeName.textColor = [UIColor blueColor];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -303,6 +309,7 @@
 }
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+
     UILabel *label = (UILabel *)view;
     if (!label) {
         label = [[UILabel alloc] init];
