@@ -8,6 +8,7 @@
 
 #import "GoHomeViewController.h"
 #import "GoLayoutHandler.h"
+#import "GoBusListViewController.h"
 
 @interface GoHomeViewController ()
 
@@ -17,10 +18,17 @@
 @property (nonatomic, strong) NSDate *maxDate;
 @property (nonatomic, strong) NSDate *dateSelected;
 
+-(IBAction)clickedDate:(id)sender;
 @end
 
 @implementation GoHomeViewController
 
+-(IBAction)clickedDate:(id)sender {
+    
+    GoBusListViewController *vc = [[GoBusListViewController alloc] initWithSource:@"bangalore" destination:@"hyderabad" departureDate:[NSDate date] arrivalDate:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"KWRU";
