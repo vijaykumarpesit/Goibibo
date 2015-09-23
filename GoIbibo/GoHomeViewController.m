@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *sourcePickerView;
 @property (weak, nonatomic) IBOutlet UIPickerView *destinationPickerView;
 @property (weak, nonatomic) IBOutlet UIView *overlayView;
+@property (weak, nonatomic) IBOutlet UIButton *submitButton;
 @property (nonatomic, strong) NSMutableArray *sourcePlaces;
 @property (nonatomic, strong) NSMutableArray *destinationPlaces;
 @property (nonatomic) NSUInteger selectedSource;
@@ -54,20 +55,25 @@
     [self configureSourceAndDestination];
     self.sourcePickerView.layer.cornerRadius = 8.0f;
     self.destinationPickerView.layer.cornerRadius = 8.0f;
-
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.sourcePickerView selectRow:1 inComponent:0 animated:YES];
+    [self.destinationPickerView selectRow:1 inComponent:0 animated:YES];
 }
 
 - (void)configureSourceAndDestination {
     _sourcePlaces = [NSMutableArray array];
     [_sourcePlaces addObject:@"Bangalore"];
     [_sourcePlaces addObject:@"Chennai"];
-    [_sourcePlaces addObject:@"Delhi"];
+    [_sourcePlaces addObject:@"New Delhi"];
     [_sourcePlaces addObject:@"Hyderbad"];
     
     _destinationPlaces = [NSMutableArray array];
     [_destinationPlaces addObject:@"Hyderbad"];
-    [_destinationPlaces addObject:@"Delhi"];
+    [_destinationPlaces addObject:@"New Delhi"];
     [_destinationPlaces addObject:@"Chennai"];
     [_destinationPlaces addObject:@"Bangalore"];
 }
@@ -299,7 +305,7 @@
     } else {
         placeName = self.destinationPlaces[row];
     }
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:placeName attributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:(50.0f/255.0f) green:(50.0f/255.0f) blue:(50.0f/255.0f) alpha:1.0f]}];
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:placeName attributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:(100.0f/255.0f) green:(100.0f/255.0f) blue:(100.0f/255.0f) alpha:1.0f]}];
     return attributedString;
 }
 

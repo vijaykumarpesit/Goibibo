@@ -14,6 +14,7 @@
                 <outlet property="destinationPickerView" destination="9iQ-pF-InC" id="Wm4-j4-YmX"/>
                 <outlet property="overlayView" destination="hvl-6u-NkU" id="aec-ow-I6G"/>
                 <outlet property="sourcePickerView" destination="yNE-II-Gui" id="Gyb-Iy-pd5"/>
+                <outlet property="submitButton" destination="Pie-Yp-ZU1" id="eLn-PU-Ot0"/>
                 <outlet property="view" destination="H7M-2c-Oc1" id="W7J-Z3-iA9"/>
             </connections>
         </placeholder>
@@ -124,15 +125,14 @@
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pie-Yp-ZU1">
                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                    <color key="backgroundColor" red="0.94509803921568625" green="0.84705882352941175" blue="0.81960784313725488" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="5G2-Xr-wOk"/>
                         <constraint firstAttribute="width" constant="44" id="gUB-6R-9Sb">
                             <variation key="heightClass=regular-widthClass=compact" constant="100"/>
                         </constraint>
                     </constraints>
-                    <state key="normal" title="Submit">
-                        <color key="titleColor" red="0.96078431369999995" green="0.0" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Submit" backgroundImage="EBD467A3-E60C-4747-8DB5-98167C4BBFF3">
+                        <color key="titleColor" red="0.027450980392156862" green="0.58823529411764708" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <variation key="default">
                         <mask key="constraints">
@@ -171,8 +171,8 @@
                     <attributedString key="attributedText">
                         <fragment content="Source">
                             <attributes>
-                                <color key="NSColor" red="0.062745098039215685" green="0.16078431372549021" blue="0.23921568627450981" alpha="1" colorSpace="calibratedRGB"/>
-                                <font key="NSFont" size="20" name="HelveticaNeue-Medium"/>
+                                <color key="NSColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="24" name="HelveticaNeue"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>
                         </fragment>
@@ -184,8 +184,8 @@
                     <attributedString key="attributedText">
                         <fragment content="Destination">
                             <attributes>
-                                <color key="NSColor" red="0.062745098039215685" green="0.16078431372549021" blue="0.23921568627450981" alpha="1" colorSpace="calibratedRGB"/>
-                                <font key="NSFont" size="20" name="HelveticaNeue-Medium"/>
+                                <color key="NSColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="24" name="HelveticaNeue"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>
                         </fragment>
@@ -234,7 +234,6 @@
                     <variation key="heightClass=regular-widthClass=compact" constant="30"/>
                 </constraint>
                 <constraint firstItem="Pie-Yp-ZU1" firstAttribute="centerX" secondItem="9iQ-pF-InC" secondAttribute="centerX" id="y0x-xd-jTL"/>
-                <constraint firstItem="yNE-II-Gui" firstAttribute="width" secondItem="H7M-2c-Oc1" secondAttribute="width" multiplier="0.4" id="yr3-Sa-WOr"/>
             </constraints>
             <variation key="default">
                 <mask key="subviews">
@@ -254,7 +253,6 @@
                     <exclude reference="Zef-UB-Cdr"/>
                     <exclude reference="c0V-JK-Cla"/>
                     <exclude reference="qsa-TU-UM7"/>
-                    <exclude reference="yr3-Sa-WOr"/>
                     <exclude reference="xR5-PT-RDq"/>
                     <exclude reference="y0x-xd-jTL"/>
                     <exclude reference="GO3-FL-qUC"/>
@@ -289,7 +287,6 @@
                     <include reference="Zef-UB-Cdr"/>
                     <include reference="c0V-JK-Cla"/>
                     <include reference="qsa-TU-UM7"/>
-                    <exclude reference="yr3-Sa-WOr"/>
                     <include reference="xR5-PT-RDq"/>
                     <include reference="y0x-xd-jTL"/>
                     <include reference="GO3-FL-qUC"/>
