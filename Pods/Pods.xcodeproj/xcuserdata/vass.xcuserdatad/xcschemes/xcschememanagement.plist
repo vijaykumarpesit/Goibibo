@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>JTCalendar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -26,7 +31,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>BBD8C6183A34C7D948E8AC2D89C6E317</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D58A075613B91E48D4B69FF7D27D1AC1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D9A1A05184537F8868E20F390FA87F88</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F9EA3C9FAFDC1C85AA21F3248BD4A4C5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

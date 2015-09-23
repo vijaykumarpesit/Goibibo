@@ -12,13 +12,20 @@
 #import "GoUserModelManager.h"
 #import "GoUser.h"
 
-@interface GoHomeViewController ()
+@interface GoHomeViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary *eventsByDate;
 @property (nonatomic, strong) NSDate *todayDate;
 @property (nonatomic, strong) NSDate *minDate;
 @property (nonatomic, strong) NSDate *maxDate;
 @property (nonatomic, strong) NSDate *dateSelected;
+@property (weak, nonatomic) IBOutlet UIPickerView *sourcePickerView;
+@property (weak, nonatomic) IBOutlet UIPickerView *destinationPickerView;
+@property (weak, nonatomic) IBOutlet UIView *overlayView;
+@property (nonatomic, strong) NSMutableArray *sourcePlaces;
+@property (nonatomic, strong) NSMutableArray *destinationPlaces;
+@property (nonatomic) NSUInteger selectedSource;
+@property (nonatomic) NSUInteger selectedDestination;
 
 -(IBAction)clickedDate:(id)sender;
 @end
@@ -49,7 +56,26 @@
     [_calendarManager setDate:_todayDate];
 
     [self didChangeModeTouch];
+    _sourcePickerView.showsSelectionIndicator = YES;
+    _destinationPickerView.showsSelectionIndicator = YES;
+    [self configureSourceAndDestination];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)configureSourceAndDestination {
+    _sourcePlaces = [NSMutableArray array];
+    [_sourcePlaces addObject:@"Source"];
+    [_sourcePlaces addObject:@"Bangalore"];
+    [_sourcePlaces addObject:@"Chennai"];
+    [_sourcePlaces addObject:@"Delhi"];
+    [_sourcePlaces addObject:@"Hyderbad"];
+    
+    _destinationPlaces = [NSMutableArray array];
+    [_destinationPlaces addObject:@"Destination"];
+    [_destinationPlaces addObject:@"Bangalore"];
+    [_destinationPlaces addObject:@"Chennai"];
+    [_destinationPlaces addObject:@"Delhi"];
+    [_destinationPlaces addObject:@"Hyderbad"];
 }
 
 #pragma mark - Buttons callback
@@ -65,12 +91,28 @@
     [_calendarManager reload];
     
     CGFloat newHeight = 300;
+    [self.view bringSubviewToFront:self.overlayView];
+    self.overlayView.backgroundColor = [UIColor colorWithWhite:0.90f alpha:0.73f];
     if(_calendarManager.settings.weekModeEnabled){
         newHeight = 85.;
+        self.overlayView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:1.0f];
+        [self.view sendSubviewToBack:self.overlayView];
     }
     
     self.calendarContentViewHeight.constant = newHeight;
     [self.view layoutIfNeeded];
+}
+
+- (IBAction)submitButtonClicked:(id)sender {
+    if (self.selectedSource == 0 || self.selectedDestination == 0) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:(self.selectedSource == 0 ? @"Source": @"Destination") message:[NSString stringWithFormat:@"Please set the %@", ((self.selectedSource == 0) ? @"Source" : @"Destination")] preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [alertController dismissViewControllerAnimated:YES completion:nil];
+        }]];
+        [self.navigationController presentViewController:alertController animated:YES completion:nil];
+    } else {
+        
+    }
 }
 
 #pragma mark - CalendarManager delegate
@@ -232,5 +274,28 @@
     [user saveUser];
 }
 
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    if ([pickerView isEqual:self.sourcePickerView]) {
+        return self.sourcePlaces.count;
+    } else {
+        return self.destinationPlaces.count;
+    }
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    if ([pickerView isEqual:self.sourcePickerView]) {
+        return self.sourcePlaces[row];
+    } else {
+        return self.destinationPlaces[row];
+    }
+}
 
 @end
