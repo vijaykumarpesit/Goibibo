@@ -10,4 +10,7 @@
 
 @interface GoPaymentConfirmation : UIViewController
 
+- (instancetype)initWithSkey:(NSString *)skey
+                      seatNo:(NSString *)seatNo
+               departureDate:(NSDate *)departureDate;
 @end

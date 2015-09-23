@@ -79,7 +79,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
     GoBusDetails *busDetails = [self.busResults objectAtIndex:indexPath.row];
-    GoSeatMetrixViewController *metrixVC = [[GoSeatMetrixViewController alloc] initWithBusSkey:busDetails.skey];
+    GoSeatMetrixViewController *metrixVC = [[GoSeatMetrixViewController alloc] initWithBusSkey:busDetails.skey departureDate:self.departureDate];
     [self.navigationController pushViewController:metrixVC animated:YES];
 }
 

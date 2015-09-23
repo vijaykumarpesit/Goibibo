@@ -11,4 +11,5 @@
 @interface GoBusSeatLayout : NSObject
 
 @property(nonatomic, strong) NSString *seatNo;
+@property (nonatomic, assign) BOOL isSeatAvailable;
 @end

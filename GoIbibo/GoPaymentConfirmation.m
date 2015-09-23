@@ -8,14 +8,32 @@
 
 #import "GoPaymentConfirmation.h"
 #import "CardIO.h"
+#import "GoUser.h"
+#import "GoUserModelManager.h"
 
 
 @interface GoPaymentConfirmation ()<CardIOPaymentViewControllerDelegate>
 - (IBAction)scanCardClicked:(id)sender;
+@property (nonatomic, strong) NSString * skey;
+@property (nonatomic, strong) NSString *seatNo;
+@property (nonatomic, strong) NSDate *departureDate;
 
 @end
 
 @implementation GoPaymentConfirmation
+
+- (instancetype)initWithSkey:(NSString *)skey
+                      seatNo:(NSString *)seatNo
+               departureDate:(NSDate *)departureDate {
+    
+    self = [super initWithNibName:@"GoPaymentConfirmation" bundle:nil];
+    if (self) {
+        self.skey = skey;
+        self.seatNo = seatNo;
+        self.departureDate = departureDate;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,5 +73,12 @@
     NSLog(@"Received card info. Number: %@, expiry: %02lu/%lu, cvv: %@.", info.redactedCardNumber, (unsigned long)info.expiryMonth, (unsigned long)info.expiryYear, info.cvv);
     // Use the card info...
     [scanViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    PFObject *bookedBusDetails = [PFObject objectWithClassName:@"BusBookingDetails"];
+    bookedBusDetails[@"skey"] = self.skey;
+    bookedBusDetails[@"bookedUserPhoneNo"] = [[[GoUserModelManager sharedManager] currentUser] phoneNumber];
+    bookedBusDetails[@"bookedSeatNo"] = self.seatNo;
+    bookedBusDetails[@"departureTime"] = self.departureDate;
+    [bookedBusDetails saveInBackground];
 }
 @end

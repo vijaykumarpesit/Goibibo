@@ -17,16 +17,18 @@
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSString *skey;
 @property (nonatomic, weak) IBOutlet UILabel *searchingLabel;
+@property (nonatomic, strong) NSDate *departureDate;
 
 @end
 
 @implementation GoSeatMetrixViewController
 
-- (instancetype)initWithBusSkey:(NSString *)skey {
+- (instancetype)initWithBusSkey:(NSString *)skey departureDate:(NSDate *)departureDate{
 
     self = [super initWithNibName:@"GoSeatMetrixViewController" bundle:nil];
     if (self) {
         self.skey = skey;
+        self.departureDate = departureDate;
     }
     return self;
 }
@@ -48,6 +50,11 @@
     GoSeatCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"busSeatCell" forIndexPath:indexPath];
     GoBusSeatLayout *layout = [self.seats objectAtIndex:indexPath.row];
     cell.seatNo.text = layout.seatNo;
+    if (!layout.isSeatAvailable) {
+        [cell setBackgroundColor:[UIColor redColor]];
+    } else {
+        [cell setBackgroundColor:[UIColor greenColor]];
+    }
     return cell;
 }
 
@@ -59,7 +66,8 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    GoPaymentConfirmation *paymentVC = [[GoPaymentConfirmation alloc] initWithNibName:@"GoPaymentConfirmation" bundle:nil];
+    GoBusSeatLayout *layout = [self.seats objectAtIndex:indexPath.row];
+    GoPaymentConfirmation *paymentVC = [[GoPaymentConfirmation alloc] initWithSkey:self.skey seatNo:layout.seatNo departureDate:self.departureDate];
     [self.navigationController pushViewController:paymentVC animated:YES];
 }
 
@@ -101,6 +109,8 @@
     for(id busSeat in busSeats) {
         GoBusSeatLayout *busSeatLayout = [[GoBusSeatLayout alloc] init];
         busSeatLayout.seatNo = busSeat[@"SeatName"];
+        NSNumber *seatStstusValue = busSeat[@"SeatStatus"];
+        busSeatLayout.isSeatAvailable = seatStstusValue.boolValue;
         [self.seats addObject:busSeatLayout];
     }
     
