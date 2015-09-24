@@ -282,7 +282,7 @@
     
     GoUser *user = [[GoUserModelManager sharedManager] currentUser];
     NSMutableString *phoneNo = [NSMutableString stringWithString:aSession.phoneNumber];
-    user.phoneNumber =  [phoneNo substringFromIndex:1];
+    user.phoneNumber =  [phoneNo substringFromIndex:3];
     user.userID = aSession.userID;
     [user saveUser];
 }
