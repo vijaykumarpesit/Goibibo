@@ -58,9 +58,11 @@ install_resource()
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "KVNProgress/KVNProgress/Resources/KVNProgressView.xib"
   install_resource "Parse/Parse/Resources/en.lproj"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "KVNProgress/KVNProgress/Resources/KVNProgressView.xib"
   install_resource "Parse/Parse/Resources/en.lproj"
 fi
 

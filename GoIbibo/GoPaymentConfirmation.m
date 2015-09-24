@@ -79,5 +79,7 @@
     bookedBusDetails[@"destination"] = self.busDetails.destination;
     bookedBusDetails[@"departureDate"] = self.busDetails.departureDate;
     [bookedBusDetails saveInBackground];
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 @end
