@@ -17,12 +17,12 @@
 
 @interface GoBusListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *searchingView;
 @property (nonatomic, strong) NSString *source;
 @property (nonatomic, strong) NSString *destination;
 @property (nonatomic, strong) NSDate *departureDate;
 @property (nonatomic, strong) NSDate *arrivalDate;
 @property (nonatomic, strong) NSMutableArray *busResults;
-@property (nonatomic, strong) IBOutlet UILabel *searchingLabel;
 @property (nonatomic, strong) NSMutableDictionary *friendsDict;
 @end
 
@@ -128,7 +128,8 @@
     
         [self saveBusInfoFromResponseObject:responseObject];
         [self.tableView setHidden:NO];
-        [self.searchingLabel setHidden:YES];
+        [[[self.searchingView subviews] objectAtIndex:0] stopAnimating];
+        [self.searchingView setHidden:YES];
         
         if (self.busResults.count == 0) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No of buses retuned by API is 0" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];

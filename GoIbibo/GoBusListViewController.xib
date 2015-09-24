@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GoBusListViewController">
             <connections>
-                <outlet property="searchingLabel" destination="ZZW-LI-0km" id="HWY-u0-juB"/>
+                <outlet property="searchingView" destination="u7e-p9-BXO" id="JLm-AN-JYy"/>
                 <outlet property="tableView" destination="qh9-6z-QgX" id="PYx-4K-b3I"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,24 +26,44 @@
                         <outlet property="delegate" destination="-1" id="KPi-2r-AmV"/>
                     </connections>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching........" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZW-LI-0km">
-                    <rect key="frame" x="233.5" y="288" width="133.5" height="24"/>
-                    <animations/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u7e-p9-BXO">
+                    <rect key="frame" x="226" y="277" width="148.5" height="46"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="dgh-aA-m3o">
+                            <rect key="frame" x="0.0" y="4" width="37" height="37"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="37" id="3S1-3X-tbx"/>
+                            </constraints>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching...." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bd5-Hm-8U6">
+                            <rect key="frame" x="45" y="8" width="95.5" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.41960784309999999" green="0.56470588239999997" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Bd5-Hm-8U6" secondAttribute="trailing" constant="8" id="EII-v7-qLD"/>
+                        <constraint firstAttribute="bottom" secondItem="Bd5-Hm-8U6" secondAttribute="bottom" constant="8" id="TgL-DK-vP8"/>
+                        <constraint firstItem="Bd5-Hm-8U6" firstAttribute="top" secondItem="u7e-p9-BXO" secondAttribute="top" constant="8" id="UBd-Xr-zsF"/>
+                        <constraint firstItem="dgh-aA-m3o" firstAttribute="top" secondItem="u7e-p9-BXO" secondAttribute="top" constant="4" id="UY6-yf-Qrg"/>
+                        <constraint firstAttribute="bottom" secondItem="dgh-aA-m3o" secondAttribute="bottom" constant="5" id="Yq8-fu-MaU"/>
+                        <constraint firstItem="dgh-aA-m3o" firstAttribute="leading" secondItem="u7e-p9-BXO" secondAttribute="leading" id="dYZ-8j-LTF"/>
+                        <constraint firstItem="Bd5-Hm-8U6" firstAttribute="leading" secondItem="dgh-aA-m3o" secondAttribute="trailing" constant="8" id="p3G-Z8-UsF"/>
+                        <constraint firstAttribute="height" constant="46" id="v8M-9J-UxK"/>
+                    </constraints>
+                </view>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.41960784313725491" green="0.56470588235294117" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="ZZW-LI-0km" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="2Ya-du-alP"/>
                 <constraint firstAttribute="bottom" secondItem="qh9-6z-QgX" secondAttribute="bottom" id="E21-wd-eat"/>
                 <constraint firstItem="qh9-6z-QgX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Iun-M2-fNO"/>
+                <constraint firstItem="u7e-p9-BXO" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="PD4-4M-Qra"/>
                 <constraint firstItem="qh9-6z-QgX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="PY0-uk-Lsz"/>
                 <constraint firstAttribute="trailing" secondItem="qh9-6z-QgX" secondAttribute="trailing" id="Yln-cr-tfh"/>
-                <constraint firstItem="ZZW-LI-0km" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="ffh-eY-S4J"/>
+                <constraint firstItem="u7e-p9-BXO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="mtq-vA-wT4"/>
             </constraints>
         </view>
     </objects>
