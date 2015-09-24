@@ -160,7 +160,11 @@
         busDetails.skey = bus[@"skey"];
         busDetails.source = bus[@"origin"];
         busDetails.destination = bus[@"destination"];
-        busDetails.departureDate = self.departureDate;
+        NSString *dateString = bus[@"depdate"];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+        NSDate*date = [dateFormatter dateFromString:dateString];
+        busDetails.departureDate = date;
         
         NSDictionary *routeSeatTypeDetail = bus[@"RouteSeatTypeDetail"];
         NSArray *list = routeSeatTypeDetail[@"list"];
@@ -186,14 +190,16 @@
         [query whereKey:@"source" equalTo:self.source];
         [query whereKey:@"destination" equalTo:self.destination];
         [query whereKey:@"departureDate" greaterThanOrEqualTo:self.departureDate];
-        [query whereKey:@"bookedUserPhoneNO" notEqualTo:[[[GoUserModelManager sharedManager] currentUser] phoneNumber]];
         NSDate *oneDayAddedToDeparture = [self.departureDate dateByAddingTimeInterval:24*60*60];
         [query whereKey:@"departureDate" lessThanOrEqualTo:oneDayAddedToDeparture];
+        
+        NSString *myNumber = [[[GoUserModelManager sharedManager] currentUser] phoneNumber];
         
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
             [objects enumerateObjectsUsingBlock:^(NSDictionary *  _Nonnull dict, NSUInteger idx, BOOL * _Nonnull stop) {
                 NSString *phoneNo = dict[@"bookedUserPhoneNo"];
-                if ([[[[GoContactSync sharedInstance] syncedContacts] allKeys] containsObject:phoneNo]) {
+                if ([[[[GoContactSync sharedInstance] syncedContacts] allKeys] containsObject:phoneNo]
+                    && ![phoneNo isEqualToString:myNumber]) {
                     [self.friendsDict setValue:dict forKey:phoneNo];
                 }
             }];
