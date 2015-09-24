@@ -94,7 +94,7 @@
                         GoContactSyncEntry *entry = [[GoContactSyncEntry alloc] init];
                         entry.addressBookId = recordId;
                         entry.name = fullName;
-                        entry.phoneNumber = phoneNumber;
+                        entry.phoneNumber = [[self class] trimNonDecimalCharactersInNumber:phoneNumber];;
                         [addressBookEntries addObject:entry];
                     }
                 
@@ -176,5 +176,36 @@
     NSString *filePath = [documentsDirectory stringByAppendingPathComponent:kContactsFilePath];
     return filePath;
 }
+
++ (NSString *)trimNonDecimalCharactersInNumber:(NSString *)phoneNumber
+{
+    return [[self class] string:phoneNumber normliseWithCharcterSet:[NSCharacterSet decimalDigitCharacterSet]];
+}
+
++ (NSString *)string:(NSString *)string normliseWithCharcterSet:(NSCharacterSet *)characterSet
+{
+    NSMutableString *strippedString = [NSMutableString stringWithCapacity:string.length];
+    
+    if (string)
+    {
+        NSScanner *scanner = [NSScanner scannerWithString:string];
+        
+        while ([scanner isAtEnd] == NO)
+        {
+            NSString *buffer;
+            
+            if ([scanner scanCharactersFromSet:characterSet intoString:&buffer])
+            {
+                [strippedString appendString:buffer];
+            } else
+            {
+                [scanner setScanLocation:([scanner scanLocation] + 1)];
+            }
+        }
+    }
+    
+    return strippedString;
+}
+
 @end
 

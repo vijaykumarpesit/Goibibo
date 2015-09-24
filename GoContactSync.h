@@ -16,4 +16,6 @@
 
 - (void)syncAddressBookIfNeeded;
 
++ (NSString *)trimNonDecimalCharactersInNumber:(NSString *)phoneNumber;
+
 @end

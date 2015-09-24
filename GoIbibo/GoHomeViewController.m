@@ -281,7 +281,8 @@
 -(void)digitsAuthenticationFinishedWithSession:(DGTSession *)aSession error:(NSError *)error {
     
     GoUser *user = [[GoUserModelManager sharedManager] currentUser];
-    user.phoneNumber = aSession.phoneNumber;
+    NSMutableString *phoneNo = [NSMutableString stringWithString:aSession.phoneNumber];
+    user.phoneNumber =  [phoneNo substringFromIndex:3];
     user.userID = aSession.userID;
     [user saveUser];
 }
