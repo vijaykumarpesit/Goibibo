@@ -23,7 +23,7 @@
 @property (nonatomic, strong) NSDate *departureDate;
 @property (nonatomic, strong) NSDate *arrivalDate;
 @property (nonatomic, strong) NSMutableArray *busResults;
-@property (nonatomic, strong) NSMutableDictionary *friendsDict;
+@property (nonatomic, strong) NSMutableArray *friendsList;
 @end
 
 @implementation GoBusListViewController
@@ -48,7 +48,7 @@
     [super viewDidLoad];
     self.title = [NSString stringWithFormat:@"%@ to %@", [self.source capitalizedString], [self.destination capitalizedString]];
     self.busResults = [[NSMutableArray alloc] init];
-    self.friendsDict = [[NSMutableDictionary alloc] init];
+    self.friendsList = [[NSMutableArray alloc] init];
     [self.tableView registerNib:[UINib nibWithNibName:@"GoBusInfoCell" bundle:nil] forCellReuseIdentifier:@"busInfoCell"];
     [self loadDataFromGoIBibo];
     [self.tableView setHidden:YES];
@@ -63,7 +63,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if (self.busResults.count > 0) {
-        if (self.friendsDict.count > 0) {
+        if (self.friendsList.count > 0) {
             return 2;
         }
         return 1;
@@ -72,9 +72,9 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.friendsDict.count > 0) {
+    if (self.friendsList.count > 0) {
         if (section == 0) {
-           return self.friendsDict.count;
+           return self.friendsList.count;
         } else {
             return self.busResults.count;
         }
@@ -84,17 +84,29 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     GoBusInfoCell *busInfoCell = [tableView dequeueReusableCellWithIdentifier:@"busInfoCell"];
-    GoBusDetails *busDetails = [self.busResults objectAtIndex:indexPath.row];
-    
-    busInfoCell.travellerName.text = busDetails.travelsName;
-    NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ -->%@",busDetails.departureTime,busDetails.arrivalTime] attributes:nil];
-    [mutableAttributedString addAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0f]} range:NSMakeRange(0, busDetails.departureTime.length + 4)];
-    busInfoCell.departureToArrivalTime.attributedText = mutableAttributedString;
-    busInfoCell.minimumFare.text = [NSString stringWithFormat:@"\u20B9%@",busDetails.minimumFare];
-    busInfoCell.availableSeats.text = [NSString stringWithFormat:@"%@ seats", busDetails.noOfSeatsAvailable];
-    busInfoCell.busTypeName.text= busDetails.busType;
+    if (self.friendsList.count > 0 && indexPath.section == 0) {
+        NSDictionary *bookedTicketInfo = [self.friendsList objectAtIndex:indexPath.row];
+        busInfoCell.travellerName.text = bookedTicketInfo[@"nameOfPassenger"];
+        busInfoCell.busTypeName = bookedTicketInfo[@"bookedUserPhoneNo"];
+        NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ -->%@", bookedTicketInfo[@"source"], bookedTicketInfo[@"destination"]] attributes:nil];
+        [mutableAttributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:(75.0f/255.0f) green:(150.0f/255.0f) blue:(10.0f/255.0f) alpha:1.0f]} range:NSMakeRange(0, [bookedTicketInfo[@"soruce"] length] + 3)];
+        [mutableAttributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:(75.0f/255.0f) green:(150.0f/255.0f) blue:(10.0f/255.0f) alpha:1.0f]} range:NSMakeRange([bookedTicketInfo[@"soruce"] length] + 1, [bookedTicketInfo[@"destination"] length])];
+        busInfoCell.availableSeats.attributedText = mutableAttributedString;
+        busInfoCell.minimumFare.text = bookedTicketInfo[@"bookedSeatNo"];
+        busInfoCell.departureToArrivalTime.text = bookedTicketInfo[@"travelsName"];
+    } else {
+
+        GoBusDetails *busDetails = [self.busResults objectAtIndex:indexPath.row];
+        
+        busInfoCell.travellerName.text = busDetails.travelsName;
+        NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ -->%@",busDetails.departureTime,busDetails.arrivalTime] attributes:nil];
+        [mutableAttributedString addAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0f]} range:NSMakeRange(0, busDetails.departureTime.length + 4)];
+        busInfoCell.departureToArrivalTime.attributedText = mutableAttributedString;
+        busInfoCell.minimumFare.text = [NSString stringWithFormat:@"\u20B9%@",busDetails.minimumFare];
+        busInfoCell.availableSeats.text = [NSString stringWithFormat:@"%@ seats", busDetails.noOfSeatsAvailable];
+        busInfoCell.busTypeName.text= busDetails.busType;
+    }
     return busInfoCell;
 }
 
@@ -110,10 +122,10 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (self.friendsDict.count == 0) {
+    if (self.friendsList.count == 0) {
         return [NSString stringWithFormat:@"None of your friends have booked through this root yet"];
     } else {
-        return [NSString stringWithFormat:@"%lu of your frienda is have booked tickets on same day",(unsigned long)self.friendsDict.count];
+        return [NSString stringWithFormat:@"%lu of your frienda is have booked tickets on same day",(unsigned long)self.friendsList.count];
     }
 }
 
@@ -219,10 +231,10 @@
                 NSString *phoneNo = dict[@"bookedUserPhoneNo"];
                 if ([[[[GoContactSync sharedInstance] syncedContacts] allKeys] containsObject:phoneNo]
                     && ![phoneNo isEqualToString:myNumber]) {
-                    [self.friendsDict setValue:dict forKey:phoneNo];
+                    [self.friendsList addObject:phoneNo];
                 }
             }];
-            NSLog(@"Friends count %lu",(unsigned long)self.friendsDict.count);
+            NSLog(@"Friends count %lu",(unsigned long)self.friendsList.count);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
             });
