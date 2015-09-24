@@ -184,6 +184,10 @@
         PFQuery *query = [PFQuery queryWithClassName:@"BusBookingDetails"];
         [query whereKey:@"source" equalTo:self.source];
         [query whereKey:@"destination" equalTo:self.destination];
+        [query whereKey:@"departureDate" greaterThanOrEqualTo:self.departureDate];
+        
+        NSDate *oneDayAddedToDeparture = [self.departureDate dateByAddingTimeInterval:24*60*60];
+        [query whereKey:@"departureDate" lessThanOrEqualTo:oneDayAddedToDeparture];
         
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
             [objects enumerateObjectsUsingBlock:^(NSDictionary *  _Nonnull dict, NSUInteger idx, BOOL * _Nonnull stop) {

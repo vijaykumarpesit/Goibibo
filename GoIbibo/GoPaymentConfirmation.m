@@ -77,7 +77,10 @@
     bookedBusDetails[@"travelsName"] = self.busDetails.travelsName;
     bookedBusDetails[@"source"] = self.busDetails.source;
     bookedBusDetails[@"destination"] = self.busDetails.destination;
-    bookedBusDetails[@"departureDate"] = self.busDetails.departureDate;
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyyMMdd"];
+    NSDate *date = [dateFormat dateFromString:self.busDetails.departureDate];
+    bookedBusDetails[@"departureDate"] = date;
     [bookedBusDetails saveInBackground];
     
     [self.navigationController popToRootViewControllerAnimated:YES];
