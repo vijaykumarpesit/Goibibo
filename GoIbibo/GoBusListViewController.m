@@ -147,6 +147,7 @@
     busDetails.departureTime = dict[@"departureTime"];
     busDetails.source = dict[@"source"];
     busDetails.destination = dict[@"destination"];
+    busDetails.travelsName = dict[@"travelsName"];
     return busDetails;
 }
 

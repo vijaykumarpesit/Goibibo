@@ -13,9 +13,11 @@
 
 
 @interface GoPaymentConfirmation ()<CardIOPaymentViewControllerDelegate>
-- (IBAction)scanCardClicked:(id)sender;
 @property (nonatomic, strong) GoBusDetails *busDetails;
 @property (nonatomic, strong) NSString *seatNo;
+@property (weak, nonatomic) IBOutlet UIImageView *scanCardImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *netBanking;
+@property (weak, nonatomic) IBOutlet UIImageView *wallets;
 @end
 
 @implementation GoPaymentConfirmation
@@ -33,7 +35,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [CardIOUtilities preload];
-
+    [self configureAndAddTapGestureToView:self.scanCardImageView andSelector:@selector(scanCardClicked:)];
+    self.scanCardImageView.userInteractionEnabled = YES;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -52,7 +55,14 @@
 }
 */
 
-- (IBAction)scanCardClicked:(id)sender {
+- (void)configureAndAddTapGestureToView:(UIView *)view andSelector:(SEL)selector {
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:selector];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    tapGestureRecognizer.numberOfTouchesRequired = 1;
+    [view addGestureRecognizer:tapGestureRecognizer];
+}
+
+- (void)scanCardClicked:(id)sender {
     //CardIOPaymentViewController *scanViewController = [[CardIOPaymentViewController alloc] initWithPaymentDelegate:self];
     //[self presentViewController:scanViewController animated:YES completion:nil];
     [self userDidProvideCreditCardInfo:nil inPaymentViewController:nil];
