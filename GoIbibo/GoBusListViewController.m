@@ -13,6 +13,7 @@
 #import "GoSeatMetrixViewController.h"
 #import <parse/parse.h>
 #import "GoContactSync.h"
+#import "GoUserModelManager.h"
 
 @interface GoBusListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -159,7 +160,7 @@
         busDetails.skey = bus[@"skey"];
         busDetails.source = bus[@"origin"];
         busDetails.destination = bus[@"destination"];
-        busDetails.departureDate = bus[@"depdate"];
+        busDetails.departureDate = self.departureDate;
         
         NSDictionary *routeSeatTypeDetail = bus[@"RouteSeatTypeDetail"];
         NSArray *list = routeSeatTypeDetail[@"list"];
@@ -185,7 +186,7 @@
         [query whereKey:@"source" equalTo:self.source];
         [query whereKey:@"destination" equalTo:self.destination];
         [query whereKey:@"departureDate" greaterThanOrEqualTo:self.departureDate];
-        
+        [query whereKey:@"bookedUserPhoneNO" notEqualTo:[[[GoUserModelManager sharedManager] currentUser] phoneNumber]];
         NSDate *oneDayAddedToDeparture = [self.departureDate dateByAddingTimeInterval:24*60*60];
         [query whereKey:@"departureDate" lessThanOrEqualTo:oneDayAddedToDeparture];
         

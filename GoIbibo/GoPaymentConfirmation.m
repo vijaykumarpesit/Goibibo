@@ -53,8 +53,9 @@
 */
 
 - (IBAction)scanCardClicked:(id)sender {
-    CardIOPaymentViewController *scanViewController = [[CardIOPaymentViewController alloc] initWithPaymentDelegate:self];
-    [self presentViewController:scanViewController animated:YES completion:nil];
+    //CardIOPaymentViewController *scanViewController = [[CardIOPaymentViewController alloc] initWithPaymentDelegate:self];
+    //[self presentViewController:scanViewController animated:YES completion:nil];
+    [self userDidProvideCreditCardInfo:nil inPaymentViewController:nil];
 }
 
 - (void)userDidCancelPaymentViewController:(CardIOPaymentViewController *)scanViewController {
@@ -65,9 +66,9 @@
 
 - (void)userDidProvideCreditCardInfo:(CardIOCreditCardInfo *)info inPaymentViewController:(CardIOPaymentViewController *)scanViewController {
     // The full card number is available as info.cardNumber, but don't log that!
-    NSLog(@"Received card info. Number: %@, expiry: %02lu/%lu, cvv: %@.", info.redactedCardNumber, (unsigned long)info.expiryMonth, (unsigned long)info.expiryYear, info.cvv);
+    //NSLog(@"Received card info. Number: %@, expiry: %02lu/%lu, cvv: %@.", info.redactedCardNumber, (unsigned long)info.expiryMonth, (unsigned long)info.expiryYear, info.cvv);
     // Use the card info...
-    [scanViewController dismissViewControllerAnimated:YES completion:nil];
+    //[scanViewController dismissViewControllerAnimated:YES completion:nil];
     
     PFObject *bookedBusDetails = [PFObject objectWithClassName:@"BusBookingDetails"];
     bookedBusDetails[@"skey"] = self.busDetails.skey;
@@ -77,12 +78,8 @@
     bookedBusDetails[@"travelsName"] = self.busDetails.travelsName;
     bookedBusDetails[@"source"] = self.busDetails.source;
     bookedBusDetails[@"destination"] = self.busDetails.destination;
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyyMMdd"];
-    NSDate *date = [dateFormat dateFromString:self.busDetails.departureDate];
-    bookedBusDetails[@"departureDate"] = date;
+    bookedBusDetails[@"departureDate"] = self.busDetails.departureDate;
     [bookedBusDetails saveInBackground];
-    
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 @end
