@@ -61,8 +61,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (self.busResults.count > 0) {
+        if (self.friendsDict.count > 0) {
+            return 2;
+        }
+        return 1;
+    }
+    return 0;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.busResults.count;
+    if (self.friendsDict.count > 0) {
+        if (section == 0) {
+           return self.friendsDict.count;
+        } else {
+            return self.busResults.count;
+        }
+    } else {
+        return self.busResults.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
