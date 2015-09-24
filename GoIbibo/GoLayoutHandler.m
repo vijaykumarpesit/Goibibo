@@ -30,7 +30,7 @@
         NSString *filePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"background-blurred"] ofType:@"jpg"];
         UIImage *theImage = [UIImage imageWithContentsOfFile:filePath];
         _sideMenu.backgroundImage = theImage;
-        _sideMenu.contentViewInPortraitOffsetCenterX = -10;
+        _sideMenu.contentViewInPortraitOffsetCenterX = -50;
         Digits *digits = [Digits sharedInstance];
         [digits authenticateWithNavigationViewController:navigationVC phoneNumber:@"+91" digitsAppearance:nil title:nil completionViewController:homeScreen];
     }

@@ -86,10 +86,10 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Setting"];
     }
     cell.backgroundColor = [UIColor clearColor];
-    if (settingOption.imageName) {
-        cell.imageView.image = [self highlightedImage:[UIImage imageNamed:settingOption.imageName] highligthedColor:[UIColor blackColor]];
-        cell.imageView.highlightedImage = [self highlightedImage:[UIImage imageNamed:settingOption.imageName] highligthedColor:[UIColor blackColor]];
-    }
+//    if (settingOption.imageName) {
+//        cell.imageView.image = [self highlightedImage:[UIImage imageNamed:settingOption.imageName] highligthedColor:[UIColor blackColor]];
+//        cell.imageView.highlightedImage = [self highlightedImage:[UIImage imageNamed:settingOption.imageName] highligthedColor:[UIColor blackColor]];
+//    }
     cell.textLabel.text = settingOption.optiontext;
     cell.textLabel.textColor = [UIColor blackColor];
     cell.textLabel.highlightedTextColor = [UIColor blackColor];
