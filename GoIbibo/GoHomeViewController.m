@@ -21,7 +21,6 @@
 @property (nonatomic, strong) NSDate *maxDate;
 @property (nonatomic, strong) NSDate *dateSelected;
 @property (weak, nonatomic) IBOutlet UIView *overlayView;
-;
 @property (weak, nonatomic) IBOutlet UIView *sourceView;
 @property (weak, nonatomic) IBOutlet UIView *destinationView;
 @property (weak, nonatomic) IBOutlet UILabel *searchBusesLabel;
@@ -79,11 +78,13 @@
     
     CGFloat newHeight = 300;
     [self.view bringSubviewToFront:self.overlayView];
+    self.overlayView.userInteractionEnabled = NO;
     self.overlayView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
     if(_calendarManager.settings.weekModeEnabled){
         newHeight = 85.;
         self.overlayView.backgroundColor = [UIColor clearColor];
         [self.view sendSubviewToBack:self.overlayView];
+        self.overlayView.userInteractionEnabled = YES;
     }
     [UIView animateWithDuration:0.2f animations:^{
         self.calendarContentViewHeight.constant = newHeight;
