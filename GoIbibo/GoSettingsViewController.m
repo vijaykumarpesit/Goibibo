@@ -8,6 +8,7 @@
 
 #import "GoSettingsViewController.h"
 #import "GoSettingsOption.h"
+#import <DigitsKit/DigitsKit.h>
 
 @interface GoSettingsViewController ()
 
@@ -27,7 +28,6 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.tableView.contentInset = UIEdgeInsetsMake(65, 0, 10, 0);
-    self.tableView.backgroundColor = [UIColor colorWithRed:(245.0f/255.0f) green:(250.0f/255.0f) blue:(255.0f/255.0f) alpha:1.0f];
     
     self.settingOptions = [NSMutableArray array];
     [self configureDataSource];
@@ -85,14 +85,13 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Simple"];
     }
-    UIColor *backGroundColor = [UIColor colorWithRed:(44.0f/255.0f) green:(103.0f/255.0f) blue:(178.0f/255.0f) alpha:1.0f];
-    cell.contentView.backgroundColor = backGroundColor;
+    cell.backgroundColor = [UIColor clearColor];
     if (settingOption.imageName) {
-        cell.imageView.image = [UIImage imageNamed:settingOption.imageName];
+        cell.imageView.image = [self highlightedImage:[UIImage imageNamed:settingOption.imageName] highligthedColor:[UIColor blackColor]];
         cell.imageView.highlightedImage = [self highlightedImage:[UIImage imageNamed:settingOption.imageName] highligthedColor:[UIColor blackColor]];
     }
     cell.textLabel.text = settingOption.optiontext;
-    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.textColor = [UIColor blackColor];
     cell.textLabel.highlightedTextColor = [UIColor blackColor];
     return cell;
 }

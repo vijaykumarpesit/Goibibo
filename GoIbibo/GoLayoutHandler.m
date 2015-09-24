@@ -27,7 +27,10 @@
         UINavigationController *navigationVC = [[UINavigationController alloc] init];
         GoSettingsViewController *settingsView = [[GoSettingsViewController alloc] initWithNibName:@"GoSettingsViewController" bundle:nil];
         _sideMenu = [[RESideMenu alloc] initWithContentViewController:navigationVC leftMenuViewController:settingsView rightMenuViewController:nil];
-        _sideMenu.contentViewInPortraitOffsetCenterX = -50;
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"background-blurred"] ofType:@"jpg"];
+        UIImage *theImage = [UIImage imageWithContentsOfFile:filePath];
+        _sideMenu.backgroundImage = theImage;
+        _sideMenu.contentViewInPortraitOffsetCenterX = -10;
         Digits *digits = [Digits sharedInstance];
         [digits authenticateWithNavigationViewController:navigationVC phoneNumber:@"+91" digitsAppearance:nil title:nil completionViewController:homeScreen];
     }
