@@ -11,8 +11,5 @@
 
 @interface GoSeatMetrixViewController : UIViewController
 
-- (instancetype)initWithBusDetails:(GoBusDetails *)busDetails;
-
-@property(nonatomic, strong) NSMutableDictionary *friendsDict;
-
+- (instancetype)initWithBusDetails:(GoBusDetails *)busDetails seatNoReservedByFriend:(NSString *)seatNo;
 @end

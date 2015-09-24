@@ -11,4 +11,5 @@
 @interface GoSeatCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *seatNo;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @end

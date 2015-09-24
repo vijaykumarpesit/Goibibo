@@ -119,9 +119,35 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-    GoBusDetails *busDetails = [self.busResults objectAtIndex:indexPath.row];
-    GoSeatMetrixViewController *metrixVC = [[GoSeatMetrixViewController alloc] initWithBusDetails:busDetails];
+    GoBusDetails *busDetails = nil;
+    NSString *seatNoToExlude = nil;
+    
+    if (self.tableView.numberOfSections ==1) {
+        busDetails = [self.busResults objectAtIndex:indexPath.row];
+    } else if(self.tableView.numberOfSections >1) {
+        if (indexPath.section == 0) {
+            NSDictionary *bookedBusDict = [self.friendsList objectAtIndex:indexPath.row];
+            busDetails = [self buDetailObjectFromDictionary:bookedBusDict];
+            seatNoToExlude = bookedBusDict[@"bookedSeatNo"];
+        } else if(indexPath.section ==1) {
+            busDetails = [self.busResults objectAtIndex:indexPath.row];
+        }
+    }
+    
+    GoSeatMetrixViewController *metrixVC = [[GoSeatMetrixViewController alloc] initWithBusDetails:busDetails
+                                                                           seatNoReservedByFriend:seatNoToExlude];
     [self.navigationController pushViewController:metrixVC animated:YES];
+}
+
+- (GoBusDetails *)buDetailObjectFromDictionary:(NSDictionary *)dict {
+    
+    GoBusDetails *busDetails = [[GoBusDetails alloc] init];
+    busDetails.skey = dict[@"skey"];
+    busDetails.departureDate = dict[@"departureDate"];
+    busDetails.departureTime = dict[@"departureTime"];
+    busDetails.source = dict[@"source"];
+    busDetails.destination = dict[@"destination"];
+    return busDetails;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

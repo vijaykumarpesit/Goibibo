@@ -17,16 +17,18 @@
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, weak) IBOutlet UILabel *searchingLabel;
 @property (nonatomic, strong) GoBusDetails *busDetails;
+@property (nonatomic, strong) NSString *seatNoReservedByFriend;
 
 @end
 
 @implementation GoSeatMetrixViewController
 
-- (instancetype)initWithBusDetails:(GoBusDetails *)busDetails {
+- (instancetype)initWithBusDetails:(GoBusDetails *)busDetails seatNoReservedByFriend:(NSString *)seatNo {
 
     self = [super initWithNibName:@"GoSeatMetrixViewController" bundle:nil];
     if (self) {
         self.busDetails = busDetails;
+        self.seatNoReservedByFriend = seatNo;
     }
     return self;
 }
@@ -48,10 +50,17 @@
     GoSeatCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"busSeatCell" forIndexPath:indexPath];
     GoBusSeatLayout *layout = [self.seats objectAtIndex:indexPath.row];
     cell.seatNo.text = layout.seatNo;
-    if (!layout.isSeatAvailable) {
+    [cell.backgroundImageView setHidden:YES];
+    
+    if(layout.seatNo && [layout.seatNo isEqualToString:self.seatNoReservedByFriend]){
+        cell.seatNo.text = layout.seatNo;
+        [cell.backgroundImageView setHidden:NO];
+        
+    }else if (!layout.isSeatAvailable) {
         [cell setBackgroundColor:[UIColor redColor]];
     } else {
         [cell setBackgroundColor:[UIColor greenColor]];
+        
     }
     return cell;
 }

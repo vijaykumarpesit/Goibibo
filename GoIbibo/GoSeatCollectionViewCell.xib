@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A282b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9046" systemVersion="15A282b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9035"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,6 +13,10 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="235" height="56"/>
                 <subviews>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buddycopy.png" translatesAutoresizingMaskIntoConstraints="NO" id="g6b-TF-ejv">
+                        <rect key="frame" x="0.0" y="0.0" width="235" height="56"/>
+                        <animations/>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmI-XR-aNt">
                         <rect key="frame" x="96.5" y="17.5" width="42" height="20.5"/>
                         <animations/>
@@ -27,14 +31,22 @@
             <animations/>
             <color key="backgroundColor" red="1" green="0.62459730842763372" blue="0.39320027633194909" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="g6b-TF-ejv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="71T-a7-pBz"/>
                 <constraint firstItem="QmI-XR-aNt" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="DQf-CS-FdK"/>
+                <constraint firstAttribute="bottom" secondItem="g6b-TF-ejv" secondAttribute="bottom" id="KdR-j0-PNe"/>
                 <constraint firstItem="QmI-XR-aNt" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="ZdA-Ve-t6m"/>
+                <constraint firstItem="g6b-TF-ejv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="uH4-XE-yu4"/>
+                <constraint firstAttribute="trailing" secondItem="g6b-TF-ejv" secondAttribute="trailing" id="yvG-fH-VL6"/>
             </constraints>
             <size key="customSize" width="235" height="56"/>
             <connections>
+                <outlet property="backgroundImageView" destination="g6b-TF-ejv" id="lHO-tA-e2R"/>
                 <outlet property="seatNo" destination="QmI-XR-aNt" id="hBB-1q-h7m"/>
             </connections>
             <point key="canvasLocation" x="520.5" y="367"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="buddycopy.png" width="300" height="220"/>
+    </resources>
 </document>
