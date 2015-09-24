@@ -91,7 +91,7 @@
         busInfoCell.busTypeName = bookedTicketInfo[@"bookedUserPhoneNo"];
         NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ -->%@", bookedTicketInfo[@"source"], bookedTicketInfo[@"destination"]] attributes:nil];
         [mutableAttributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:(75.0f/255.0f) green:(150.0f/255.0f) blue:(10.0f/255.0f) alpha:1.0f]} range:NSMakeRange(0, [bookedTicketInfo[@"soruce"] length] + 3)];
-        [mutableAttributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:(75.0f/255.0f) green:(150.0f/255.0f) blue:(10.0f/255.0f) alpha:1.0f]} range:NSMakeRange([bookedTicketInfo[@"soruce"] length] + 1, [bookedTicketInfo[@"destination"] length])];
+        [mutableAttributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:(245.0f/255.0f) green:(50.0f/255.0f) blue:(50.0f/255.0f) alpha:1.0f]} range:NSMakeRange([bookedTicketInfo[@"soruce"] length] + 1, [bookedTicketInfo[@"destination"] length])];
         busInfoCell.availableSeats.attributedText = mutableAttributedString;
         busInfoCell.minimumFare.text = bookedTicketInfo[@"bookedSeatNo"];
         busInfoCell.departureToArrivalTime.text = bookedTicketInfo[@"travelsName"];
