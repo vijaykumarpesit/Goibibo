@@ -14,6 +14,7 @@
 #import <parse/parse.h>
 #import "GoContactSync.h"
 #import "GoUserModelManager.h"
+#import "GoContactSyncEntry.h"
 
 @interface GoBusListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -87,7 +88,7 @@
     GoBusInfoCell *busInfoCell = [tableView dequeueReusableCellWithIdentifier:@"busInfoCell"];
     if (self.friendsList.count > 0 && indexPath.section == 0) {
         NSDictionary *bookedTicketInfo = [self.friendsList objectAtIndex:indexPath.row];
-        busInfoCell.travellerName.text = bookedTicketInfo[@"nameOfPassenger"];
+        busInfoCell.travellerName.text = bookedTicketInfo[@"passengerName"];
         busInfoCell.busTypeName.text = bookedTicketInfo[@"bookedUserPhoneNo"];
         
         NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ -->%@", bookedTicketInfo[@"source"], bookedTicketInfo[@"destination"]] attributes:nil];
@@ -218,6 +219,7 @@
 }
 
 - (void)checkAndConfigureFriends {
+    
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         PFQuery *query = [PFQuery queryWithClassName:@"BusBookingDetails"];
         [query whereKey:@"source" equalTo:self.source];
@@ -227,15 +229,25 @@
         [query whereKey:@"departureDate" lessThanOrEqualTo:oneDayAddedToDeparture];
         
         NSString *myNumber = [[[GoUserModelManager sharedManager] currentUser] phoneNumber];
-        
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-            [objects enumerateObjectsUsingBlock:^(NSDictionary *  _Nonnull dict, NSUInteger idx, BOOL * _Nonnull stop) {
-                NSString *phoneNo = dict[@"bookedUserPhoneNo"];
-                if ([[[[GoContactSync sharedInstance] syncedContacts] allKeys] containsObject:phoneNo]
-                    && ![phoneNo isEqualToString:myNumber]) {
-                    [self.friendsList addObject:dict];
+            
+            [objects enumerateObjectsUsingBlock:^(PFObject *  _Nonnull object, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                NSString *phoneNo = object[@"bookedUserPhoneNo"];
+                
+                GoContactSyncEntry *entry =[[[GoContactSync sharedInstance] syncedContacts] valueForKey:phoneNo];
+                
+                if (entry && ![phoneNo isEqualToString:myNumber]) {
+                    
+                    NSMutableDictionary *mutableDict = [[NSMutableDictionary alloc] init];
+                    for(id key in [object allKeys]) {
+                        [mutableDict setValue:object[key] forKey:key];
+                    }
+                    [mutableDict setValue:entry.name forKey:@"passengerName"];
+                    [self.friendsList addObject:mutableDict];
                 }
             }];
+            
             NSLog(@"Friends count %lu",(unsigned long)self.friendsList.count);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
