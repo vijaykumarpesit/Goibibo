@@ -125,11 +125,18 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (self.friendsList.count == 0) {
-        return [NSString stringWithFormat:@"None of your friends have booked through this root yet"];
-    } else {
-        return [NSString stringWithFormat:@"%lu of your frienda is have booked tickets on same day",(unsigned long)self.friendsList.count];
+    
+    if (section == 0) {
+        if (self.friendsList.count == 0) {
+            return [NSString stringWithFormat:@"None of your friends are travelling on this date"];
+        } else {
+            return @"Hey!!! Find your friends travelling to the same destination on this Date";
+        }
+        
+    } else if(section ==1) {
+        return @"Select a Bus";
     }
+    return nil;
 }
 
 - (void)loadDataFromGoIBibo {
