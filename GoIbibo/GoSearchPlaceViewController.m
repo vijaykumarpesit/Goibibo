@@ -8,10 +8,12 @@
 
 #import "GoSearchPlaceViewController.h"
 
-@interface GoSearchPlaceViewController ()
+@interface GoSearchPlaceViewController () <UISearchBarDelegate>
 
 @property (nonatomic, copy) NSString *selectedPlace;
 @property (nonatomic, strong) NSMutableArray *placeArray;
+@property (nonatomic, strong) NSMutableArray *searchPlaceArray;
+@property (nonatomic) BOOL isSearching;
 @property (weak, nonatomic) IBOutlet UISearchBar *seachBar;
 
 @end
@@ -21,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _placeArray = [NSMutableArray array];
+    _searchPlaceArray = [NSMutableArray array];
     [_placeArray addObject:@"Bangalore"];
     [_placeArray addObject:@"Chennai"];
     [_placeArray addObject:@"Hyderabad"];
@@ -32,6 +35,7 @@
     [_placeArray addObject:@"Mysore"];
     [_placeArray addObject:@"Hubli"];
 
+    self.seachBar.delegate = self;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(rightBarButtonItemPressed:)];
 }
 
@@ -57,6 +61,9 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (self.isSearching) {
+        return self.searchPlaceArray.count;
+    }
     return self.placeArray.count;
 }
 
@@ -65,7 +72,11 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SearchPlace"];
     }
-    cell.textLabel.text = self.placeArray[indexPath.row];
+    if (self.isSearching) {
+        cell.textLabel.text = self.searchPlaceArray[indexPath.row];
+    } else {
+        cell.textLabel.text = self.placeArray[indexPath.row];
+    }
     if ([self.selectedPlace isEqualToString:cell.textLabel.text]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
@@ -76,7 +87,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    self.selectedPlace = self.placeArray[indexPath.row];
+    if (self.isSearching) {
+        self.selectedPlace = self.searchPlaceArray[indexPath.row];
+    } else {
+        self.selectedPlace = self.placeArray[indexPath.row];
+    }
     [self rightBarButtonItemPressed:nil];
 }
 
@@ -89,5 +104,17 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    _isSearching = YES;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    _searchPlaceArray = [[self.placeArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self CONTAINS[cd] %@", searchText]] mutableCopy];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    _isSearching = NO;
+}
 
 @end

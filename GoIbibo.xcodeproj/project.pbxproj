@@ -13,6 +13,7 @@
 		547A05DE1BB3FBB90079F1CC /* searchButtonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A05DD1BB3FBB90079F1CC /* searchButtonBackground.png */; };
 		547A06281BB401F90079F1CC /* EndLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A06261BB401F90079F1CC /* EndLocation.png */; };
 		547A06291BB401F90079F1CC /* StartLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A06271BB401F90079F1CC /* StartLocation.png */; };
+		547A06391BB41C7F0079F1CC /* Teal Collaboration Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A06381BB41C7F0079F1CC /* Teal Collaboration Icon.png */; settings = {ASSET_TAGS = (); }; };
 		54A550CB1BB138A60000561B /* left-side-bar-hamburger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550C91BB138A60000561B /* left-side-bar-hamburger@2x.png */; };
 		54A550CC1BB138A60000561B /* left-side-bar-hamburger@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550CA1BB138A60000561B /* left-side-bar-hamburger@3x.png */; };
 		54A550D51BB148480000561B /* GoSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A550D31BB148480000561B /* GoSettingsViewController.m */; };
@@ -78,6 +79,7 @@
 		547A05DD1BB3FBB90079F1CC /* searchButtonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchButtonBackground.png; sourceTree = "<group>"; };
 		547A06261BB401F90079F1CC /* EndLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EndLocation.png; sourceTree = "<group>"; };
 		547A06271BB401F90079F1CC /* StartLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartLocation.png; sourceTree = "<group>"; };
+		547A06381BB41C7F0079F1CC /* Teal Collaboration Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Teal Collaboration Icon.png"; sourceTree = "<group>"; };
 		54A550C91BB138A60000561B /* left-side-bar-hamburger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-side-bar-hamburger@2x.png"; sourceTree = "<group>"; };
 		54A550CA1BB138A60000561B /* left-side-bar-hamburger@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-side-bar-hamburger@3x.png"; sourceTree = "<group>"; };
 		54A550D21BB148480000561B /* GoSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoSettingsViewController.h; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 		B1EDDEC91BB10A4100518E0C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				547A06381BB41C7F0079F1CC /* Teal Collaboration Icon.png */,
 				547A06261BB401F90079F1CC /* EndLocation.png */,
 				547A06271BB401F90079F1CC /* StartLocation.png */,
 				547A05DD1BB3FBB90079F1CC /* searchButtonBackground.png */,
@@ -423,6 +426,7 @@
 				B1EDDEF31BB1118200518E0C /* DigitsKitResources.bundle in Resources */,
 				54A550FA1BB160370000561B /* IconSettings@2x.png in Resources */,
 				B1EDDED91BB10A4100518E0C /* LaunchScreen.storyboard in Resources */,
+				547A06391BB41C7F0079F1CC /* Teal Collaboration Icon.png in Resources */,
 				B10ECC981BB33E7900B19D66 /* GoSeatCollectionViewCell.xib in Resources */,
 				54A550CB1BB138A60000561B /* left-side-bar-hamburger@2x.png in Resources */,
 				B1E2440C1BB40A1700878E7A /* buddycopy.png in Resources */,
