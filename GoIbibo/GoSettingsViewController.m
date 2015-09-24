@@ -81,9 +81,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     GoSettingsOption *settingOption = [self.settingOptions objectAtIndex:indexPath.row];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Simple"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Setting"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Simple"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Setting"];
     }
     cell.backgroundColor = [UIColor clearColor];
     if (settingOption.imageName) {

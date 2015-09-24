@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5427F3261BB28AB900410622 /* SrcDest.png in Resources */ = {isa = PBXBuildFile; fileRef = 5427F3251BB28AB900410622 /* SrcDest.png */; settings = {ASSET_TAGS = (); }; };
+		547A05D21BB3DC260079F1CC /* background-blurred.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 547A05D11BB3DC260079F1CC /* background-blurred.jpg */; settings = {ASSET_TAGS = (); }; };
+		547A05D81BB3EF3F0079F1CC /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A05D71BB3EF3F0079F1CC /* background.png */; settings = {ASSET_TAGS = (); }; };
+		547A05DE1BB3FBB90079F1CC /* searchButtonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A05DD1BB3FBB90079F1CC /* searchButtonBackground.png */; settings = {ASSET_TAGS = (); }; };
+		547A06281BB401F90079F1CC /* EndLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A06261BB401F90079F1CC /* EndLocation.png */; settings = {ASSET_TAGS = (); }; };
+		547A06291BB401F90079F1CC /* StartLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A06271BB401F90079F1CC /* StartLocation.png */; settings = {ASSET_TAGS = (); }; };
 		54A550CB1BB138A60000561B /* left-side-bar-hamburger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550C91BB138A60000561B /* left-side-bar-hamburger@2x.png */; };
 		54A550CC1BB138A60000561B /* left-side-bar-hamburger@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550CA1BB138A60000561B /* left-side-bar-hamburger@3x.png */; };
 		54A550D51BB148480000561B /* GoSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A550D31BB148480000561B /* GoSettingsViewController.m */; };
@@ -17,6 +22,8 @@
 		54A550F91BB160370000561B /* IconProfile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550F71BB160370000561B /* IconProfile@2x.png */; };
 		54A550FA1BB160370000561B /* IconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550F81BB160370000561B /* IconSettings@2x.png */; };
 		54A8CD111BB315F70091B02A /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A8CD101BB315F70091B02A /* calendar.png */; settings = {ASSET_TAGS = (); }; };
+		54C4B2031BB3C09500110592 /* GoSearchPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C4B2011BB3C09500110592 /* GoSearchPlaceViewController.m */; settings = {ASSET_TAGS = (); }; };
+		54C4B2041BB3C09500110592 /* GoSearchPlaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C4B2021BB3C09500110592 /* GoSearchPlaceViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		8AD3F0CA70A6BFBD52AFEC3D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29DF6E63E872EBD0B024D6DD /* libPods.a */; };
 		B10D989E1BB24E97005D74D1 /* GoBusListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10D989C1BB24E97005D74D1 /* GoBusListViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B10D989F1BB24E97005D74D1 /* GoBusListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10D989D1BB24E97005D74D1 /* GoBusListViewController.xib */; settings = {ASSET_TAGS = (); }; };
@@ -65,6 +72,11 @@
 		29DF6E63E872EBD0B024D6DD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DB25A0CFB6305D6FF431522 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5427F3251BB28AB900410622 /* SrcDest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SrcDest.png; sourceTree = "<group>"; };
+		547A05D11BB3DC260079F1CC /* background-blurred.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "background-blurred.jpg"; sourceTree = "<group>"; };
+		547A05D71BB3EF3F0079F1CC /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		547A05DD1BB3FBB90079F1CC /* searchButtonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchButtonBackground.png; sourceTree = "<group>"; };
+		547A06261BB401F90079F1CC /* EndLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EndLocation.png; sourceTree = "<group>"; };
+		547A06271BB401F90079F1CC /* StartLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartLocation.png; sourceTree = "<group>"; };
 		54A550C91BB138A60000561B /* left-side-bar-hamburger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-side-bar-hamburger@2x.png"; sourceTree = "<group>"; };
 		54A550CA1BB138A60000561B /* left-side-bar-hamburger@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-side-bar-hamburger@3x.png"; sourceTree = "<group>"; };
 		54A550D21BB148480000561B /* GoSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoSettingsViewController.h; sourceTree = "<group>"; };
@@ -77,6 +89,9 @@
 		54A550F71BB160370000561B /* IconProfile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconProfile@2x.png"; sourceTree = "<group>"; };
 		54A550F81BB160370000561B /* IconSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconSettings@2x.png"; sourceTree = "<group>"; };
 		54A8CD101BB315F70091B02A /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
+		54C4B2001BB3C09500110592 /* GoSearchPlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoSearchPlaceViewController.h; sourceTree = "<group>"; };
+		54C4B2011BB3C09500110592 /* GoSearchPlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoSearchPlaceViewController.m; sourceTree = "<group>"; };
+		54C4B2021BB3C09500110592 /* GoSearchPlaceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoSearchPlaceViewController.xib; sourceTree = "<group>"; };
 		B10D989B1BB24E97005D74D1 /* GoBusListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoBusListViewController.h; sourceTree = "<group>"; };
 		B10D989C1BB24E97005D74D1 /* GoBusListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoBusListViewController.m; sourceTree = "<group>"; };
 		B10D989D1BB24E97005D74D1 /* GoBusListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoBusListViewController.xib; sourceTree = "<group>"; };
@@ -251,6 +266,9 @@
 				B191BED01BB3501500838839 /* GoPaymentConfirmation.h */,
 				B191BED11BB3501500838839 /* GoPaymentConfirmation.m */,
 				B191BED21BB3501500838839 /* GoPaymentConfirmation.xib */,
+				54C4B2001BB3C09500110592 /* GoSearchPlaceViewController.h */,
+				54C4B2011BB3C09500110592 /* GoSearchPlaceViewController.m */,
+				54C4B2021BB3C09500110592 /* GoSearchPlaceViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -303,6 +321,11 @@
 		B1EDDEC91BB10A4100518E0C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				547A06261BB401F90079F1CC /* EndLocation.png */,
+				547A06271BB401F90079F1CC /* StartLocation.png */,
+				547A05DD1BB3FBB90079F1CC /* searchButtonBackground.png */,
+				547A05D71BB3EF3F0079F1CC /* background.png */,
+				547A05D11BB3DC260079F1CC /* background-blurred.jpg */,
 				54A8CD101BB315F70091B02A /* calendar.png */,
 				54A550F71BB160370000561B /* IconProfile@2x.png */,
 				5427F3251BB28AB900410622 /* SrcDest.png */,
@@ -387,8 +410,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				547A05D21BB3DC260079F1CC /* background-blurred.jpg in Resources */,
 				54A550D61BB148480000561B /* GoSettingsViewController.xib in Resources */,
 				54A8CD111BB315F70091B02A /* calendar.png in Resources */,
+				547A05DE1BB3FBB90079F1CC /* searchButtonBackground.png in Resources */,
 				54A550F91BB160370000561B /* IconProfile@2x.png in Resources */,
 				B191BED41BB3501500838839 /* GoPaymentConfirmation.xib in Resources */,
 				5427F3261BB28AB900410622 /* SrcDest.png in Resources */,
@@ -397,12 +422,16 @@
 				B1EDDED91BB10A4100518E0C /* LaunchScreen.storyboard in Resources */,
 				B10ECC981BB33E7900B19D66 /* GoSeatCollectionViewCell.xib in Resources */,
 				54A550CB1BB138A60000561B /* left-side-bar-hamburger@2x.png in Resources */,
+				547A06291BB401F90079F1CC /* StartLocation.png in Resources */,
 				B1EDDEEB1BB10D9A00518E0C /* GoHomeViewController.xib in Resources */,
 				B1EA1FCE1BB2AA9E00A6B580 /* GoBusInfoCell.xib in Resources */,
 				B10D989F1BB24E97005D74D1 /* GoBusListViewController.xib in Resources */,
 				B1EDDED61BB10A4100518E0C /* Assets.xcassets in Resources */,
+				547A05D81BB3EF3F0079F1CC /* background.png in Resources */,
+				54C4B2041BB3C09500110592 /* GoSearchPlaceViewController.xib in Resources */,
 				54A550CC1BB138A60000561B /* left-side-bar-hamburger@3x.png in Resources */,
 				B151F6811BB32D590017D908 /* contacts.plist in Resources */,
+				547A06281BB401F90079F1CC /* EndLocation.png in Resources */,
 				B151F6861BB335750017D908 /* GoSeatMetrixViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,6 +501,7 @@
 				B191BED31BB3501500838839 /* GoPaymentConfirmation.m in Sources */,
 				B10ECC971BB33E7900B19D66 /* GoSeatCollectionViewCell.m in Sources */,
 				B1EDDECB1BB10A4100518E0C /* main.m in Sources */,
+				54C4B2031BB3C09500110592 /* GoSearchPlaceViewController.m in Sources */,
 				B1EA1FCD1BB2AA9E00A6B580 /* GoBusInfoCell.m in Sources */,
 				B1EDDEF81BB14C9D00518E0C /* GoContactSync.m in Sources */,
 				B10D989E1BB24E97005D74D1 /* GoBusListViewController.m in Sources */,

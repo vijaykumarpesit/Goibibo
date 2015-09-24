@@ -11,22 +11,20 @@
 #import "GoBusListViewController.h"
 #import "GoUserModelManager.h"
 #import "GoUser.h"
+#import "GoSearchPlaceViewController.h"
 
-@interface GoHomeViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface GoHomeViewController ()
 
 @property (nonatomic, strong) NSMutableDictionary *eventsByDate;
 @property (nonatomic, strong) NSDate *todayDate;
 @property (nonatomic, strong) NSDate *minDate;
 @property (nonatomic, strong) NSDate *maxDate;
 @property (nonatomic, strong) NSDate *dateSelected;
-@property (weak, nonatomic) IBOutlet UIPickerView *sourcePickerView;
-@property (weak, nonatomic) IBOutlet UIPickerView *destinationPickerView;
 @property (weak, nonatomic) IBOutlet UIView *overlayView;
-@property (weak, nonatomic) IBOutlet UIButton *submitButton;
-@property (nonatomic, strong) NSMutableArray *sourcePlaces;
-@property (nonatomic, strong) NSMutableArray *destinationPlaces;
-@property (nonatomic) NSUInteger selectedSource;
-@property (nonatomic) NSUInteger selectedDestination;
+;
+@property (weak, nonatomic) IBOutlet UIView *sourceView;
+@property (weak, nonatomic) IBOutlet UIView *destinationView;
+@property (weak, nonatomic) IBOutlet UILabel *searchBusesLabel;
 
 @end
 
@@ -34,7 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Search Buses";
+    self.title = @"Search Bus";
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left-side-bar-hamburger.png"] landscapeImagePhone:nil style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonItemPressed:)];
     _calendarManager = [JTCalendarManager new];
     _calendarManager.delegate = self;
@@ -50,40 +49,20 @@
     [_calendarManager setDate:_todayDate];
 
     [self didChangeModeTouch];
-    _sourcePickerView.showsSelectionIndicator = YES;
-    _destinationPickerView.showsSelectionIndicator = YES;
-    [self configureSourceAndDestination];
-    self.sourcePickerView.layer.cornerRadius = 8.0f;
-    self.destinationPickerView.layer.cornerRadius = 8.0f;
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.sourcePickerView selectRow:1 inComponent:0 animated:YES];
-    [[_sourcePickerView.subviews objectAtIndex:1] setHidden:YES];
-    [[_sourcePickerView.subviews objectAtIndex:2] setHidden:YES];
-    self.selectedSource = 1;
-    [self.destinationPickerView selectRow:1 inComponent:0 animated:YES];
-    self.selectedDestination = 1;
-    [[_destinationPickerView.subviews objectAtIndex:1] setHidden:YES];
-    [[_destinationPickerView.subviews objectAtIndex:2] setHidden:YES];
-}
-
-- (void)configureSourceAndDestination {
-    _sourcePlaces = [NSMutableArray array];
-    [_sourcePlaces addObject:@"Bangalore"];
-    [_sourcePlaces addObject:@"Chennai"];
-    [_sourcePlaces addObject:@"Sirsi"];
-    [_sourcePlaces addObject:@"Kollam"];
-    [_sourcePlaces addObject:@"Hyderabad"];
     
-    _destinationPlaces = [NSMutableArray array];
-    [_destinationPlaces addObject:@"Hyderabad"];
-    [_destinationPlaces addObject:@"Kollam"];
-    [_destinationPlaces addObject:@"Sirsi"];
-    [_destinationPlaces addObject:@"Chennai"];
-    [_destinationPlaces addObject:@"Bangalore"];
+    [self configureAndAddTapGestureToView:self.sourceView andSelector:@selector(sourceViewTapped:)];
+    self.sourceView.userInteractionEnabled = YES;
+    [self configureAndAddTapGestureToView:self.destinationView andSelector:@selector(destinationViewTapped:)];
+    self.destinationView.userInteractionEnabled = YES;
+    [self configureAndAddTapGestureToView:self.searchBusesLabel andSelector:@selector(searchBusesLabelTapped:)];
+    self.searchBusesLabel.userInteractionEnabled = YES;
+}
+
+- (void)configureAndAddTapGestureToView:(UIView *)view andSelector:(SEL)selector {
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:selector];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    tapGestureRecognizer.numberOfTouchesRequired = 1;
+    [view addGestureRecognizer:tapGestureRecognizer];
 }
 
 #pragma mark - Buttons callback
@@ -100,10 +79,10 @@
     
     CGFloat newHeight = 300;
     [self.view bringSubviewToFront:self.overlayView];
-    self.overlayView.backgroundColor = [UIColor colorWithWhite:0.90f alpha:0.73f];
+    self.overlayView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
     if(_calendarManager.settings.weekModeEnabled){
         newHeight = 85.;
-        self.overlayView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:1.0f];
+        self.overlayView.backgroundColor = [UIColor clearColor];
         [self.view sendSubviewToBack:self.overlayView];
     }
     [UIView animateWithDuration:0.2f animations:^{
@@ -112,11 +91,47 @@
     }];
 }
 
-- (IBAction)submitButtonClicked:(id)sender {
-    NSString *source = [self.sourcePlaces[self.selectedSource] lowercaseString];
-    NSString *destination = [self.destinationPlaces[self.selectedDestination] lowercaseString];
-    if ([source isEqualToString:destination]) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Same Destination" message:[NSString stringWithFormat:@"Please set the proper source/destination"] preferredStyle:UIAlertControllerStyleAlert];
+- (void)sourceViewTapped:(id)sender {
+    [self presentSearchPlaceViewControllerIsForSourcePlace:YES];
+}
+
+- (void)presentSearchPlaceViewControllerIsForSourcePlace:(BOOL)isSourcePlace {
+    GoSearchPlaceViewController *gosearchPlaceViewController = [[GoSearchPlaceViewController alloc] initWithNibName:@"GoSearchPlaceViewController" bundle:nil];
+    gosearchPlaceViewController.isSourcePlace = isSourcePlace;
+    gosearchPlaceViewController.updateSelectedPlace = ^void(NSString *selectedPlace){
+        if (selectedPlace) {
+            if (isSourcePlace) {
+                ((UILabel *)[[self.sourceView subviews] objectAtIndex:2]).attributedText = [[NSAttributedString alloc] initWithString:selectedPlace attributes:nil];
+            } else {
+                ((UILabel *)[[self.destinationView subviews] objectAtIndex:2]).attributedText = [[NSAttributedString alloc] initWithString:selectedPlace attributes:nil];
+            }
+        }
+    };
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:gosearchPlaceViewController];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+}
+- (void)destinationViewTapped:(id)sender {
+    [self presentSearchPlaceViewControllerIsForSourcePlace:NO];
+}
+
+- (void)searchBusesLabelTapped:(id)sender {
+    NSString *source = [[self.sourceView.subviews objectAtIndex:2] attributedText].string;
+    NSString *destination = [[self.destinationView.subviews objectAtIndex:2] attributedText].string;
+    NSString *alertControllerTitle = nil;
+    NSString *alertControllerMessaage = nil;
+    if ([source isEqualToString:@"Source"]) {
+        alertControllerTitle = @"Source Place Not Set";
+        alertControllerMessaage = @"Please select the source of the journey";
+    } else if ([destination isEqualToString:@"Destination"]) {
+        alertControllerTitle = @"Destination Place Not Set";
+        alertControllerMessaage = @"Please select the destination of the journey";
+    } else if ([source isEqualToString:destination]) {
+        alertControllerTitle = @"Same Destination";
+        alertControllerMessaage = @"Please set the proper source/destination";
+    }
+    
+    if (alertControllerTitle) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertControllerTitle message:alertControllerMessaage preferredStyle:UIAlertControllerStyleAlert];
         [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             [alertController dismissViewControllerAnimated:YES completion:nil];
         }]];
@@ -285,41 +300,6 @@
     user.phoneNumber =  [phoneNo substringFromIndex:3];
     user.userID = aSession.userID;
     [user saveUser];
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    if ([pickerView isEqual:self.sourcePickerView]) {
-         self.selectedSource = row;
-    } else {
-        self.selectedDestination = row;
-    }
-    UILabel *placeName = (UILabel *)[pickerView viewForRow:row forComponent:component];
-    placeName.textColor = [UIColor blueColor];
-}
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if ([pickerView isEqual:self.sourcePickerView]) {
-        return self.sourcePlaces.count;
-    } else {
-        return self.destinationPlaces.count;
-    }
-}
-
-- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
-
-    UILabel *label = (UILabel *)view;
-    if (!label) {
-        label = [[UILabel alloc] init];
-        label.font = [UIFont fontWithName:@"HelveticaNeue" size:17.0f];
-        label.textColor = [UIColor colorWithRed:(80.0f/255.0f) green:(80.0f/255.0f) blue:(80.0f/255.0f) alpha:1.0f];
-        label.textAlignment = NSTextAlignmentCenter;
-    }
-    label.text = [pickerView isEqual:self.sourcePickerView] ? self.sourcePlaces[row] : self.destinationPlaces[row];
-    return label;
 }
 
 @end
