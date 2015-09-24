@@ -115,8 +115,8 @@
 }
 
 - (void)searchBusesLabelTapped:(id)sender {
-    NSString *source = [[self.sourceView.subviews objectAtIndex:2] attributedText].string;
-    NSString *destination = [[self.destinationView.subviews objectAtIndex:2] attributedText].string;
+    NSString *source = [[self.sourceView.subviews objectAtIndex:2] attributedText].string.lowercaseString;
+    NSString *destination = [[self.destinationView.subviews objectAtIndex:2] attributedText].string.lowercaseString;
     NSString *alertControllerTitle = nil;
     NSString *alertControllerMessaage = nil;
     if ([source isEqualToString:@"Source"]) {

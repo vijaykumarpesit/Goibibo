@@ -231,6 +231,9 @@
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
         NSDate*date = [dateFormatter dateFromString:dateString];
+        NSTimeZone *timeZone = [NSTimeZone defaultTimeZone];
+        NSInteger seconds = [timeZone secondsFromGMTForDate:date];
+        date = [NSDate dateWithTimeInterval:seconds sinceDate:date];
         busDetails.departureDate = date;
         
         NSDictionary *routeSeatTypeDetail = bus[@"RouteSeatTypeDetail"];
