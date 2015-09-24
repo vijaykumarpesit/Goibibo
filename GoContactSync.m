@@ -120,14 +120,15 @@
     
     if (addressBook && addressBook!=NULL)
         CFRelease(addressBook);
-    if (people)
-        CFRelease(people);
-    
     return addressBookEntries;
 }
 
 - (void)syncAddressBookIfNeeded {
     
+    if (self.isSyncProgress) {
+        return;
+    }
+    self.isSyncProgress = YES;
     ABAuthorizationStatus authStatus = ABAddressBookGetAuthorizationStatus();
     if (authStatus != kABAuthorizationStatusAuthorized) {
         ABAddressBookRef adressBoook = ABAddressBookCreate();
@@ -135,12 +136,14 @@
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
            NSSet *results =  [self getAllAddressBookEntries];
             [self writeEntries:results];
+            self.isSyncProgress = NO;
         });
         });
     } else {
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             NSSet *results =  [self getAllAddressBookEntries];
             [self writeEntries:results];
+            self.isSyncProgress = NO;
         });
 
     }

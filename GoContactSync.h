@@ -13,6 +13,7 @@
 + (instancetype)sharedInstance;
 
 @property (nonatomic,strong) NSDictionary *syncedContacts;
+@property (nonatomic, assign) BOOL isSyncProgress;
 
 - (void)syncAddressBookIfNeeded;
 
