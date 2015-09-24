@@ -95,8 +95,8 @@
                         entry.addressBookId = recordId;
                         entry.name = fullName;
                         NSString *phoneNo = [NSMutableString stringWithString:[[self class] trimNonDecimalCharactersInNumber:phoneNumber]];
-                        if (phoneNumber.length>10) {
-                            phoneNo = [phoneNo substringFromIndex:phoneNumber.length - 10];
+                        if (phoneNo.length>10) {
+                            phoneNo = [phoneNo substringFromIndex:phoneNo.length - 10];
                         }
                         entry.phoneNumber = phoneNo;
                         [addressBookEntries addObject:entry];
