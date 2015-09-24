@@ -35,7 +35,9 @@
     if (self) {
         self.source = source;
         self.destination = destination;
-        self.departureDate = [NSDate date];
+        NSTimeZone *timeZone = [NSTimeZone defaultTimeZone];
+        NSInteger seconds = [timeZone secondsFromGMTForDate:departureDate];
+        self.departureDate = [NSDate dateWithTimeInterval:seconds sinceDate:departureDate];
         self.arrivalDate = arrivalDate;
     }
     return self;
