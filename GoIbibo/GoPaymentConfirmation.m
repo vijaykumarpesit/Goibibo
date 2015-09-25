@@ -63,9 +63,9 @@
 }
 
 - (void)scanCardClicked:(id)sender {
-    //CardIOPaymentViewController *scanViewController = [[CardIOPaymentViewController alloc] initWithPaymentDelegate:self];
-    //[self presentViewController:scanViewController animated:YES completion:nil];
-    [self userDidProvideCreditCardInfo:nil inPaymentViewController:nil];
+    CardIOPaymentViewController *scanViewController = [[CardIOPaymentViewController alloc] initWithPaymentDelegate:self];
+    [self presentViewController:scanViewController animated:YES completion:nil];
+    //[self userDidProvideCreditCardInfo:nil inPaymentViewController:nil];
 }
 
 - (void)userDidCancelPaymentViewController:(CardIOPaymentViewController *)scanViewController {
