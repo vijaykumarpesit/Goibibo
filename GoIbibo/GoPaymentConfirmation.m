@@ -93,17 +93,17 @@
     MBProgressHUD *HUDView = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUDView.mode = MBProgressHUDModeIndeterminate;
     HUDView.labelText = @"Processing...";
-    [bookedBusDetails saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    [bookedBusDetails saveInBackground];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        if (succeeded) {
-            MBProgressHUD *HUDViewCompleted = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            HUDViewCompleted.mode = MBProgressHUDModeCustomView;
-            HUDViewCompleted.labelText = @"Completed";
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-                [self.navigationController popToRootViewControllerAnimated:YES];
-            });
-        }
-    }];
+        MBProgressHUD *HUDViewCompleted = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        HUDViewCompleted.mode = MBProgressHUDModeCustomView;
+        HUDViewCompleted.labelText = @"Completed";
+        HUDViewCompleted.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Checkmark.png"]];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        });
+    });
 }
 @end
