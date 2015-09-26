@@ -120,10 +120,10 @@
     NSString *destination = [[self.destinationView.subviews objectAtIndex:2] attributedText].string.lowercaseString;
     NSString *alertControllerTitle = nil;
     NSString *alertControllerMessaage = nil;
-    if ([source isEqualToString:@"Source"]) {
+    if ([source isEqualToString:@"source"]) {
         alertControllerTitle = @"Source Place Not Set";
         alertControllerMessaage = @"Please select the source of the journey";
-    } else if ([destination isEqualToString:@"Destination"]) {
+    } else if ([destination isEqualToString:@"destination"]) {
         alertControllerTitle = @"Destination Place Not Set";
         alertControllerMessaage = @"Please select the destination of the journey";
     } else if ([source isEqualToString:destination]) {
