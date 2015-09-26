@@ -129,7 +129,7 @@
         [self saveBusSeatLayoutFromResponseObject:responseObject];
         
         if (self.seats.count == 0) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No of seats retuned by API is 0" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"All seats might have already booked, Please try again" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
         }
         [self.collectionView setHidden:NO];
