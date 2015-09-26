@@ -49,9 +49,8 @@
 }
 
 - (void)rightBarButtonItemPressed:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        self.updateSelectedPlace(self.selectedPlace);
-    }];
+    self.updateSelectedPlace(self.selectedPlace);
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark - Table view data source
