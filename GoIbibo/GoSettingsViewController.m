@@ -9,6 +9,7 @@
 #import "GoSettingsViewController.h"
 #import "GoSettingsOption.h"
 #import <DigitsKit/DigitsKit.h>
+#import "GoLayoutHandler.h"
 
 @interface GoSettingsViewController ()
 
@@ -100,6 +101,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row == 0) {
+        [[Digits sharedInstance] logOut];
+        [GoLayoutHandler sharedInstance].sideMenu = nil;
+        [[[UIApplication sharedApplication] delegate] window].rootViewController = [[GoLayoutHandler sharedInstance] sideMenu];
+    }
 }
 
 /*

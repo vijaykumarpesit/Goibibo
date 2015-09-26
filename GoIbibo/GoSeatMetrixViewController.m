@@ -82,10 +82,18 @@
         GoPaymentConfirmation *paymentVC = [[GoPaymentConfirmation alloc] initWithBusDetails:self.busDetails withSeatNo:layout.seatNo];
         [self.navigationController pushViewController:paymentVC animated:YES];
     } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Seat Not Avialble" message:@"Please Select other" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+        NSString *alertControllerTitle = @"Seats Unavaliable";
+        NSString *alertControllerMessaage = @"Please select a different Bus";
+        if (layout.seatNo && [layout.seatNo isEqualToString:@""]) {
+            alertControllerTitle = @"Travel with your friend";
+            alertControllerMessaage = @"Contact goibibo to travel with your friend.";
+        }
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertControllerTitle message:alertControllerMessaage preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [alertController dismissViewControllerAnimated:YES completion:nil];
+        }]];
+        [self.navigationController presentViewController:alertController animated:YES completion:nil];
     }
-
 }
 
 - (void)loadBusLayoutMetrix {
