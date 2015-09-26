@@ -78,7 +78,7 @@
     // The full card number is available as info.cardNumber, but don't log that!
     //NSLog(@"Received card info. Number: %@, expiry: %02lu/%lu, cvv: %@.", info.redactedCardNumber, (unsigned long)info.expiryMonth, (unsigned long)info.expiryYear, info.cvv);
     // Use the card info...
-    //[scanViewController dismissViewControllerAnimated:YES completion:nil];
+    [scanViewController dismissViewControllerAnimated:YES completion:nil];
     
     PFObject *bookedBusDetails = [PFObject objectWithClassName:@"BusBookingDetails"];
     bookedBusDetails[@"skey"] = self.busDetails.skey;
