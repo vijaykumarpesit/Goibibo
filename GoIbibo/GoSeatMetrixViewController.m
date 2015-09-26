@@ -11,6 +11,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "GoBusSeatLayout.h"
 #import "GoPaymentConfirmation.h"
+#import "GoSeatSeletionHeaderView.h"
 
 @interface GoSeatMetrixViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, strong) NSMutableArray *seats;
@@ -37,9 +38,14 @@
     [super viewDidLoad];
     self.seats = [[NSMutableArray alloc] init];
     [self.collectionView registerNib:[UINib nibWithNibName:@"GoSeatCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"busSeatCell"];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"GoSeatSeletionHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
     [self loadBusLayoutMetrix];
     [self.collectionView setHidden:YES];
     // Do any additional setup after loading the view.
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -62,7 +68,6 @@
         cell.backgroundImageView.image = [UIImage imageNamed:@"bookedSeat.png"];
         cell.backgroundImageView.alpha = .5f;
         cell.seatNo.alpha = .9f;
-        cell.userInteractionEnabled = NO;
     } else {
         cell.backgroundImageView.image = [UIImage imageNamed:@"availableSeat.png"];
     }
@@ -76,14 +81,27 @@
                       mainScreenBounds.size.width/2.5) ;
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    return CGSizeMake(collectionView.frame.size.width, 241.0f);
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        
+        UICollectionReusableView *reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+        return reusableview;
+    }
+    return nil;
+}
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     GoBusSeatLayout *layout = [self.seats objectAtIndex:indexPath.row];
     if (layout.isSeatAvailable) {
         GoPaymentConfirmation *paymentVC = [[GoPaymentConfirmation alloc] initWithBusDetails:self.busDetails withSeatNo:layout.seatNo];
         [self.navigationController pushViewController:paymentVC animated:YES];
     } else {
-        NSString *alertControllerTitle = @"Seats Unavaliable";
-        NSString *alertControllerMessaage = @"Please select a different Bus";
+        NSString *alertControllerTitle = @"Seat Already Booked";
+        NSString *alertControllerMessaage = @"Seats which are in orange and blue color is already booked, please select a seat which is in white and black color";
         if (layout.seatNo && [layout.seatNo isEqualToString:@""]) {
             alertControllerTitle = @"Travel with your friend";
             alertControllerMessaage = @"Contact goibibo to travel with your friend.";

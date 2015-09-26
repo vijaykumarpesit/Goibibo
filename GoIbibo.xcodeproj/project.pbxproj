@@ -13,6 +13,8 @@
 		5458A8E81BB686AA008D9ED5 /* buddySeat.png in Resources */ = {isa = PBXBuildFile; fileRef = 5458A8E71BB686AA008D9ED5 /* buddySeat.png */; settings = {ASSET_TAGS = (); }; };
 		546DE9861BB6ACEE005E5A8F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 546DE9851BB6ACEE005E5A8F /* MBProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
 		546DE9881BB6B6C9005E5A8F /* Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 546DE9871BB6B6C9005E5A8F /* Checkmark@2x.png */; settings = {ASSET_TAGS = (); }; };
+		546DE98A1BB6B999005E5A8F /* GoSeatSeletionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546DE9891BB6B999005E5A8F /* GoSeatSeletionHeaderView.xib */; settings = {ASSET_TAGS = (); }; };
+		546DE98D1BB6BC45005E5A8F /* GoSeatSeletionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 546DE98C1BB6BC45005E5A8F /* GoSeatSeletionHeaderView.m */; settings = {ASSET_TAGS = (); }; };
 		547A05D21BB3DC260079F1CC /* background-blurred.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 547A05D11BB3DC260079F1CC /* background-blurred.jpg */; };
 		547A05D81BB3EF3F0079F1CC /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A05D71BB3EF3F0079F1CC /* background.png */; };
 		547A05DE1BB3FBB90079F1CC /* searchButtonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A05DD1BB3FBB90079F1CC /* searchButtonBackground.png */; };
@@ -85,6 +87,9 @@
 		546DE9841BB6ACEE005E5A8F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		546DE9851BB6ACEE005E5A8F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		546DE9871BB6B6C9005E5A8F /* Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkmark@2x.png"; sourceTree = "<group>"; };
+		546DE9891BB6B999005E5A8F /* GoSeatSeletionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoSeatSeletionHeaderView.xib; sourceTree = "<group>"; };
+		546DE98B1BB6BC45005E5A8F /* GoSeatSeletionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoSeatSeletionHeaderView.h; sourceTree = "<group>"; };
+		546DE98C1BB6BC45005E5A8F /* GoSeatSeletionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoSeatSeletionHeaderView.m; sourceTree = "<group>"; };
 		547A05D11BB3DC260079F1CC /* background-blurred.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "background-blurred.jpg"; sourceTree = "<group>"; };
 		547A05D71BB3EF3F0079F1CC /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		547A05DD1BB3FBB90079F1CC /* searchButtonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchButtonBackground.png; sourceTree = "<group>"; };
@@ -250,6 +255,9 @@
 				B10ECC961BB33E7900B19D66 /* GoSeatCollectionViewCell.xib */,
 				546DE9841BB6ACEE005E5A8F /* MBProgressHUD.h */,
 				546DE9851BB6ACEE005E5A8F /* MBProgressHUD.m */,
+				546DE9891BB6B999005E5A8F /* GoSeatSeletionHeaderView.xib */,
+				546DE98B1BB6BC45005E5A8F /* GoSeatSeletionHeaderView.h */,
+				546DE98C1BB6BC45005E5A8F /* GoSeatSeletionHeaderView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -438,6 +446,7 @@
 				54A8CD111BB315F70091B02A /* calendar.png in Resources */,
 				547A05DE1BB3FBB90079F1CC /* searchButtonBackground.png in Resources */,
 				54A550F91BB160370000561B /* IconProfile@2x.png in Resources */,
+				546DE98A1BB6B999005E5A8F /* GoSeatSeletionHeaderView.xib in Resources */,
 				B191BED41BB3501500838839 /* GoPaymentConfirmation.xib in Resources */,
 				5427F3261BB28AB900410622 /* SrcDest.png in Resources */,
 				B1EDDEF31BB1118200518E0C /* DigitsKitResources.bundle in Resources */,
@@ -533,6 +542,7 @@
 				B1EDDECB1BB10A4100518E0C /* main.m in Sources */,
 				54C4B2031BB3C09500110592 /* GoSearchPlaceViewController.m in Sources */,
 				B1EA1FCD1BB2AA9E00A6B580 /* GoBusInfoCell.m in Sources */,
+				546DE98D1BB6BC45005E5A8F /* GoSeatSeletionHeaderView.m in Sources */,
 				B1EDDEF81BB14C9D00518E0C /* GoContactSync.m in Sources */,
 				B10D989E1BB24E97005D74D1 /* GoBusListViewController.m in Sources */,
 				B1EDDEE81BB10C6400518E0C /* RESideMenu.m in Sources */,
