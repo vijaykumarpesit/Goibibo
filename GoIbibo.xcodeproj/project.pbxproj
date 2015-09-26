@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5427F3261BB28AB900410622 /* SrcDest.png in Resources */ = {isa = PBXBuildFile; fileRef = 5427F3251BB28AB900410622 /* SrcDest.png */; };
+		5458A8E51BB65F82008D9ED5 /* availableSeat.png in Resources */ = {isa = PBXBuildFile; fileRef = 5458A8E31BB65F82008D9ED5 /* availableSeat.png */; settings = {ASSET_TAGS = (); }; };
+		5458A8E61BB65F82008D9ED5 /* bookedSeat.png in Resources */ = {isa = PBXBuildFile; fileRef = 5458A8E41BB65F82008D9ED5 /* bookedSeat.png */; settings = {ASSET_TAGS = (); }; };
+		5458A8E81BB686AA008D9ED5 /* buddySeat.png in Resources */ = {isa = PBXBuildFile; fileRef = 5458A8E71BB686AA008D9ED5 /* buddySeat.png */; settings = {ASSET_TAGS = (); }; };
 		547A05D21BB3DC260079F1CC /* background-blurred.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 547A05D11BB3DC260079F1CC /* background-blurred.jpg */; };
 		547A05D81BB3EF3F0079F1CC /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A05D71BB3EF3F0079F1CC /* background.png */; };
 		547A05DE1BB3FBB90079F1CC /* searchButtonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A05DD1BB3FBB90079F1CC /* searchButtonBackground.png */; };
@@ -74,6 +77,9 @@
 		29DF6E63E872EBD0B024D6DD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DB25A0CFB6305D6FF431522 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5427F3251BB28AB900410622 /* SrcDest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SrcDest.png; sourceTree = "<group>"; };
+		5458A8E31BB65F82008D9ED5 /* availableSeat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = availableSeat.png; sourceTree = "<group>"; };
+		5458A8E41BB65F82008D9ED5 /* bookedSeat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookedSeat.png; sourceTree = "<group>"; };
+		5458A8E71BB686AA008D9ED5 /* buddySeat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buddySeat.png; sourceTree = "<group>"; };
 		547A05D11BB3DC260079F1CC /* background-blurred.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "background-blurred.jpg"; sourceTree = "<group>"; };
 		547A05D71BB3EF3F0079F1CC /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		547A05DD1BB3FBB90079F1CC /* searchButtonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchButtonBackground.png; sourceTree = "<group>"; };
@@ -325,6 +331,9 @@
 		B1EDDEC91BB10A4100518E0C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5458A8E71BB686AA008D9ED5 /* buddySeat.png */,
+				5458A8E31BB65F82008D9ED5 /* availableSeat.png */,
+				5458A8E41BB65F82008D9ED5 /* bookedSeat.png */,
 				547A06381BB41C7F0079F1CC /* Teal Collaboration Icon.png */,
 				547A06261BB401F90079F1CC /* EndLocation.png */,
 				547A06271BB401F90079F1CC /* StartLocation.png */,
@@ -434,11 +443,14 @@
 				B1EDDEEB1BB10D9A00518E0C /* GoHomeViewController.xib in Resources */,
 				B1EA1FCE1BB2AA9E00A6B580 /* GoBusInfoCell.xib in Resources */,
 				B10D989F1BB24E97005D74D1 /* GoBusListViewController.xib in Resources */,
+				5458A8E51BB65F82008D9ED5 /* availableSeat.png in Resources */,
 				B1EDDED61BB10A4100518E0C /* Assets.xcassets in Resources */,
 				547A05D81BB3EF3F0079F1CC /* background.png in Resources */,
+				5458A8E81BB686AA008D9ED5 /* buddySeat.png in Resources */,
 				54C4B2041BB3C09500110592 /* GoSearchPlaceViewController.xib in Resources */,
 				54A550CC1BB138A60000561B /* left-side-bar-hamburger@3x.png in Resources */,
 				B151F6811BB32D590017D908 /* contacts.plist in Resources */,
+				5458A8E61BB65F82008D9ED5 /* bookedSeat.png in Resources */,
 				547A06281BB401F90079F1CC /* EndLocation.png in Resources */,
 				B151F6861BB335750017D908 /* GoSeatMetrixViewController.xib in Resources */,
 			);

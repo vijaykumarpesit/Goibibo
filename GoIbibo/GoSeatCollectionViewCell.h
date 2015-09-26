@@ -12,4 +12,5 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *seatNo;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *labelCenterXConstrait;
 @end

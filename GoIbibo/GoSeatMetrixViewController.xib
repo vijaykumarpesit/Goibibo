@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9046" systemVersion="15A282b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9035"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GoSeatMetrixViewController">
             <connections>
                 <outlet property="collectionView" destination="n2f-nu-Fwa" id="nb5-gP-abb"/>
-                <outlet property="searchingLabel" destination="R1I-QQ-i7K" id="aC2-YR-acP"/>
+                <outlet property="searchingView" destination="pi9-ew-jgQ" id="uti-Os-GcD"/>
                 <outlet property="view" destination="iN0-l3-epB" id="eog-mz-91J"/>
             </connections>
         </placeholder>
@@ -32,23 +32,42 @@
                         <outlet property="delegate" destination="-1" id="8fe-Zn-hCE"/>
                     </connections>
                 </collectionView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Searching....." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1I-QQ-i7K">
-                    <rect key="frame" x="231" y="195" width="42" height="21"/>
-                    <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pi9-ew-jgQ" userLabel="SeacrhingView">
+                    <rect key="frame" x="219" y="271.5" width="162.5" height="57"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="35a-oX-jgR">
+                            <rect key="frame" x="0.0" y="10" width="37" height="37"/>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching...." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDE-fX-SZW">
+                            <rect key="frame" x="47" y="4" width="95.5" height="49"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="FDE-fX-SZW" firstAttribute="leading" secondItem="35a-oX-jgR" secondAttribute="trailing" constant="10" id="1Zc-eN-Igx"/>
+                        <constraint firstItem="35a-oX-jgR" firstAttribute="top" secondItem="pi9-ew-jgQ" secondAttribute="top" constant="10" id="7q3-9u-hoM"/>
+                        <constraint firstAttribute="trailing" secondItem="FDE-fX-SZW" secondAttribute="trailing" constant="20" symbolic="YES" id="CZv-0j-Uef"/>
+                        <constraint firstAttribute="bottom" secondItem="35a-oX-jgR" secondAttribute="bottom" constant="10" id="hQB-iG-hCa"/>
+                        <constraint firstItem="FDE-fX-SZW" firstAttribute="top" secondItem="pi9-ew-jgQ" secondAttribute="top" constant="4" id="iWS-OQ-Tzb"/>
+                        <constraint firstItem="35a-oX-jgR" firstAttribute="leading" secondItem="pi9-ew-jgQ" secondAttribute="leading" id="tnO-AS-8ss"/>
+                        <constraint firstAttribute="bottom" secondItem="FDE-fX-SZW" secondAttribute="bottom" constant="4" id="xxY-uf-bEV"/>
+                    </constraints>
+                </view>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="R1I-QQ-i7K" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="1TT-Ys-yoM"/>
+                <constraint firstItem="pi9-ew-jgQ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Crk-oe-JfR"/>
                 <constraint firstAttribute="trailing" secondItem="n2f-nu-Fwa" secondAttribute="trailing" id="RpK-vc-lKI"/>
-                <constraint firstItem="R1I-QQ-i7K" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Sem-ud-UzY"/>
+                <constraint firstItem="pi9-ew-jgQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aZy-Dj-6oS"/>
                 <constraint firstItem="n2f-nu-Fwa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="h1a-UI-sub"/>
+                <constraint firstItem="pi9-ew-jgQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="jos-vw-M11"/>
                 <constraint firstItem="n2f-nu-Fwa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jp4-Om-ubY"/>
                 <constraint firstAttribute="bottom" secondItem="n2f-nu-Fwa" secondAttribute="bottom" id="lH8-au-6UY"/>
+                <constraint firstItem="pi9-ew-jgQ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="tFK-47-Lul"/>
             </constraints>
         </view>
     </objects>

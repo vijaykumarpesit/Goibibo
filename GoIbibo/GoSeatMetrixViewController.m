@@ -15,7 +15,7 @@
 @interface GoSeatMetrixViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, strong) NSMutableArray *seats;
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, weak) IBOutlet UILabel *searchingLabel;
+@property (nonatomic, weak) IBOutlet UIView *searchingView;
 @property (nonatomic, strong) GoBusDetails *busDetails;
 @property (nonatomic, strong) NSString *seatNoReservedByFriend;
 
@@ -50,17 +50,21 @@
     GoSeatCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"busSeatCell" forIndexPath:indexPath];
     GoBusSeatLayout *layout = [self.seats objectAtIndex:indexPath.row];
     cell.seatNo.text = layout.seatNo;
-    [cell.backgroundImageView setHidden:YES];
+    cell.userInteractionEnabled = YES;
+    cell.backgroundImageView.alpha = 1.0f;
+    cell.seatNo.alpha = 1.0f;
     
     if(layout.seatNo && [layout.seatNo isEqualToString:self.seatNoReservedByFriend]){
         cell.seatNo.text = layout.seatNo;
-        [cell.backgroundImageView setHidden:NO];
-        
-    }else if (!layout.isSeatAvailable) {
-        [cell setBackgroundColor:[UIColor redColor]];
+        cell.backgroundImageView.image = [UIImage imageNamed:@"buddySeat.png"];
+        cell.labelCenterXConstrait.constant += 10.0f;
+    } else if (!layout.isSeatAvailable) {
+        cell.backgroundImageView.image = [UIImage imageNamed:@"bookedSeat.png"];
+        cell.backgroundImageView.alpha = .5f;
+        cell.seatNo.alpha = .9f;
+        cell.userInteractionEnabled = NO;
     } else {
-        [cell setBackgroundColor:[UIColor greenColor]];
-        
+        cell.backgroundImageView.image = [UIImage imageNamed:@"availableSeat.png"];
     }
     return cell;
 }
@@ -103,7 +107,7 @@
             [alert show];
         }
         [self.collectionView setHidden:NO];
-        [self.searchingLabel setHidden:YES];
+        [self.searchingView setHidden:YES];
         [self.collectionView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -117,7 +121,8 @@
 - (void)saveBusSeatLayoutFromResponseObject:(id)responseObject {
     
     NSDictionary *data = [responseObject valueForKey:@"data"];
-    NSArray *busSeats = [data valueForKey:@"onwardSeats"];
+    NSMutableArray *busSeats = [[data valueForKey:@"onwardSeats"] mutableCopy];
+    [busSeats  sortUsingFunction:sortSeatNumber context:NULL];
     
     for(id busSeat in busSeats) {
         GoBusSeatLayout *busSeatLayout = [[GoBusSeatLayout alloc] init];
@@ -132,6 +137,18 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+NSComparisonResult sortSeatNumber(id seat1, id seat2, void * context) {
+    NSString *seatNo1 = seat1[@"SeatName"];
+    NSString *seatNo2 = seat2[@"SeatName"];
+    if (seatNo1.length == 2) {
+        seatNo1 = [NSString stringWithFormat:@"0%@", seatNo1];
+    }
+    if (seatNo2.length == 2) {
+        seatNo2 = [NSString stringWithFormat:@"0%@", seatNo2];
+    }
+    return [seatNo1 caseInsensitiveCompare:seatNo2];
 }
 
 @end
