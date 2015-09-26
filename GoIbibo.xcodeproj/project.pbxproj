@@ -11,6 +11,7 @@
 		5458A8E51BB65F82008D9ED5 /* availableSeat.png in Resources */ = {isa = PBXBuildFile; fileRef = 5458A8E31BB65F82008D9ED5 /* availableSeat.png */; settings = {ASSET_TAGS = (); }; };
 		5458A8E61BB65F82008D9ED5 /* bookedSeat.png in Resources */ = {isa = PBXBuildFile; fileRef = 5458A8E41BB65F82008D9ED5 /* bookedSeat.png */; settings = {ASSET_TAGS = (); }; };
 		5458A8E81BB686AA008D9ED5 /* buddySeat.png in Resources */ = {isa = PBXBuildFile; fileRef = 5458A8E71BB686AA008D9ED5 /* buddySeat.png */; settings = {ASSET_TAGS = (); }; };
+		546DE9861BB6ACEE005E5A8F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 546DE9851BB6ACEE005E5A8F /* MBProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
 		547A05D21BB3DC260079F1CC /* background-blurred.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 547A05D11BB3DC260079F1CC /* background-blurred.jpg */; };
 		547A05D81BB3EF3F0079F1CC /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A05D71BB3EF3F0079F1CC /* background.png */; };
 		547A05DE1BB3FBB90079F1CC /* searchButtonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A05DD1BB3FBB90079F1CC /* searchButtonBackground.png */; };
@@ -80,6 +81,8 @@
 		5458A8E31BB65F82008D9ED5 /* availableSeat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = availableSeat.png; sourceTree = "<group>"; };
 		5458A8E41BB65F82008D9ED5 /* bookedSeat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookedSeat.png; sourceTree = "<group>"; };
 		5458A8E71BB686AA008D9ED5 /* buddySeat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buddySeat.png; sourceTree = "<group>"; };
+		546DE9841BB6ACEE005E5A8F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		546DE9851BB6ACEE005E5A8F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		547A05D11BB3DC260079F1CC /* background-blurred.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "background-blurred.jpg"; sourceTree = "<group>"; };
 		547A05D71BB3EF3F0079F1CC /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		547A05DD1BB3FBB90079F1CC /* searchButtonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchButtonBackground.png; sourceTree = "<group>"; };
@@ -243,6 +246,8 @@
 				B10ECC941BB33E7900B19D66 /* GoSeatCollectionViewCell.h */,
 				B10ECC951BB33E7900B19D66 /* GoSeatCollectionViewCell.m */,
 				B10ECC961BB33E7900B19D66 /* GoSeatCollectionViewCell.xib */,
+				546DE9841BB6ACEE005E5A8F /* MBProgressHUD.h */,
+				546DE9851BB6ACEE005E5A8F /* MBProgressHUD.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -511,6 +516,7 @@
 			files = (
 				B1EA1FEE1BB2F1BA00A6B580 /* GoUserModelManager.m in Sources */,
 				B1EDDEFB1BB14CBE00518E0C /* GoContactSyncEntry.m in Sources */,
+				546DE9861BB6ACEE005E5A8F /* MBProgressHUD.m in Sources */,
 				B1EDDED11BB10A4100518E0C /* GoHomeViewController.m in Sources */,
 				B10ECC9B1BB342F800B19D66 /* GoBusSeatLayout.m in Sources */,
 				54A550D51BB148480000561B /* GoSettingsViewController.m in Sources */,

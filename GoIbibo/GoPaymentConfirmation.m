@@ -10,6 +10,7 @@
 #import "CardIO.h"
 #import "GoUser.h"
 #import "GoUserModelManager.h"
+#import "MBProgressHUD.h"
 
 
 @interface GoPaymentConfirmation ()<CardIOPaymentViewControllerDelegate>
@@ -89,7 +90,20 @@
     bookedBusDetails[@"source"] = self.busDetails.source;
     bookedBusDetails[@"destination"] = self.busDetails.destination;
     bookedBusDetails[@"departureDate"] = self.busDetails.departureDate;
-    [bookedBusDetails saveInBackground];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    MBProgressHUD *HUDView = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUDView.mode = MBProgressHUDModeIndeterminate;
+    HUDView.labelText = @"Processing...";
+    [bookedBusDetails saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if (succeeded) {
+            MBProgressHUD *HUDViewCompleted = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            HUDViewCompleted.mode = MBProgressHUDModeCustomView;
+            HUDViewCompleted.labelText = @"Completed";
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            });
+        }
+    }];
 }
 @end
