@@ -7,7 +7,6 @@
 //
 
 #import "GOHotelCellCollectionViewCell.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation GOHotelCellCollectionViewCell
 
