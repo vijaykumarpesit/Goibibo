@@ -24,9 +24,6 @@
 @property (weak, nonatomic) IBOutlet UIView *sourceView;
 @property (weak, nonatomic) IBOutlet UIView *destinationView;
 @property (weak, nonatomic) IBOutlet UILabel *searchBusesLabel;
-@property (weak, nonatomic) IBOutlet UILabel *incrementSeats;
-@property (weak, nonatomic) IBOutlet UILabel *decrementSeats;
-@property (weak, nonatomic) IBOutlet UILabel *numberOfSeats;
 
 @end
 
@@ -58,10 +55,6 @@
     self.destinationView.userInteractionEnabled = YES;
     [self configureAndAddTapGestureToView:self.searchBusesLabel andSelector:@selector(searchBusesLabelTapped:)];
     self.searchBusesLabel.userInteractionEnabled = YES;
-    [self configureAndAddTapGestureToView:self.incrementSeats andSelector:@selector(incrementSeats:)];
-    self.incrementSeats.userInteractionEnabled = YES;
-    [self configureAndAddTapGestureToView:self.decrementSeats andSelector:@selector(decrementSeats:)];
-    self.decrementSeats.userInteractionEnabled = YES;
 }
 
 - (void)configureAndAddTapGestureToView:(UIView *)view andSelector:(SEL)selector {
@@ -120,16 +113,6 @@
 }
 - (void)destinationViewTapped:(id)sender {
     [self presentSearchPlaceViewControllerIsForSourcePlace:NO];
-}
-
-- (void)incrementSeats:(id)sender {
-    self.numberOfSeats.text = [NSString stringWithFormat:@"%ld",[self.numberOfSeats.text integerValue] + 1];
-}
-
-- (void)decrementSeats:(id)sender {
-    if ([self.numberOfSeats.text integerValue] > 0) {
-        self.numberOfSeats.text = [NSString stringWithFormat:@"%ld",[self.numberOfSeats.text integerValue] - 1];
-    }
 }
 
 - (void)searchBusesLabelTapped:(id)sender {
