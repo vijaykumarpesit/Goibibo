@@ -86,7 +86,7 @@
     PFObject *bookedBusDetails = [PFObject objectWithClassName:@"BusBookingDetails"];
     bookedBusDetails[@"skey"] = self.busDetails.skey;
     bookedBusDetails[@"bookedUserPhoneNo"] = [[[GoUserModelManager sharedManager] currentUser] phoneNumber];
-    bookedBusDetails[@"bookedSeatNo"] = self.seatNoDictionary;
+    bookedBusDetails[@"seatNoDictionary"] = self.seatNoDictionary;
     bookedBusDetails[@"departureTime"] = self.busDetails.departureTime;
     bookedBusDetails[@"travelsName"] = self.busDetails.travelsName;
     bookedBusDetails[@"source"] = self.busDetails.source;

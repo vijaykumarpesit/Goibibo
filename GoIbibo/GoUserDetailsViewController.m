@@ -32,7 +32,7 @@
     self.userDetialsInfo = @[@"Passenger Name", @"Mobile", @"Seat No."];
     self.userDetailsDictionary = [NSMutableDictionary dictionary];
     
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 95, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 70, 0);
     
     [self.tableView registerNib:[UINib nibWithNibName:@"GoUserDetailsCell" bundle:nil] forCellReuseIdentifier:@"GoUserDetailsCellIdentifier"];
     
@@ -82,7 +82,12 @@
     cell.textFieldDescription.text = self.userDetialsInfo[indexPath.row];
     cell.textField.tag = 100 * indexPath.section + indexPath.row;
     cell.textField.text = [[self.userDetailsDictionary valueForKey:[self.busBookingDetails objectAtIndex:indexPath.section]] valueForKey:self.userDetialsInfo[indexPath.row]];
-    cell.textField.delegate = self;
+    if (indexPath.row == 2) {
+        cell.textField.userInteractionEnabled = NO;
+        cell.textField.delegate = nil;
+    } else {
+        cell.textField.delegate = self;
+    }
     return cell;
 }
 

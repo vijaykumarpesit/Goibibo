@@ -19,19 +19,19 @@
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, weak) IBOutlet UIView *searchingView;
 @property (nonatomic, strong) GoBusDetails *busDetails;
-@property (nonatomic, strong) NSString *seatNoReservedByFriend;
+@property (nonatomic, strong) NSDictionary *seatNoReservedByFriendDict;
 @property (nonatomic, strong) NSMutableArray *selectedSeats;
 
 @end
 
 @implementation GoSeatMetrixViewController
 
-- (instancetype)initWithBusDetails:(GoBusDetails *)busDetails seatNoReservedByFriend:(NSString *)seatNo {
+- (instancetype)initWithBusDetails:(GoBusDetails *)busDetails seatNoReservedByFriendDict:(NSDictionary *)seatNoDict {
 
     self = [super initWithNibName:@"GoSeatMetrixViewController" bundle:nil];
     if (self) {
         self.busDetails = busDetails;
-        self.seatNoReservedByFriend = seatNo;
+        self.seatNoReservedByFriendDict = seatNoDict;
     }
     return self;
 }
@@ -66,7 +66,7 @@
     cell.backgroundImageView.alpha = 1.0f;
     cell.seatNo.alpha = 1.0f;
     
-    if(layout.seatNo && [layout.seatNo isEqualToString:self.seatNoReservedByFriend]){
+    if(layout.seatNo && [self.seatNoReservedByFriendDict.allKeys containsObject:layout.seatNo]){
         cell.seatNo.text = layout.seatNo;
         cell.backgroundImageView.image = [UIImage imageNamed:@"buddySeat.png"];
         cell.labelCenterXConstrait.constant += 10.0f;

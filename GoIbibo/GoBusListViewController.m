@@ -98,7 +98,12 @@
         [mutableAttributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:(245.0f/255.0f) green:(50.0f/255.0f) blue:(50.0f/255.0f) alpha:1.0f]} range:NSMakeRange([bookedTicketInfo[@"soruce"] length] + 1, [bookedTicketInfo[@"destination"] length])];
         
         busInfoCell.availableSeats.text = [NSString stringWithFormat:@"%@ -->%@", bookedTicketInfo[@"source"], bookedTicketInfo[@"destination"]];
-        busInfoCell.minimumFare.text = bookedTicketInfo[@"bookedSeatNo"];
+        NSMutableString *minFare = [NSMutableString string];
+        NSDictionary *seatNoDict = bookedTicketInfo[@"seatNoDictionary"];
+        for (NSString *key in seatNoDict.allKeys) {
+            [minFare appendString:[NSString stringWithFormat:@"%@ ",key]];
+        }
+        busInfoCell.minimumFare.text = minFare;
         busInfoCell.departureToArrivalTime.text = bookedTicketInfo[@"travelsName"];
     } else {
 
@@ -122,7 +127,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
     GoBusDetails *busDetails = nil;
-    NSString *seatNoToExlude = nil;
+    NSDictionary *seatNoToExlude = nil;
     
     if (self.tableView.numberOfSections ==1) {
         busDetails = [self.busResults objectAtIndex:indexPath.row];
@@ -137,7 +142,7 @@
     }
     
     GoSeatMetrixViewController *metrixVC = [[GoSeatMetrixViewController alloc] initWithBusDetails:busDetails
-                                                                           seatNoReservedByFriend:seatNoToExlude];
+                                                                           seatNoReservedByFriendDict:seatNoToExlude];
     [self.navigationController pushViewController:metrixVC animated:YES];
 }
 
