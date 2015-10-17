@@ -11,8 +11,8 @@
 @interface GoSearchPlaceViewController () <UISearchBarDelegate>
 
 @property (nonatomic, copy) NSString *selectedPlace;
-@property (nonatomic, strong) NSMutableArray *placeArray;
-@property (nonatomic, strong) NSMutableArray *searchPlaceArray;
+@property (nonatomic, strong) NSMutableDictionary *placeDictionary;
+@property (nonatomic, strong) NSMutableDictionary *searchPlaceDictionary;
 @property (nonatomic) BOOL isSearching;
 @property (weak, nonatomic) IBOutlet UISearchBar *seachBar;
 
@@ -22,18 +22,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _placeArray = [NSMutableArray array];
-    _searchPlaceArray = [NSMutableArray array];
-    [_placeArray addObject:@"Bangalore"];
-    [_placeArray addObject:@"Chennai"];
-    [_placeArray addObject:@"Hyderabad"];
-    [_placeArray addObject:@"Sirsi"];
-    [_placeArray addObject:@"Kollam"];
-    [_placeArray addObject:@"Mandya"];
-    [_placeArray addObject:@"Mumbai"];
-    [_placeArray addObject:@"Pondicherry"];
-    [_placeArray addObject:@"Mysore"];
-    [_placeArray addObject:@"Hubli"];
+    _placeDictionary = [NSMutableDictionary dictionary];
+    _searchPlaceDictionary = [NSMutableDictionary dictionary];
+    [_placeDictionary setObject:@"Bangalore" forKey:@"1001"];
+    [_placeDictionary setObject:@"Chennai" forKey:@"1002"];
+    [_placeDictionary setObject:@"Hyderabad" forKey:@"1003"];
+    [_placeDictionary setObject:@"Sirsi" forKey:@"1004"];
+    [_placeDictionary setObject:@"Kollam" forKey:@"1005"];
+    [_placeDictionary setObject:@"Mandya" forKey:@"1006"];
+    [_placeDictionary setObject:@"Mumbai" forKey:@"1007"];
+    [_placeDictionary setObject:@"Pondicherry" forKey:@"1008"];
+    [_placeDictionary setObject:@"Mysore" forKey:@"1009"];
+    [_placeDictionary setObject:@"Hubli" forKey:@"10010"];
 
     self.seachBar.delegate = self;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(rightBarButtonItemPressed:)];
@@ -61,9 +61,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (self.isSearching) {
-        return self.searchPlaceArray.count;
+        return self.searchPlaceDictionary.count;
     }
-    return self.placeArray.count;
+    return self.placeDictionary.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -72,9 +72,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SearchPlace"];
     }
     if (self.isSearching) {
-        cell.textLabel.text = self.searchPlaceArray[indexPath.row];
+        cell.textLabel.text = [self.searchPlaceDictionary allValues][indexPath.row];
     } else {
-        cell.textLabel.text = self.placeArray[indexPath.row];
+        cell.textLabel.text = [self.placeDictionary allValues][indexPath.row];
     }
     if ([self.selectedPlace isEqualToString:cell.textLabel.text]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -87,9 +87,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (self.isSearching) {
-        self.selectedPlace = self.searchPlaceArray[indexPath.row];
+        self.selectedPlace = [self.searchPlaceDictionary allValues][indexPath.row];
     } else {
-        self.selectedPlace = self.placeArray[indexPath.row];
+        self.selectedPlace = [self.placeDictionary allValues][indexPath.row];
     }
     [self rightBarButtonItemPressed:nil];
 }
@@ -109,7 +109,7 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    _searchPlaceArray = [[self.placeArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self CONTAINS[cd] %@", searchText]] mutableCopy];
+    _searchPlaceDictionary = [[[self.placeDictionary allValues] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self CONTAINS[cd] %@", searchText]] mutableCopy];
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
