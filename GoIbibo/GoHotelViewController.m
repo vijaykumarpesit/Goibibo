@@ -10,6 +10,7 @@
 #import "GOHotelCellCollectionViewCell.h"
 #import "GoHotel.h"
 #import <AFNetworking/AFNetworking.h>
+#import "UIImageView+WebCache.h"
 
 
 static NSString *const hotelCellReuseID = @"gohotelcollectionviewcellresuseid";
@@ -52,6 +53,12 @@ static NSString *const hotelCellReuseID = @"gohotelcollectionviewcellresuseid";
     cell.imageURL = hotel.imageURL;
     cell.price.text = hotel.price.stringValue;
     cell.ratings.text = hotel.rating.stringValue;
+    
+    [cell.imageView setImageWithURL:[NSURL URLWithString:cell.imageURL]
+                   placeholderImage:[UIImage imageNamed:@"room-placeholder.png"]
+                            options:SDWebImageProgressiveDownload
+                          completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                          }];
     return cell;
 }
 
