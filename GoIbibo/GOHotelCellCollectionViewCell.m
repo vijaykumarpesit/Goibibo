@@ -7,11 +7,12 @@
 //
 
 #import "GOHotelCellCollectionViewCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation GOHotelCellCollectionViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    
 }
 
 @end

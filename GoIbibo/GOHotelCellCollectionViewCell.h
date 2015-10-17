@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface GOHotelCellCollectionViewCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *price;
+@property (weak, nonatomic) IBOutlet UILabel *ratings;
+@property (nonatomic, weak) NSString *imageURL;
 
 @end
