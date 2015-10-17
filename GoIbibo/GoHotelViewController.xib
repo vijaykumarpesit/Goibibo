@@ -16,9 +16,14 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_1042.PNG" translatesAutoresizingMaskIntoConstraints="NO" id="f6E-bJ-iw2">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <animations/>
+                </imageView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yJ1-1B-nJ9">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="4" id="5Sd-NU-HAo">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -37,8 +42,15 @@
                 <constraint firstAttribute="bottom" secondItem="yJ1-1B-nJ9" secondAttribute="bottom" id="Hhr-Dg-ipp"/>
                 <constraint firstItem="yJ1-1B-nJ9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Tat-Dh-o7G"/>
                 <constraint firstAttribute="trailing" secondItem="yJ1-1B-nJ9" secondAttribute="trailing" id="YG3-T0-Zlx"/>
+                <constraint firstItem="f6E-bJ-iw2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cRE-Vw-9Mo"/>
+                <constraint firstAttribute="trailing" secondItem="f6E-bJ-iw2" secondAttribute="trailing" id="g2I-Qj-vaL"/>
                 <constraint firstItem="yJ1-1B-nJ9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jwH-0g-QKZ"/>
+                <constraint firstAttribute="bottom" secondItem="f6E-bJ-iw2" secondAttribute="bottom" id="t3q-ey-dj4"/>
+                <constraint firstItem="f6E-bJ-iw2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="x2m-qz-ScZ"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="IMG_1042.PNG" width="640" height="1136"/>
+    </resources>
 </document>

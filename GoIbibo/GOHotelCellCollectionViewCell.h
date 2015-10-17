@@ -14,5 +14,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *price;
 @property (weak, nonatomic) IBOutlet UILabel *ratings;
 @property (nonatomic, weak) NSString *imageURL;
+@property (weak, nonatomic) IBOutlet UILabel *friendName;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *friendNameView;
+@property (weak, nonatomic) IBOutlet UIButton *bookButton;
 
 @end

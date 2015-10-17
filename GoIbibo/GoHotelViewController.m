@@ -18,6 +18,7 @@ static NSString *const hotelCellReuseID = @"gohotelcollectionviewcellresuseid";
 @interface GoHotelViewController ()
 
 @property (nonatomic, strong) NSMutableArray *hotelDetails;
+@property (nonatomic, strong) NSMutableArray *selectedHotelsByFriends;
 
 @end
 
@@ -26,7 +27,11 @@ static NSString *const hotelCellReuseID = @"gohotelcollectionviewcellresuseid";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.hotelDetails = [[NSMutableArray alloc] init];
-    [self.hotelCollectionView registerNib:[UINib nibWithNibName:@"GOHotelCellCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:hotelCellReuseID];
+    self.selectedHotelsByFriends = [[NSMutableArray alloc] init];
+    
+    [self.hotelCollectionView registerNib:[UINib nibWithNibName:@"GOHotelCellCollectionViewCell"
+                                                         bundle:[NSBundle mainBundle]]
+               forCellWithReuseIdentifier:hotelCellReuseID];
     self.cityID = @"6123261334828772222";
     self.checkInDate = [NSDate date];
     self.checkoutDate = [[NSDate date] dateByAddingTimeInterval:24*60*60];
@@ -37,22 +42,45 @@ static NSString *const hotelCellReuseID = @"gohotelcollectionviewcellresuseid";
 
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    if (self.selectedHotelsByFriends.count > 0) {
+        return 2;
+    }
     return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
+    if (self.selectedHotelsByFriends.count >0 && section == 0) {
+        return self.selectedHotelsByFriends.count;
+    }
     return self.hotelDetails.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    GoHotel *hotel = [self.hotelDetails objectAtIndex:indexPath.row];
+    GoHotel *hotel = nil;
+    
+    if (self.selectedHotelsByFriends.count > 0 && indexPath.section == 0) {
+        hotel = [self.hotelDetails objectAtIndex:indexPath.row];
+    } else {
+        hotel = [self.hotelDetails objectAtIndex:indexPath.row];
+    
+    }
+    
     GOHotelCellCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:hotelCellReuseID forIndexPath:indexPath];
     cell.nameLabel.text = hotel.name;
     cell.imageURL = hotel.imageURL;
-    cell.price.text = hotel.price.stringValue;
-    cell.ratings.text = hotel.rating.stringValue;
+    cell.price.text = [NSString stringWithFormat:@"Price:%@ INR",hotel.price.stringValue];
+    cell.ratings.text = [NSString stringWithFormat:@"Rating:%@/5",hotel.rating.stringValue];
+    [cell.bookButton addTarget:self action:@selector(bookButtonClikced:) forControlEvents:UIControlEventTouchUpInside];
+    
+    if (hotel.selectedFriendName) {
+        cell.friendName.text = hotel.selectedFriendName;
+        [cell.friendNameView setHidden:NO];
+    } else {
+        [cell.friendNameView setHidden:YES];
+
+    }
     
     [cell.imageView setImageWithURL:[NSURL URLWithString:cell.imageURL]
                    placeholderImage:[UIImage imageNamed:@"room-placeholder.png"]
@@ -71,6 +99,8 @@ static NSString *const hotelCellReuseID = @"gohotelcollectionviewcellresuseid";
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+
+
 }
 
 - (void)fetchHotelDetails {
@@ -127,8 +157,13 @@ static NSString *const hotelCellReuseID = @"gohotelcollectionviewcellresuseid";
         
         hotel.rating = obj[@"gr"];
         hotel.imageURL = obj[@"tbig"];
+        hotel.noOfRoomsAvailable = obj[@"room_count"];
         [self.hotelDetails addObject:hotel];
     }];
+    
+}
+
+- (void)bookButtonClikced:(UIButton *)sender {
     
 }
 

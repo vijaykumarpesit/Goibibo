@@ -17,4 +17,7 @@
 @property (nonatomic, strong) NSNumber *lattitude;
 @property (nonatomic, strong) NSNumber *longitude;
 @property (nonatomic, strong) NSNumber *price;
+@property (nonatomic, strong) NSString *selectedFriendName;
+@property (nonatomic, strong) NSString *selctedFriendNumber;
+@property (nonatomic, strong) NSNumber *noOfRoomsAvailable;
 @end
