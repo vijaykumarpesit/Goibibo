@@ -11,7 +11,7 @@
 @implementation GOHotelCellCollectionViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    
 }
 
 @end

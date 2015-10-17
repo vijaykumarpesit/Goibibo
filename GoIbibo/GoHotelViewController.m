@@ -25,7 +25,7 @@ static NSString *const hotelCellReuseID = @"gohotelcollectionviewcellresuseid";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.hotelDetails = [[NSMutableArray alloc] init];
-    [self.hotelCollectionView registerClass:[GOHotelCellCollectionViewCell class] forCellWithReuseIdentifier:hotelCellReuseID];
+    [self.hotelCollectionView registerNib:[UINib nibWithNibName:@"GOHotelCellCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:hotelCellReuseID];
     self.cityID = @"6123261334828772222";
     self.checkInDate = [NSDate date];
     self.checkoutDate = [[NSDate date] dateByAddingTimeInterval:24*60*60];
@@ -48,7 +48,10 @@ static NSString *const hotelCellReuseID = @"gohotelcollectionviewcellresuseid";
     
     GoHotel *hotel = [self.hotelDetails objectAtIndex:indexPath.row];
     GOHotelCellCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:hotelCellReuseID forIndexPath:indexPath];
-    [cell setBackgroundColor:[UIColor whiteColor]];
+    cell.nameLabel.text = hotel.name;
+    cell.imageURL = hotel.imageURL;
+    cell.price.text = hotel.price.stringValue;
+    cell.ratings.text = hotel.rating.stringValue;
     return cell;
 }
 
@@ -56,7 +59,7 @@ static NSString *const hotelCellReuseID = @"gohotelcollectionviewcellresuseid";
     
     CGRect mainScreenBounds = [[UIScreen mainScreen] bounds];
     return CGSizeMake(mainScreenBounds.size.width,
-                      mainScreenBounds.size.height/2);
+                      mainScreenBounds.size.height/2.5);
 }
 
 
