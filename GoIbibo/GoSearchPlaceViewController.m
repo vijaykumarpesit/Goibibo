@@ -26,7 +26,6 @@
     self.extendedLayoutIncludesOpaqueBars = YES;
     _placeDictionary = [NSMutableDictionary dictionary];
     _searchPlaceDictionary = [NSMutableDictionary dictionary];
-    [_placeDictionary setObject:@"Bangalore" forKey:@"6771549831164675055"];
     [_placeDictionary setObject:@"Chennai" forKey:@"4354390963378411938"];
     [_placeDictionary setObject:@"Hyderabad" forKey:@"2162254155836171767"];
     [_placeDictionary setObject:@"New Delhi" forKey:@"2820046943342890302"];
@@ -66,7 +65,7 @@
     [_placeDictionary setObject:@"Hassan" forKey:@"4013299611085558956"];
     [_placeDictionary setObject:@"Guntur" forKey:@"5456312398449971170"];
     [_placeDictionary setObject:@"Kolhapur" forKey:@"3931060669256740310"];
-    [_placeDictionary setObject:@"Kurukshetra" forKey:@"718127000995117916"];
+    [_placeDictionary setObject:@"Bangalore" forKey:@"6771549831164675055"];
     [_placeDictionary setObject:@"Mettupalayam" forKey:@"1760301079813577051"];
     [_placeDictionary setObject:@"Pantnagar" forKey:@"8702978431111111111"];
     [_placeDictionary setObject:@"Shimoga" forKey:@"2510520520918709430"];
