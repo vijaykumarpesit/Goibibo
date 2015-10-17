@@ -47,6 +47,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.extendedLayoutIncludesOpaqueBars = YES;
     self.title = [NSString stringWithFormat:@"%@ to %@", [self.source capitalizedString], [self.destination capitalizedString]];
     self.busResults = [[NSMutableArray alloc] init];
     self.friendsList = [[NSMutableArray alloc] init];

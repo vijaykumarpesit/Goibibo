@@ -518,7 +518,9 @@
                 <constraint firstItem="hvl-6u-NkU" firstAttribute="top" secondItem="elR-MW-ApK" secondAttribute="bottom" id="CPH-zh-xjx"/>
                 <constraint firstItem="elR-MW-ApK" firstAttribute="top" secondItem="4uO-XU-aBn" secondAttribute="bottom" id="KeR-uh-heK"/>
                 <constraint firstItem="elR-MW-ApK" firstAttribute="leading" secondItem="H7M-2c-Oc1" secondAttribute="leading" id="PHE-Nd-gvL"/>
-                <constraint firstItem="4uO-XU-aBn" firstAttribute="top" secondItem="H7M-2c-Oc1" secondAttribute="top" constant="64" id="YIQ-ok-4X3"/>
+                <constraint firstItem="4uO-XU-aBn" firstAttribute="top" secondItem="H7M-2c-Oc1" secondAttribute="top" constant="64" id="YIQ-ok-4X3">
+                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                </constraint>
                 <constraint firstAttribute="bottom" secondItem="hvl-6u-NkU" secondAttribute="bottom" id="bjC-gp-hAq"/>
                 <constraint firstItem="hvl-6u-NkU" firstAttribute="leading" secondItem="H7M-2c-Oc1" secondAttribute="leading" id="glt-HI-9Ds"/>
                 <constraint firstAttribute="trailing" secondItem="elR-MW-ApK" secondAttribute="trailing" id="hiv-8Z-b2X"/>

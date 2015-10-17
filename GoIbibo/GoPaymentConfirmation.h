@@ -11,5 +11,5 @@
 
 @interface GoPaymentConfirmation : UIViewController
 
-- (instancetype)initWithBusDetails:(GoBusDetails *)busDetails withSeatNo:(NSString *)seatNo;
+- (instancetype)initWithBusDetails:(GoBusDetails *)busDetails withSeatNos:(NSArray *)seatNos;
 @end

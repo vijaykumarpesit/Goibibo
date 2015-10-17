@@ -15,7 +15,7 @@
 
 @interface GoPaymentConfirmation ()<CardIOPaymentViewControllerDelegate>
 @property (nonatomic, strong) GoBusDetails *busDetails;
-@property (nonatomic, strong) NSString *seatNo;
+@property (nonatomic, strong) NSArray *seatNos;
 @property (weak, nonatomic) IBOutlet UIImageView *scanCardImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *netBanking;
 @property (weak, nonatomic) IBOutlet UIImageView *wallets;
@@ -23,18 +23,20 @@
 
 @implementation GoPaymentConfirmation
 
-- (instancetype)initWithBusDetails:(GoBusDetails *)busDetails withSeatNo:(NSString *)seatNo
+- (instancetype)initWithBusDetails:(GoBusDetails *)busDetails withSeatNos:(NSArray *)seatNos
  {
     self = [super initWithNibName:@"GoPaymentConfirmation" bundle:nil];
     if (self) {
         self.busDetails = busDetails;
-        self.seatNo = seatNo;
+        self.seatNos = seatNos;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.extendedLayoutIncludesOpaqueBars = YES;
     [CardIOUtilities preload];
     [self configureAndAddTapGestureToView:self.scanCardImageView andSelector:@selector(scanCardClicked:)];
     self.scanCardImageView.userInteractionEnabled = YES;
@@ -84,7 +86,7 @@
     PFObject *bookedBusDetails = [PFObject objectWithClassName:@"BusBookingDetails"];
     bookedBusDetails[@"skey"] = self.busDetails.skey;
     bookedBusDetails[@"bookedUserPhoneNo"] = [[[GoUserModelManager sharedManager] currentUser] phoneNumber];
-    bookedBusDetails[@"bookedSeatNo"] = self.seatNo;
+    bookedBusDetails[@"bookedSeatNo"] = self.seatNos;
     bookedBusDetails[@"departureTime"] = self.busDetails.departureTime;
     bookedBusDetails[@"travelsName"] = self.busDetails.travelsName;
     bookedBusDetails[@"source"] = self.busDetails.source;

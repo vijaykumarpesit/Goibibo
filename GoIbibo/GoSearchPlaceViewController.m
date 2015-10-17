@@ -22,6 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.extendedLayoutIncludesOpaqueBars = YES;
     _placeDictionary = [NSMutableDictionary dictionary];
     _searchPlaceDictionary = [NSMutableDictionary dictionary];
     [_placeDictionary setObject:@"Bangalore" forKey:@"6771549831164675055"];
