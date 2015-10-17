@@ -86,7 +86,8 @@
     PFObject *bookedBusDetails = [PFObject objectWithClassName:@"BusBookingDetails"];
     bookedBusDetails[@"skey"] = self.busDetails.skey;
     bookedBusDetails[@"bookedUserPhoneNo"] = [[[GoUserModelManager sharedManager] currentUser] phoneNumber];
-    bookedBusDetails[@"seatNoDictionary"] = self.seatNoDictionary;
+    NSString *dictString = [self hexStringFromDictionary:self.seatNoDictionary];
+    bookedBusDetails[@"seatNoDictionary"] = dictString;
     bookedBusDetails[@"departureTime"] = self.busDetails.departureTime;
     bookedBusDetails[@"travelsName"] = self.busDetails.travelsName;
     bookedBusDetails[@"source"] = self.busDetails.source;
@@ -107,5 +108,13 @@
             [self.navigationController popToRootViewControllerAnimated:YES];
         });
     });
+}
+
+- (NSString *) hexStringFromDictionary:(NSDictionary *)dict {
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict
+                                                       options:0
+                                                         error:&error];
+    return [jsonData description];
 }
 @end

@@ -99,7 +99,7 @@
         
         busInfoCell.availableSeats.text = [NSString stringWithFormat:@"%@ -->%@", bookedTicketInfo[@"source"], bookedTicketInfo[@"destination"]];
         NSMutableString *minFare = [NSMutableString string];
-        NSDictionary *seatNoDict = bookedTicketInfo[@"seatNoDictionary"];
+        NSDictionary *seatNoDict = [self dictionaryFromHexString:bookedTicketInfo[@"seatNoDictionary"]];
         for (NSString *key in seatNoDict.allKeys) {
             [minFare appendString:[NSString stringWithFormat:@"%@ ",key]];
         }
@@ -135,7 +135,7 @@
         if (indexPath.section == 0) {
             NSDictionary *bookedBusDict = [self.friendsList objectAtIndex:indexPath.row];
             busDetails = [self buDetailObjectFromDictionary:bookedBusDict];
-            seatNoToExlude = bookedBusDict[@"bookedSeatNo"];
+            seatNoToExlude = [self dictionaryFromHexString:bookedBusDict[@"seatNoDictionary"]];
         } else if(indexPath.section ==1) {
             busDetails = [self.busResults objectAtIndex:indexPath.row];
         }
@@ -144,6 +144,28 @@
     GoSeatMetrixViewController *metrixVC = [[GoSeatMetrixViewController alloc] initWithBusDetails:busDetails
                                                                            seatNoReservedByFriendDict:seatNoToExlude];
     [self.navigationController pushViewController:metrixVC animated:YES];
+}
+
+- (NSDictionary *) dictionaryFromHexString:(NSString *)string {
+    
+    string = [string lowercaseString];
+    NSMutableData *data= [NSMutableData new];
+    unsigned char whole_byte;
+    char byte_chars[3] = {'\0','\0','\0'};
+    int i = 0;
+    int length = string.length;
+    while (i < length-1) {
+        char c = [string characterAtIndex:i++];
+        if (c < '0' || (c > '9' && c < 'a') || c > 'f')
+            continue;
+        byte_chars[0] = c;
+        byte_chars[1] = [string characterAtIndex:i++];
+        whole_byte = strtol(byte_chars, NULL, 16);
+        [data appendBytes:&whole_byte length:1];
+        
+    }
+    
+    return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 }
 
 - (GoBusDetails *)buDetailObjectFromDictionary:(NSDictionary *)dict {
