@@ -13,6 +13,7 @@
 #import "GoPaymentConfirmation.h"
 #import "GoSeatSeletionHeaderView.h"
 #import "GoUserDetailsViewController.h"
+#import "CMPopTipView.h"
 
 @interface GoSeatMetrixViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, strong) NSMutableArray *seats;
@@ -21,6 +22,7 @@
 @property (nonatomic, strong) GoBusDetails *busDetails;
 @property (nonatomic, strong) NSDictionary *seatNoReservedByFriendDict;
 @property (nonatomic, strong) NSMutableArray *selectedSeats;
+@property (nonatomic, strong) CMPopTipView *popTip;
 
 @end
 
@@ -47,6 +49,8 @@
     [self loadBusLayoutMetrix];
     [self.collectionView setHidden:YES];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonTapped:)];
+    UILongPressGestureRecognizer *longPressRec = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressed:)];
+    [self.collectionView addGestureRecognizer:longPressRec];
     // Do any additional setup after loading the view.
 }
 
@@ -69,7 +73,7 @@
     if(layout.seatNo && [self.seatNoReservedByFriendDict.allKeys containsObject:layout.seatNo]){
         cell.seatNo.text = layout.seatNo;
         cell.backgroundImageView.image = [UIImage imageNamed:@"buddySeat.png"];
-        cell.labelCenterXConstrait.constant += 10.0f;
+        cell.labelCenterXConstrait.constant += (cell.labelCenterXConstrait.constant == 10.0f)? 0.0f : 10.0f;
     } else if (!layout.isSeatAvailable) {
         cell.backgroundImageView.image = [UIImage imageNamed:@"bookedSeat.png"];
         cell.backgroundImageView.alpha = .5f;
@@ -188,6 +192,23 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)longPressed:(UILongPressGestureRecognizer *)gestureReco {
+    if (gestureReco.state == UIGestureRecognizerStateBegan) {
+        CGPoint  location = [gestureReco locationInView:gestureReco.view];
+        NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:location];
+        GoBusSeatLayout *layout = [self.seats objectAtIndex:indexPath.row];
+        if(layout.seatNo && [self.seatNoReservedByFriendDict.allKeys containsObject:layout.seatNo]){
+            UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+            NSString *key = layout.seatNo;
+            NSDictionary *dict =  self.seatNoReservedByFriendDict[key];
+            self.popTip = [[CMPopTipView alloc] initWithMessage:dict[@"Passenger Name"]];
+            [self.popTip presentPointingAtView:cell inView:self.collectionView animated:YES];
+        }
+    } else if (gestureReco.state == UIGestureRecognizerStateEnded) {
+        [self.popTip dismissAnimated:YES];
+    }
 }
 
 NSComparisonResult sortSeatNumber(id seat1, id seat2, void * context) {

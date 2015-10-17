@@ -25,6 +25,7 @@
 		547A06281BB401F90079F1CC /* EndLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A06261BB401F90079F1CC /* EndLocation.png */; };
 		547A06291BB401F90079F1CC /* StartLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A06271BB401F90079F1CC /* StartLocation.png */; };
 		547A06391BB41C7F0079F1CC /* Teal Collaboration Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A06381BB41C7F0079F1CC /* Teal Collaboration Icon.png */; };
+		5483E04A1BD2FB0000D45D67 /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5483E0491BD2FB0000D45D67 /* CMPopTipView.m */; settings = {ASSET_TAGS = (); }; };
 		54A550CB1BB138A60000561B /* left-side-bar-hamburger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550C91BB138A60000561B /* left-side-bar-hamburger@2x.png */; };
 		54A550CC1BB138A60000561B /* left-side-bar-hamburger@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550CA1BB138A60000561B /* left-side-bar-hamburger@3x.png */; };
 		54A550D51BB148480000561B /* GoSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A550D31BB148480000561B /* GoSettingsViewController.m */; };
@@ -129,6 +130,8 @@
 		547A06261BB401F90079F1CC /* EndLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EndLocation.png; sourceTree = "<group>"; };
 		547A06271BB401F90079F1CC /* StartLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartLocation.png; sourceTree = "<group>"; };
 		547A06381BB41C7F0079F1CC /* Teal Collaboration Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Teal Collaboration Icon.png"; sourceTree = "<group>"; };
+		5483E0481BD2FB0000D45D67 /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
+		5483E0491BD2FB0000D45D67 /* CMPopTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPopTipView.m; sourceTree = "<group>"; };
 		54A550C91BB138A60000561B /* left-side-bar-hamburger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-side-bar-hamburger@2x.png"; sourceTree = "<group>"; };
 		54A550CA1BB138A60000561B /* left-side-bar-hamburger@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-side-bar-hamburger@3x.png"; sourceTree = "<group>"; };
 		54A550D21BB148480000561B /* GoSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoSettingsViewController.h; sourceTree = "<group>"; };
@@ -365,6 +368,8 @@
 		B1EA1FCF1BB2ACBB00A6B580 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5483E0481BD2FB0000D45D67 /* CMPopTipView.h */,
+				5483E0491BD2FB0000D45D67 /* CMPopTipView.m */,
 				B1EA1FCA1BB2AA9E00A6B580 /* GoBusInfoCell.h */,
 				B1EA1FCB1BB2AA9E00A6B580 /* GoBusInfoCell.m */,
 				B1EA1FCC1BB2AA9E00A6B580 /* GoBusInfoCell.xib */,
@@ -710,6 +715,7 @@
 				B130C8C51BD2786F00B1E0BA /* SDWebImageCompat.m in Sources */,
 				B130C8CF1BD2786F00B1E0BA /* UIImageView+HighlightedWebCache.m in Sources */,
 				B130C8C31BD2786F00B1E0BA /* NSData+ImageContentType.m in Sources */,
+				5483E04A1BD2FB0000D45D67 /* CMPopTipView.m in Sources */,
 				B151F67B1BB31E360017D908 /* GoBookedBusDetail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
