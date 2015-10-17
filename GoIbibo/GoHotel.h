@@ -13,8 +13,8 @@
 @property (nonatomic, strong) NSString *hotelID;
 @property (nonatomic, strong) NSString *imageURL;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *rating;
-@property (nonatomic, strong) NSString *lattitude;
-@property (nonatomic, strong) NSString *longitude;
-@property (nonatomic, strong) NSString *price;
+@property (nonatomic, strong) NSNumber *rating;
+@property (nonatomic, strong) NSNumber *lattitude;
+@property (nonatomic, strong) NSNumber *longitude;
+@property (nonatomic, strong) NSNumber *price;
 @end

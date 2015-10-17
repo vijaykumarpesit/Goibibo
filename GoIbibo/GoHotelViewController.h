@@ -10,5 +10,7 @@
 
 @interface GoHotelViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UICollectionView *hotelCollectionView;
-
+@property (nonatomic, strong) NSString *cityID;
+@property (nonatomic, strong) NSDate *checkInDate;
+@property (nonatomic, strong) NSDate *checkoutDate;
 @end

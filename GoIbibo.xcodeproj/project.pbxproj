@@ -45,6 +45,8 @@
 		B155BE761BD241A70074E72D /* GoHotelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B155BE741BD241A70074E72D /* GoHotelViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B155BE771BD241A70074E72D /* GoHotelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B155BE751BD241A70074E72D /* GoHotelViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		B155BE7A1BD2458E0074E72D /* GoHotel.m in Sources */ = {isa = PBXBuildFile; fileRef = B155BE791BD2458E0074E72D /* GoHotel.m */; settings = {ASSET_TAGS = (); }; };
+		B155BE7E1BD249290074E72D /* GOHotelCellCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B155BE7C1BD249290074E72D /* GOHotelCellCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		B155BE7F1BD249290074E72D /* GOHotelCellCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B155BE7D1BD249290074E72D /* GOHotelCellCollectionViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		B191BED31BB3501500838839 /* GoPaymentConfirmation.m in Sources */ = {isa = PBXBuildFile; fileRef = B191BED11BB3501500838839 /* GoPaymentConfirmation.m */; };
 		B191BED41BB3501500838839 /* GoPaymentConfirmation.xib in Resources */ = {isa = PBXBuildFile; fileRef = B191BED21BB3501500838839 /* GoPaymentConfirmation.xib */; };
 		B1E2440C1BB40A1700878E7A /* buddycopy.png in Resources */ = {isa = PBXBuildFile; fileRef = B1E2440B1BB40A1700878E7A /* buddycopy.png */; };
@@ -134,6 +136,9 @@
 		B155BE751BD241A70074E72D /* GoHotelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoHotelViewController.xib; sourceTree = "<group>"; };
 		B155BE781BD2458E0074E72D /* GoHotel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoHotel.h; sourceTree = "<group>"; };
 		B155BE791BD2458E0074E72D /* GoHotel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoHotel.m; sourceTree = "<group>"; };
+		B155BE7B1BD249290074E72D /* GOHotelCellCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOHotelCellCollectionViewCell.h; sourceTree = "<group>"; };
+		B155BE7C1BD249290074E72D /* GOHotelCellCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOHotelCellCollectionViewCell.m; sourceTree = "<group>"; };
+		B155BE7D1BD249290074E72D /* GOHotelCellCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GOHotelCellCollectionViewCell.xib; sourceTree = "<group>"; };
 		B191BED01BB3501500838839 /* GoPaymentConfirmation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoPaymentConfirmation.h; sourceTree = "<group>"; };
 		B191BED11BB3501500838839 /* GoPaymentConfirmation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoPaymentConfirmation.m; sourceTree = "<group>"; };
 		B191BED21BB3501500838839 /* GoPaymentConfirmation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoPaymentConfirmation.xib; sourceTree = "<group>"; };
@@ -270,6 +275,9 @@
 				546DE9891BB6B999005E5A8F /* GoSeatSeletionHeaderView.xib */,
 				546DE98B1BB6BC45005E5A8F /* GoSeatSeletionHeaderView.h */,
 				546DE98C1BB6BC45005E5A8F /* GoSeatSeletionHeaderView.m */,
+				B155BE7B1BD249290074E72D /* GOHotelCellCollectionViewCell.h */,
+				B155BE7C1BD249290074E72D /* GOHotelCellCollectionViewCell.m */,
+				B155BE7D1BD249290074E72D /* GOHotelCellCollectionViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -470,6 +478,7 @@
 				B1EDDED91BB10A4100518E0C /* LaunchScreen.storyboard in Resources */,
 				547A06391BB41C7F0079F1CC /* Teal Collaboration Icon.png in Resources */,
 				B10ECC981BB33E7900B19D66 /* GoSeatCollectionViewCell.xib in Resources */,
+				B155BE7F1BD249290074E72D /* GOHotelCellCollectionViewCell.xib in Resources */,
 				54A550CB1BB138A60000561B /* left-side-bar-hamburger@2x.png in Resources */,
 				B1EE44C11BB6F77100B47C8F /* IMG_1042.PNG in Resources */,
 				B1E2440C1BB40A1700878E7A /* buddycopy.png in Resources */,
@@ -551,6 +560,7 @@
 				B1EDDED11BB10A4100518E0C /* GoHomeViewController.m in Sources */,
 				B10ECC9B1BB342F800B19D66 /* GoBusSeatLayout.m in Sources */,
 				54A550D51BB148480000561B /* GoSettingsViewController.m in Sources */,
+				B155BE7E1BD249290074E72D /* GOHotelCellCollectionViewCell.m in Sources */,
 				B155BE761BD241A70074E72D /* GoHotelViewController.m in Sources */,
 				B151F6841BB3353B0017D908 /* GoSeatMetrixViewController.m in Sources */,
 				54A550EC1BB154060000561B /* GoSettingsOption.m in Sources */,
