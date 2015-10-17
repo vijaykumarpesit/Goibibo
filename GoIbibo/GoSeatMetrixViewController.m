@@ -165,6 +165,7 @@
 - (void)doneButtonTapped:(id)sender {
     GoUserDetailsViewController *userDetailsVC = [[GoUserDetailsViewController alloc] initWithNibName:@"GoUserDetailsViewController" bundle:nil];
     userDetailsVC.busBookingDetails = self.selectedSeats;
+    userDetailsVC.goBusDetails = self.busDetails;
     [self.navigationController pushViewController:userDetailsVC animated:YES];
 }
 

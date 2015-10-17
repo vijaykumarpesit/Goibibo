@@ -10,7 +10,7 @@
 #import "GoUserDetailsCell.h"
 #import "GoPaymentConfirmation.h"
 
-@interface GoUserDetailsViewController () <UITableViewDataSource, UITabBarDelegate>
+@interface GoUserDetailsViewController () <UITableViewDataSource, UITabBarDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary *userDetailsDictionary;
 @property (nonatomic, strong) NSArray *userDetialsInfo;
@@ -32,14 +32,14 @@
     self.userDetialsInfo = @[@"Passenger Name", @"Mobile", @"Seat No."];
     self.userDetailsDictionary = [NSMutableDictionary dictionary];
     
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 110, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 95, 0);
     
     [self.tableView registerNib:[UINib nibWithNibName:@"GoUserDetailsCell" bundle:nil] forCellReuseIdentifier:@"GoUserDetailsCellIdentifier"];
     
     for (int i = 0; i < self.busBookingDetails.count; i++) {
-        [self.userDetailsDictionary setObject:@{self.userDetialsInfo[0]: @"",
+        [self.userDetailsDictionary setObject:[NSMutableDictionary dictionaryWithDictionary:@{self.userDetialsInfo[0]: @"",
                                                 self.userDetialsInfo[1]: @"",
-                                                self.userDetialsInfo[2]:self.busBookingDetails[i]}
+                                                self.userDetialsInfo[2]:self.busBookingDetails[i]}]
                                        forKey:self.busBookingDetails[i]];
     }
     
@@ -73,24 +73,33 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80.0;
+    return 77.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     GoUserDetailsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GoUserDetailsCellIdentifier" forIndexPath:indexPath];
     cell.textFieldDescription.text = self.userDetialsInfo[indexPath.row];
+    cell.textField.tag = 100 * indexPath.section + indexPath.row;
     cell.textField.text = [[self.userDetailsDictionary valueForKey:[self.busBookingDetails objectAtIndex:indexPath.section]] valueForKey:self.userDetialsInfo[indexPath.row]];
+    cell.textField.delegate = self;
     return cell;
 }
 
 - (void)doneButtonTapped:(id)sender {
-    GoPaymentConfirmation *paymentConfirmation = [[GoPaymentConfirmation alloc] initWithBusDetails:nil withSeatNos:nil];
+    GoPaymentConfirmation *paymentConfirmation = [[GoPaymentConfirmation alloc] initWithBusDetails:self.goBusDetails withSeatNoDictionary:self.userDetailsDictionary];
     [self.navigationController pushViewController:paymentConfirmation animated:YES];
 }
 
 - (IBAction)flip:(id)sender {
     
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    NSInteger section = textField.tag / 100;
+    NSInteger row = textField.tag % 100;
+    NSMutableDictionary *dict = [self.userDetailsDictionary valueForKey:[self.busBookingDetails objectAtIndex:section]];
+    [dict setObject:textField.text forKey:[self.userDetialsInfo objectAtIndex:row]];
 }
 
 /*

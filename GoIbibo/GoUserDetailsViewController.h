@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class GoBusDetails;
+
 @interface GoUserDetailsViewController : UIViewController
 @property (nonatomic, strong) NSArray *busBookingDetails;
+@property (nonatomic, strong) GoBusDetails *goBusDetails;
 @end

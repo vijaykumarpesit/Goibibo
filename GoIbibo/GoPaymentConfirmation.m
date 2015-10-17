@@ -15,7 +15,7 @@
 
 @interface GoPaymentConfirmation ()<CardIOPaymentViewControllerDelegate>
 @property (nonatomic, strong) GoBusDetails *busDetails;
-@property (nonatomic, strong) NSArray *seatNos;
+@property (nonatomic, strong) NSDictionary *seatNoDictionary;
 @property (weak, nonatomic) IBOutlet UIImageView *scanCardImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *netBanking;
 @property (weak, nonatomic) IBOutlet UIImageView *wallets;
@@ -23,12 +23,12 @@
 
 @implementation GoPaymentConfirmation
 
-- (instancetype)initWithBusDetails:(GoBusDetails *)busDetails withSeatNos:(NSArray *)seatNos
+- (instancetype)initWithBusDetails:(GoBusDetails *)busDetails withSeatNoDictionary:(NSDictionary *)seatNoDictionary;
  {
     self = [super initWithNibName:@"GoPaymentConfirmation" bundle:nil];
     if (self) {
         self.busDetails = busDetails;
-        self.seatNos = seatNos;
+        self.seatNoDictionary = seatNoDictionary;
     }
     return self;
 }
@@ -86,7 +86,7 @@
     PFObject *bookedBusDetails = [PFObject objectWithClassName:@"BusBookingDetails"];
     bookedBusDetails[@"skey"] = self.busDetails.skey;
     bookedBusDetails[@"bookedUserPhoneNo"] = [[[GoUserModelManager sharedManager] currentUser] phoneNumber];
-    bookedBusDetails[@"bookedSeatNo"] = self.seatNos;
+    bookedBusDetails[@"bookedSeatNo"] = self.seatNoDictionary;
     bookedBusDetails[@"departureTime"] = self.busDetails.departureTime;
     bookedBusDetails[@"travelsName"] = self.busDetails.travelsName;
     bookedBusDetails[@"source"] = self.busDetails.source;
