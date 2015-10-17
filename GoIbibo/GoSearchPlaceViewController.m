@@ -26,16 +26,55 @@
     self.extendedLayoutIncludesOpaqueBars = YES;
     _placeDictionary = [NSMutableDictionary dictionary];
     _searchPlaceDictionary = [NSMutableDictionary dictionary];
-    [_placeDictionary setObject:@"Bangalore" forKey:@"1001"];
-    [_placeDictionary setObject:@"Chennai" forKey:@"1002"];
-    [_placeDictionary setObject:@"Hyderabad" forKey:@"1003"];
-    [_placeDictionary setObject:@"Sirsi" forKey:@"1004"];
-    [_placeDictionary setObject:@"Kollam" forKey:@"1005"];
-    [_placeDictionary setObject:@"Mandya" forKey:@"1006"];
-    [_placeDictionary setObject:@"Mumbai" forKey:@"1007"];
-    [_placeDictionary setObject:@"Pondicherry" forKey:@"1008"];
-    [_placeDictionary setObject:@"Mysore" forKey:@"1009"];
-    [_placeDictionary setObject:@"Hubli" forKey:@"10010"];
+    [_placeDictionary setObject:@"Bangalore" forKey:@"6771549831164675055"];
+    [_placeDictionary setObject:@"Chennai" forKey:@"4354390963378411938"];
+    [_placeDictionary setObject:@"Hyderabad" forKey:@"2162254155836171767"];
+    [_placeDictionary setObject:@"New Delhi" forKey:@"2820046943342890302"];
+    [_placeDictionary setObject:@"Kollam" forKey:@"9181313283980120876"];
+    [_placeDictionary setObject:@"Mandya" forKey:@"488538077236154664"];
+    [_placeDictionary setObject:@"Mumbai" forKey:@"1914808440588557366"];
+    [_placeDictionary setObject:@"Pondicherry" forKey:@"7247861711286471145"];
+    [_placeDictionary setObject:@"Mysore" forKey:@"6237241643285427714"];
+    [_placeDictionary setObject:@"Hubli" forKey:@"4175146706007535451"];
+    [_placeDictionary setObject:@"Gangotri" forKey:@"5001619947363078572"];
+    [_placeDictionary setObject:@"Mantralayam" forKey:@"6123261334828772222"];
+    [_placeDictionary setObject:@"Shimla" forKey:@"1449073512565742573"];
+    [_placeDictionary setObject:@"Mumbai" forKey:@"4213513766539949483"];
+    [_placeDictionary setObject:@"Lumbini" forKey:@"547330913285903480"];
+    [_placeDictionary setObject:@"Jodhpur" forKey:@"2455265397967176363"];
+    [_placeDictionary setObject:@"Badami" forKey:@"767346164151916001"];
+    [_placeDictionary setObject:@"Kolkata" forKey:@"2066465017672827882"];
+    [_placeDictionary setObject:@"Pune" forKey:@"1554245012668028405"];
+    [_placeDictionary setObject:@"Mangalore" forKey:@"8122644638120735625"];
+    [_placeDictionary setObject:@"Nawalgarh" forKey:@"2702997798690416798"];
+    [_placeDictionary setObject:@"Gandhinagar" forKey:@"6413353945126501356"];
+    [_placeDictionary setObject:@"Mathura" forKey:@"33265771996272232"];
+    [_placeDictionary setObject:@"Rajkot" forKey:@"7030802527799619237"];
+    [_placeDictionary setObject:@"Srikalahasti" forKey:@"7526624291853629500"];
+    [_placeDictionary setObject:@"Bijapur" forKey:@"7116969506857242754"];
+    [_placeDictionary setObject:@"Belgaum" forKey:@"2315788948560750093"];
+    [_placeDictionary setObject:@"Jamshedpur" forKey:@"8399297392482907494"];
+    [_placeDictionary setObject:@"Malpe" forKey:@"4627994955829376023"];
+    [_placeDictionary setObject:@"B.R. Hills" forKey:@"2143034057251484444"];
+    [_placeDictionary setObject:@"Patiala" forKey:@"436861998287687173"];
+    [_placeDictionary setObject:@"Kushinagar" forKey:@"1054157661196671846"];
+    [_placeDictionary setObject:@"Nilagiri" forKey:@"4781203545819888306"];
+    [_placeDictionary setObject:@"Ahmedabad" forKey:@"7783787037713615543"];
+    [_placeDictionary setObject:@"Ahmedabad" forKey:@"6067246467661897899"];
+    [_placeDictionary setObject:@"Chikmagalur" forKey:@"4801527334652294087"];
+    [_placeDictionary setObject:@"Gorakhpur" forKey:@"2496493766324838012"];
+    [_placeDictionary setObject:@"Hassan" forKey:@"4013299611085558956"];
+    [_placeDictionary setObject:@"Guntur" forKey:@"5456312398449971170"];
+    [_placeDictionary setObject:@"Kolhapur" forKey:@"3931060669256740310"];
+    [_placeDictionary setObject:@"Kurukshetra" forKey:@"718127000995117916"];
+    [_placeDictionary setObject:@"Mettupalayam" forKey:@"1760301079813577051"];
+    [_placeDictionary setObject:@"Pantnagar" forKey:@"8702978431111111111"];
+    [_placeDictionary setObject:@"Shimoga" forKey:@"2510520520918709430"];
+    [_placeDictionary setObject:@"Shivanasamudra" forKey:@"488538077236155555"];
+    [_placeDictionary setObject:@"Coonoor" forKey:@"3082172792776588665"];
+    [_placeDictionary setObject:@"Greater Noida" forKey:@"2351986185065628184"];
+    [_placeDictionary setObject:@"Kanchipuram" forKey:@"7943316035636087193"];
+  
 
     self.seachBar.delegate = self;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(rightBarButtonItemPressed:)];
@@ -73,7 +112,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SearchPlace"];
     }
-    if (self.isSearching) {
+    if (self.isSearching && self.seachBar.text.length > 0) {
         cell.textLabel.text = [self.searchPlaceDictionary allValues][indexPath.row];
     } else {
         cell.textLabel.text = [self.placeDictionary allValues][indexPath.row];
@@ -111,7 +150,11 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    _searchPlaceDictionary = [[[self.placeDictionary allValues] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self CONTAINS[cd] %@", searchText]] mutableCopy];
+    NSArray *searchedObjects = [[self.placeDictionary allValues] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self CONTAINS[cd] %@", searchText]];
+    [_searchPlaceDictionary removeAllObjects];
+    for (NSString *value in searchedObjects) {
+        [_searchPlaceDictionary setObject:value forKey:[self.placeDictionary allKeysForObject:value]];
+    }
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
