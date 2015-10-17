@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="SIy-ys-58N">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="520"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="530"/>
                     <animations/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <connections>
@@ -30,7 +30,7 @@
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HI2-hT-WaE">
-                    <rect key="frame" x="0.0" y="520" width="600" height="80"/>
+                    <rect key="frame" x="0.0" y="530" width="600" height="70"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DN0-9u-auS">
                             <rect key="frame" x="5" y="5" width="104.5" height="19"/>
@@ -125,7 +125,7 @@
                         <constraint firstAttribute="trailing" secondItem="60O-qK-1H8" secondAttribute="trailing" constant="8" id="ita-lQ-i4Y"/>
                         <constraint firstItem="PWd-7x-cVe" firstAttribute="leading" secondItem="HI2-hT-WaE" secondAttribute="leading" constant="8" id="mCz-iy-zPE"/>
                         <constraint firstItem="fqO-3S-GpN" firstAttribute="leading" secondItem="60O-qK-1H8" secondAttribute="trailing" constant="29" id="njM-vy-TaE"/>
-                        <constraint firstAttribute="height" constant="80" id="uQ3-tx-K8s"/>
+                        <constraint firstAttribute="height" constant="70" id="uQ3-tx-K8s"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
@@ -152,7 +152,7 @@
                 <constraint firstAttribute="trailing" secondItem="SIy-ys-58N" secondAttribute="trailing" id="Os3-jj-5b3"/>
                 <constraint firstAttribute="trailing" secondItem="HI2-hT-WaE" secondAttribute="trailing" id="a8c-kc-vac"/>
                 <constraint firstAttribute="bottom" secondItem="HI2-hT-WaE" secondAttribute="bottom" id="euB-UK-JT2"/>
-                <constraint firstAttribute="bottom" secondItem="SIy-ys-58N" secondAttribute="bottom" constant="80" id="kca-YX-FD6"/>
+                <constraint firstAttribute="bottom" secondItem="SIy-ys-58N" secondAttribute="bottom" constant="70" id="kca-YX-FD6"/>
                 <constraint firstItem="SIy-ys-58N" firstAttribute="top" secondItem="90R-Ge-e87" secondAttribute="top" id="nVI-ug-dKk"/>
             </constraints>
             <point key="canvasLocation" x="273" y="411"/>
