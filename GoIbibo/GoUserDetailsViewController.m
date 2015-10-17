@@ -36,12 +36,16 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"GoUserDetailsCell" bundle:nil] forCellReuseIdentifier:@"GoUserDetailsCellIdentifier"];
     
+    NSMutableString *selectedSeats = [NSMutableString string];
     for (int i = 0; i < self.busBookingDetails.count; i++) {
         [self.userDetailsDictionary setObject:[NSMutableDictionary dictionaryWithDictionary:@{self.userDetialsInfo[0]: @"",
                                                 self.userDetialsInfo[1]: @"",
                                                 self.userDetialsInfo[2]:self.busBookingDetails[i]}]
                                        forKey:self.busBookingDetails[i]];
+        [selectedSeats appendFormat:@" %@,",self.busBookingDetails[i]];
     }
+    self.selectedSeats.text = [[selectedSeats substringFromIndex:1] substringToIndex:selectedSeats.length-2];
+    self.busFare.text = [NSString stringWithFormat:@"\u20B9 %lu", [self.goBusDetails.minimumFare integerValue] * self.busBookingDetails.count];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
