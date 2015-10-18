@@ -48,30 +48,24 @@
 - (void)configureDataSource {
     [self.settingOptions removeAllObjects];
     
-    GoSettingsOption *logoutOption = [[GoSettingsOption alloc] init];
-    logoutOption.imageName = @"";
-    logoutOption.optiontext = @"Logout";
-    logoutOption.indentationLevel = 0;
-    [self.settingOptions addObject:logoutOption];
-    
     GoSettingsOption *settingsOption = [[GoSettingsOption alloc] init];
     settingsOption.imageName = @"IconSettings";
     settingsOption.optiontext = @"Settings";
     settingsOption.showDisclosureIndicator = YES;
     settingsOption.indentationLevel = 0;
     [self.settingOptions addObject:settingsOption];
-    
-    GoSettingsOption *privacyOption = [[GoSettingsOption alloc] init];
-    privacyOption.imageName = @"";
-    privacyOption.optiontext = @"Privacy";
-    privacyOption.indentationLevel = 0;
-    [self.settingOptions addObject:privacyOption];
-    
+        
     GoSettingsOption *profileOption = [[GoSettingsOption alloc] init];
     profileOption.imageName = @"IconProfile";
     profileOption.optiontext = @"Profile";
     profileOption.indentationLevel = 0;
     [self.settingOptions addObject:profileOption];
+    
+    GoSettingsOption *logoutOption = [[GoSettingsOption alloc] init];
+    logoutOption.imageName = @"";
+    logoutOption.optiontext = @"Logout";
+    logoutOption.indentationLevel = 0;
+    [self.settingOptions addObject:logoutOption];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

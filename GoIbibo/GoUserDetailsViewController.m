@@ -97,6 +97,7 @@
 
 - (void)doneButtonTapped:(id)sender {
     GoPaymentConfirmation *paymentConfirmation = [[GoPaymentConfirmation alloc] initWithBusDetails:self.goBusDetails withSeatNoDictionary:self.userDetailsDictionary];
+    paymentConfirmation.shouldSend = self.userPrivacySwitch.on;
     [self.navigationController pushViewController:paymentConfirmation animated:YES];
 }
 

@@ -83,20 +83,24 @@
     // Use the card info...
     [scanViewController dismissViewControllerAnimated:YES completion:nil];
     
-    PFObject *bookedBusDetails = [PFObject objectWithClassName:@"BusBookingDetails"];
-    bookedBusDetails[@"skey"] = self.busDetails.skey;
-    bookedBusDetails[@"bookedUserPhoneNo"] = [[[GoUserModelManager sharedManager] currentUser] phoneNumber];
-    NSString *dictString = [self hexStringFromDictionary:self.seatNoDictionary];
-    bookedBusDetails[@"seatNoDictionary"] = dictString;
-    bookedBusDetails[@"departureTime"] = self.busDetails.departureTime;
-    bookedBusDetails[@"travelsName"] = self.busDetails.travelsName;
-    bookedBusDetails[@"source"] = self.busDetails.source;
-    bookedBusDetails[@"destination"] = self.busDetails.destination;
-    bookedBusDetails[@"departureDate"] = self.busDetails.departureDate;
+    PFObject *bookedBusDetails = nil;
+    if (self.shouldSend) {
+        bookedBusDetails = [PFObject objectWithClassName:@"BusBookingDetails"];
+        bookedBusDetails[@"skey"] = self.busDetails.skey;
+        bookedBusDetails[@"bookedUserPhoneNo"] = [[[GoUserModelManager sharedManager] currentUser] phoneNumber];
+        NSString *dictString = [self hexStringFromDictionary:self.seatNoDictionary];
+        bookedBusDetails[@"seatNoDictionary"] = dictString;
+        bookedBusDetails[@"departureTime"] = self.busDetails.departureTime;
+        bookedBusDetails[@"travelsName"] = self.busDetails.travelsName;
+        bookedBusDetails[@"source"] = self.busDetails.source;
+        bookedBusDetails[@"destination"] = self.busDetails.destination;
+        bookedBusDetails[@"departureDate"] = self.busDetails.departureDate;
+    }
     MBProgressHUD *HUDView = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUDView.mode = MBProgressHUDModeIndeterminate;
     HUDView.labelText = @"Processing...";
     [bookedBusDetails saveInBackground];
+
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         MBProgressHUD *HUDViewCompleted = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
