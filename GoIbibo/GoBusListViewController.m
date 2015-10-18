@@ -56,6 +56,36 @@
     [self loadDataFromGoIBibo];
     [self.tableView setHidden:YES];
     [self checkAndConfigureFriends];
+    
+    
+    PFObject *subscribeService = [PFObject objectWithClassName:@"SubscribeService"];
+    subscribeService[@"phoneNumber"] = [[[GoUserModelManager sharedManager] currentUser] phoneNumber];
+    subscribeService[@"deviceToken"] = [[PFInstallation currentInstallation] deviceToken];
+    //subscribeService[@"source"]
+    //subscribeService[@"destination"]
+    //subscribeService[@"departureDate"]
+    
+    [subscribeService saveInBackground];
+    
+//    PFQuery *query = [PFQuery queryWithClassName:@"SubscribeService"];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+//    
+//        for (PFObject *subscription in objects) {
+//            NSString *phoneNo = subscription[@"phoneNumber"];
+//            GoContactSyncEntry *entry =[[[GoContactSync sharedInstance] syncedContacts] valueForKey:phoneNo];
+//            if (entry) {
+//                NSString *deviceToken = subscription[@"deviceToken"];
+//                PFQuery *query = [PFQuery queryWithClassName:@"SubscribeService"];
+//                [query whereKey:@"deviceToken" equalTo:deviceToken];
+//
+//                [PFPush sendPushMessageToQuery:query withMessage:@"Hey I m travelling" error:nil];
+//                
+//            }
+//        }
+//        
+//    }];
+    
+    
     // Do any additional setup after loading the view from its nib.
 }
 

@@ -33,19 +33,35 @@
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    //Test Parse Object
-//    PFObject *object = [PFObject objectWithClassName:@"BusBookingDetails"];
-//    object[@"skey"] = @"123456";
-//    object[@"bookedUserPhoneNo"] = @"9844480550";
-//    object[@"bookedSeatNo"] = @"10L";
-//    object[@"departureTime"] = [NSDate date];
-//    [object saveInBackground];
+    [self registerForREmoteNotifForApp:application];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self showHomeScreen];
     [self.window makeKeyAndVisible];
     [[GoContactSync sharedInstance] syncAddressBookIfNeeded];
     return YES;
+}
+
+- (void)registerForREmoteNotifForApp:(UIApplication *)application {
+    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                    UIUserNotificationTypeBadge |
+                                                    UIUserNotificationTypeSound);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                             categories:nil];
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    currentInstallation.channels = @[ @"global" ];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
 }
 
 - (void)showHomeScreen {

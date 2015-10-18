@@ -11,10 +11,10 @@
 		5458A8E51BB65F82008D9ED5 /* availableSeat.png in Resources */ = {isa = PBXBuildFile; fileRef = 5458A8E31BB65F82008D9ED5 /* availableSeat.png */; };
 		5458A8E61BB65F82008D9ED5 /* bookedSeat.png in Resources */ = {isa = PBXBuildFile; fileRef = 5458A8E41BB65F82008D9ED5 /* bookedSeat.png */; };
 		5458A8E81BB686AA008D9ED5 /* buddySeat.png in Resources */ = {isa = PBXBuildFile; fileRef = 5458A8E71BB686AA008D9ED5 /* buddySeat.png */; };
-		546D08BA1BD26CC000FBFEB3 /* GoUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546D08B81BD26CC000FBFEB3 /* GoUserDetailsViewController.m */; settings = {ASSET_TAGS = (); }; };
-		546D08BB1BD26CC000FBFEB3 /* GoUserDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546D08B91BD26CC000FBFEB3 /* GoUserDetailsViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		546D08BF1BD26D1200FBFEB3 /* GoUserDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 546D08BD1BD26D1200FBFEB3 /* GoUserDetailsCell.m */; settings = {ASSET_TAGS = (); }; };
-		546D08C01BD26D1200FBFEB3 /* GoUserDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546D08BE1BD26D1200FBFEB3 /* GoUserDetailsCell.xib */; settings = {ASSET_TAGS = (); }; };
+		546D08BA1BD26CC000FBFEB3 /* GoUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546D08B81BD26CC000FBFEB3 /* GoUserDetailsViewController.m */; };
+		546D08BB1BD26CC000FBFEB3 /* GoUserDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546D08B91BD26CC000FBFEB3 /* GoUserDetailsViewController.xib */; };
+		546D08BF1BD26D1200FBFEB3 /* GoUserDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 546D08BD1BD26D1200FBFEB3 /* GoUserDetailsCell.m */; };
+		546D08C01BD26D1200FBFEB3 /* GoUserDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546D08BE1BD26D1200FBFEB3 /* GoUserDetailsCell.xib */; };
 		546DE9861BB6ACEE005E5A8F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 546DE9851BB6ACEE005E5A8F /* MBProgressHUD.m */; };
 		546DE9881BB6B6C9005E5A8F /* Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 546DE9871BB6B6C9005E5A8F /* Checkmark@2x.png */; };
 		546DE98A1BB6B999005E5A8F /* GoSeatSeletionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546DE9891BB6B999005E5A8F /* GoSeatSeletionHeaderView.xib */; };
@@ -25,7 +25,7 @@
 		547A06281BB401F90079F1CC /* EndLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A06261BB401F90079F1CC /* EndLocation.png */; };
 		547A06291BB401F90079F1CC /* StartLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A06271BB401F90079F1CC /* StartLocation.png */; };
 		547A06391BB41C7F0079F1CC /* Teal Collaboration Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 547A06381BB41C7F0079F1CC /* Teal Collaboration Icon.png */; };
-		5483E04A1BD2FB0000D45D67 /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5483E0491BD2FB0000D45D67 /* CMPopTipView.m */; settings = {ASSET_TAGS = (); }; };
+		5483E04A1BD2FB0000D45D67 /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5483E0491BD2FB0000D45D67 /* CMPopTipView.m */; };
 		54A550CB1BB138A60000561B /* left-side-bar-hamburger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550C91BB138A60000561B /* left-side-bar-hamburger@2x.png */; };
 		54A550CC1BB138A60000561B /* left-side-bar-hamburger@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550CA1BB138A60000561B /* left-side-bar-hamburger@3x.png */; };
 		54A550D51BB148480000561B /* GoSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A550D31BB148480000561B /* GoSettingsViewController.m */; };
@@ -569,6 +569,12 @@
 				TargetAttributes = {
 					B1EDDEC51BB10A4000518E0C = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = Q3X4VL27V6;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -841,6 +847,8 @@
 			baseConfigurationReference = 3DB25A0CFB6305D6FF431522 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ilanchezhian K (NZE9Z9MX56)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ilanchezhian K (NZE9Z9MX56)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -849,8 +857,9 @@
 				INFOPLIST_FILE = GoIbibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.vijay.-GoIbibo.GoIbibo";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hackathon.GoIbibo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "352b61fa-890c-47a0-8cf9-251109e4966c";
 			};
 			name = Debug;
 		};
@@ -859,6 +868,8 @@
 			baseConfigurationReference = B40DDF3B0D3DBC6051BC67C8 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ilanchezhian K (NZE9Z9MX56)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ilanchezhian K (NZE9Z9MX56)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -867,8 +878,9 @@
 				INFOPLIST_FILE = GoIbibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.vijay.-GoIbibo.GoIbibo";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hackathon.GoIbibo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "352b61fa-890c-47a0-8cf9-251109e4966c";
 			};
 			name = Release;
 		};
