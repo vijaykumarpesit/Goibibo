@@ -12,8 +12,9 @@
 #import "GoUserModelManager.h"
 #import "GoContactSyncEntry.h"
 #import "GoContactSync.h"
+#import <MessageUI/MessageUI.h>
 
-@interface GoFriendsTripDetailsController ()
+@interface GoFriendsTripDetailsController ()<MFMessageComposeViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *friendsList;
 
@@ -73,6 +74,11 @@
     return  90;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    
+   NSString *phoneNo =  [self.friendsList[indexPath.row] valueForKey:@"bookedUserPhoneNo"];
+    [self showSMS:phoneNo];
+}
 /*
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -142,5 +148,42 @@
     });
 }
 
+- (void)showSMS:(NSString*)recepient {
+    
+    if(![MFMessageComposeViewController canSendText]) {
+        UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device doesn't support SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [warningAlert show];
+        return;
+    }
+    MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+    messageController.messageComposeDelegate = self;
+    [messageController setRecipients:@[recepient]];
+    
+    // Present message view controller on screen
+    [self presentViewController:messageController animated:YES completion:nil];
+}
 
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult) result
+{
+    switch (result) {
+        case MessageComposeResultCancelled:
+            break;
+            
+        case MessageComposeResultFailed:
+        {
+            UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to send SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [warningAlert show];
+            break;
+        }
+            
+        case MessageComposeResultSent:
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end
