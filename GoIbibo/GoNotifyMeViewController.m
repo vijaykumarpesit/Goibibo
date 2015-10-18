@@ -11,6 +11,8 @@
 #import "GoSettingsOption.h"
 #import "GoLayoutHandler.h"
 #import "GoHomeViewController.h"
+#import <parse/parse.h>
+#import "GoUserModelManager.h"
 
 @interface GoNotifyMeViewController ()
 
@@ -123,7 +125,16 @@
     GoHomeViewController *homeVC = [[GoHomeViewController alloc] initWithNibName:@"GoHomeViewController" bundle:nil];
     homeVC.searchBusText = [self.subscriptions[indexPath.row] optiontext];
     homeVC.homeCompletionBlock = ^void(NSString *destination, NSString *source, NSDate *date) {
+        PFObject *subscribeService = [PFObject objectWithClassName:@"SubscribeService"];
+        subscribeService[@"phoneNumber"] = [[[GoUserModelManager sharedManager] currentUser] phoneNumber];
+        if ([[PFInstallation currentInstallation] deviceToken]) {
+            subscribeService[@"deviceToken"] = [[PFInstallation currentInstallation] deviceToken];
+        }
+        subscribeService[@"source"] = source;
+        subscribeService[@"destination"] = destination;
+        subscribeService[@"departureDate"] = date;
         
+        [subscribeService saveInBackground];
     };
     [self saveToUserDefaultsForIndex:indexPath.row];
     [self.navigationController pushViewController:homeVC animated:YES];

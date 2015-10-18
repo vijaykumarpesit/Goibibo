@@ -58,17 +58,17 @@
     [self checkAndConfigureFriends];
     
     
-    PFObject *subscribeService = [PFObject objectWithClassName:@"SubscribeService"];
-    subscribeService[@"phoneNumber"] = [[[GoUserModelManager sharedManager] currentUser] phoneNumber];
-    if ([[PFInstallation currentInstallation] deviceToken]) {
-        subscribeService[@"deviceToken"] = [[PFInstallation currentInstallation] deviceToken];
-    }
-    //subscribeService[@"source"]
-    //subscribeService[@"destination"]
-    //subscribeService[@"departureDate"]
-    
-    [subscribeService saveInBackground];
-    
+//    PFObject *subscribeService = [PFObject objectWithClassName:@"SubscribeService"];
+//    subscribeService[@"phoneNumber"] = [[[GoUserModelManager sharedManager] currentUser] phoneNumber];
+//    if ([[PFInstallation currentInstallation] deviceToken]) {
+//        subscribeService[@"deviceToken"] = [[PFInstallation currentInstallation] deviceToken];
+//    }
+//    //subscribeService[@"source"]
+//    //subscribeService[@"destination"]
+//    //subscribeService[@"departureDate"]
+//    
+//    [subscribeService saveInBackground];
+//    
 //    PFQuery *query = [PFQuery queryWithClassName:@"SubscribeService"];
 //    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
 //    

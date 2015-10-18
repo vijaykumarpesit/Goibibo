@@ -11,6 +11,8 @@
 #import "GoUser.h"
 #import "GoUserModelManager.h"
 #import "MBProgressHUD.h"
+#import "GoContactSyncEntry.h"
+#import "GoContactSync.h"
 
 
 @interface GoPaymentConfirmation ()<CardIOPaymentViewControllerDelegate>
@@ -95,7 +97,28 @@
         bookedBusDetails[@"source"] = self.busDetails.source;
         bookedBusDetails[@"destination"] = self.busDetails.destination;
         bookedBusDetails[@"departureDate"] = self.busDetails.departureDate;
-    }
+        
+        //Push notif
+        PFQuery *query = [PFQuery queryWithClassName:@"SubscribeService"];
+        [query whereKey:@"source" equalTo:self.busDetails.source];
+        [query whereKey:@"destination" equalTo:self.busDetails.destination];
+        
+            [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        
+                for (PFObject *subscription in objects) {
+                    NSString *phoneNo = subscription[@"phoneNumber"];
+                    GoContactSyncEntry *entry =[[[GoContactSync sharedInstance] syncedContacts] valueForKey:phoneNo];
+                    if (entry) {
+                        NSString *deviceToken = subscription[@"deviceToken"];
+                        PFQuery *query = [PFQuery queryWithClassName:@"SubscribeService"];
+                        [query whereKey:@"deviceToken" equalTo:deviceToken];
+                        [PFPush sendPushMessageToQuery:query withMessage:[NSString stringWithFormat:@"%@ travel is matching with your subscription criteria",phoneNo] error:nil];
+                        
+                    }
+                }
+                
+            }];
+}
     MBProgressHUD *HUDView = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUDView.mode = MBProgressHUDModeIndeterminate;
     HUDView.labelText = @"Processing...";

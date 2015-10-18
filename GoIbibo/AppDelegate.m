@@ -12,6 +12,7 @@
 #import <DigitsKit/DigitsKit.h>
 #import <Parse/Parse.h>
 #import "GoContactSync.h"
+#import "GoFriendsTripDetailsController.h"
 
 @interface AppDelegate ()
 
@@ -62,6 +63,12 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [PFPush handlePush:userInfo];
+    
+    NSString *msisdn = userInfo[@"message"];
+    GoFriendsTripDetailsController *friendsTrip = [[GoFriendsTripDetailsController alloc] initWithNibName:@"GoFriendsTripDetailsController" bundle:nil];
+    friendsTrip.selectedFriend = msisdn;
+    [self.window.rootViewController.navigationController pushViewController:friendsTrip animated:YES];
+    
 }
 
 - (void)showHomeScreen {

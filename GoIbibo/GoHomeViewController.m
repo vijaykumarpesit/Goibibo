@@ -128,6 +128,7 @@
 - (void)searchBusesLabelTapped:(id)sender {
     NSString *source = [[self.sourceView.subviews objectAtIndex:2] attributedText].string.lowercaseString;
     NSString *destination = [[self.destinationView.subviews objectAtIndex:2] attributedText].string.lowercaseString;
+    self.dateSelected = (_dateSelected ? _dateSelected : _todayDate);
     NSString *alertControllerTitle = nil;
     NSString *alertControllerMessaage = nil;
     if ([source isEqualToString:@"source"]) {
@@ -149,8 +150,9 @@
         [self.navigationController presentViewController:alertController animated:YES completion:nil];
     } else {
         if ([self.searchBusesLabel.text isEqualToString:@"Courier Services"] || [self.searchBusesLabel.text isEqualToString:@"Long Weekend Plan"]) {
-            self.homeCompletionBlock(source, destination, self.dateSelected);
+            self.homeCompletionBlock(destination, source, self.dateSelected);
             [self.navigationController popToRootViewControllerAnimated:YES];
+            return;
         }
 
         GoBusListViewController *vc = [[GoBusListViewController alloc] initWithSource:source destination:destination departureDate:(_dateSelected ? _dateSelected : _todayDate) arrivalDate:nil];

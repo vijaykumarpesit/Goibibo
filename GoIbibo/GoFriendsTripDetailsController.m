@@ -39,6 +39,15 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self checkAndConfigureFriends];
+    self.title = @"Discover your Buddies";
+    if (self.selectedFriend) {
+            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left-side-bar-hamburger.png"] landscapeImagePhone:nil style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonItemPressed:)];
+    }
+}
+
+
+- (void)leftBarButtonItemPressed:(id)sender {
+    [[[GoLayoutHandler sharedInstance] sideMenu] presentLeftMenuViewController];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -86,10 +95,6 @@
     [self showSMS:phoneNo];
 }
 
-- (void)leftBarButtonItemPressed:(id)sender {
-    [[[GoLayoutHandler sharedInstance] sideMenu] presentLeftMenuViewController];
-}
-
 /*
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -129,6 +134,9 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         PFQuery *query = [PFQuery queryWithClassName:@"BusBookingDetails"];
         [query whereKey:@"departureDate" greaterThanOrEqualTo:[NSDate date]];
+        if (self.selectedFriend) {
+            [query whereKey:@"bookedUserPhoneNo" equalTo:self.selectedFriend];
+        }
         
         NSString *myNumber = [[[GoUserModelManager sharedManager] currentUser] phoneNumber];
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {

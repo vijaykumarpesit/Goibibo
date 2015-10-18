@@ -10,4 +10,5 @@
 
 @interface GoFriendsTripDetailsController : UITableViewController
 
+@property (nonatomic, strong) NSString *selectedFriend;
 @end
