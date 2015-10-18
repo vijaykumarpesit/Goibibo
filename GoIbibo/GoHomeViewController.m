@@ -23,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UIView *overlayView;
 @property (weak, nonatomic) IBOutlet UIView *sourceView;
 @property (weak, nonatomic) IBOutlet UIView *destinationView;
-@property (weak, nonatomic) IBOutlet UILabel *searchBusesLabel;
 
 @end
 
@@ -59,6 +58,13 @@
     self.destinationView.userInteractionEnabled = YES;
     [self configureAndAddTapGestureToView:self.searchBusesLabel andSelector:@selector(searchBusesLabelTapped:)];
     self.searchBusesLabel.userInteractionEnabled = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.searchBusText.length > 0) {
+        self.searchBusesLabel.text = self.searchBusText;
+    }
 }
 
 - (void)configureAndAddTapGestureToView:(UIView *)view andSelector:(SEL)selector {
@@ -142,6 +148,11 @@
         }]];
         [self.navigationController presentViewController:alertController animated:YES completion:nil];
     } else {
+        if ([self.searchBusesLabel.text isEqualToString:@"Courier Services"] || [self.searchBusesLabel.text isEqualToString:@"Long Weekend Plan"]) {
+            self.homeCompletionBlock(source, destination, self.dateSelected);
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+
         GoBusListViewController *vc = [[GoBusListViewController alloc] initWithSource:source destination:destination departureDate:(_dateSelected ? _dateSelected : _todayDate) arrivalDate:nil];
         [self.navigationController pushViewController:vc animated:YES];
     }

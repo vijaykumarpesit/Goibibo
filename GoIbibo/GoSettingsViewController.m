@@ -33,8 +33,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    self.tableView.contentInset = UIEdgeInsetsMake(65, 0, 10, 200);
+    self.tableView.contentInset = UIEdgeInsetsMake(65, 0, 10, -100);
     
     self.settingOptions = [NSMutableArray array];
     [self configureDataSource];
@@ -67,7 +66,7 @@
     
     GoSettingsOption *settingsOption1 = [[GoSettingsOption alloc] init];
     settingsOption1.imageName = @"IconSettings";
-    settingsOption1.optiontext = @"Discover your travelling buddies";
+    settingsOption1.optiontext = @"Discover";
     settingsOption1.showDisclosureIndicator = YES;
     settingsOption1.indentationLevel = 0;
     [self.settingOptions addObject:settingsOption1];
@@ -123,6 +122,7 @@
         // Profile...
     } else if (indexPath.row == 2) {
         [[[GoLayoutHandler sharedInstance] sideMenu] hideMenuViewController];
+        [((UINavigationController *)[[[GoLayoutHandler sharedInstance] sideMenu] contentViewController]) popToRootViewControllerAnimated:YES];
         if ([[[(UINavigationController *)[[[GoLayoutHandler sharedInstance] sideMenu] contentViewController] viewControllers] objectAtIndex:0] isKindOfClass:[GoFriendsTripDetailsController class]]) {
             return;
         }
@@ -131,14 +131,16 @@
         [[[GoLayoutHandler sharedInstance] sideMenu] setContentViewController:navController animated:YES];
     } else if (indexPath.row == 1) {
         [[[GoLayoutHandler sharedInstance] sideMenu] hideMenuViewController];
+        [((UINavigationController *)[[[GoLayoutHandler sharedInstance] sideMenu] contentViewController]) popToRootViewControllerAnimated:YES];
         if ([[[(UINavigationController *)[[[GoLayoutHandler sharedInstance] sideMenu] contentViewController] viewControllers] objectAtIndex:0] isKindOfClass:[GoNotifyMeViewController class]]) {
             return;
         }
-        GoNotifyMeViewController *notifyMeVC = [[GoNotifyMeViewController alloc] initWithNibName:@"GoSubscriptionViewController" bundle:nil];
+        GoNotifyMeViewController *notifyMeVC = [[GoNotifyMeViewController alloc] initWithNibName:@"GoNotifyMeViewController" bundle:nil];
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:notifyMeVC];
         [[[GoLayoutHandler sharedInstance] sideMenu] setContentViewController:navController animated:YES];
     } else if (indexPath.row == 0) {
         [[[GoLayoutHandler sharedInstance] sideMenu] hideMenuViewController];
+        [((UINavigationController *)[[[GoLayoutHandler sharedInstance] sideMenu] contentViewController]) popToRootViewControllerAnimated:YES];
         if ([[[(UINavigationController *)[[[GoLayoutHandler sharedInstance] sideMenu] contentViewController] viewControllers] objectAtIndex:0] isKindOfClass:[GoHomeViewController class]]) {
             return;
         }

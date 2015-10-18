@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GoSettingsOption : NSObject
+@interface GoSettingsOption : NSObject <NSCoding>
 
 @property (nonatomic, copy) NSString *imageName;
 @property (nonatomic, copy) NSString *optiontext;

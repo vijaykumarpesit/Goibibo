@@ -10,6 +10,8 @@
 #import <DigitsKit/DigitsKit.h>
 #import <JTCalendar/JTCalendar.h>
 
+typedef void (^HomeCompletionBlock)(NSString *destination, NSString *source, NSDate *date);
+
 
 @interface GoHomeViewController : UIViewController<DGTCompletionViewController, JTCalendarDelegate>
 
@@ -18,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet JTHorizontalCalendarView *calendarContentView;
 
 @property (strong, nonatomic) JTCalendarManager *calendarManager;
+@property (weak, nonatomic) IBOutlet UILabel *searchBusesLabel;
+@property (nonatomic, copy) NSString *searchBusText;
+@property (nonatomic, copy) HomeCompletionBlock homeCompletionBlock;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarContentViewHeight;
 

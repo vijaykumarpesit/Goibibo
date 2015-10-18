@@ -9,6 +9,8 @@
 #import "GoNotifyMeViewController.h"
 #import "GoBusInfoCell.h"
 #import "GoSettingsOption.h"
+#import "GoLayoutHandler.h"
+#import "GoHomeViewController.h"
 
 @interface GoNotifyMeViewController ()
 
@@ -21,8 +23,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"Notify Me";
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"GoBusInfoCell" bundle:nil] forCellReuseIdentifier:@"NotifyMeSubscriptionCellIdentifier"];
     
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left-side-bar-hamburger.png"] landscapeImagePhone:nil style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonItemPressed:)];
+
+    self.subscriptions = [NSMutableArray array];
     [self configureDataSource];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -36,35 +44,19 @@
     [self.subscriptions removeAllObjects];
     
     [self retireveFromUserDefaultsForIndex:0];
-    if (![self.subscriptions objectAtIndex:0]) {
+    if (self.subscriptions.count != 1) {
         GoSettingsOption *settingsOption = [[GoSettingsOption alloc] init];
-        settingsOption.optiontext = @"Destination";
-        settingsOption.showDisclosureIndicator = NO;
+        settingsOption.optiontext = @"Courier Services";
+        settingsOption.showDisclosureIndicator = YES;
         [self.subscriptions addObject:settingsOption];
     }
     
     [self retireveFromUserDefaultsForIndex:1];
-    if (![self.subscriptions objectAtIndex:1]) {
+    if (self.subscriptions.count != 2) {
         GoSettingsOption *profileOption = [[GoSettingsOption alloc] init];
-        profileOption.optiontext = @"People";
-        profileOption.showDisclosureIndicator = NO;
+        profileOption.optiontext = @"Long Weekend Plan";
+        profileOption.showDisclosureIndicator = YES;
         [self.subscriptions addObject:profileOption];
-    }
-    
-    [self retireveFromUserDefaultsForIndex:2];
-    if (![self.subscriptions objectAtIndex:2]) {
-        GoSettingsOption *logoutOption = [[GoSettingsOption alloc] init];
-        logoutOption.optiontext = @"Date";
-        logoutOption.showDisclosureIndicator = NO;
-        [self.subscriptions addObject:logoutOption];
-    }
-    
-    [self retireveFromUserDefaultsForIndex:3];
-    if (![self.subscriptions objectAtIndex:3]) {
-        GoSettingsOption *logoutOption1 = [[GoSettingsOption alloc] init];
-        logoutOption1.optiontext = @"Age";
-        logoutOption1.showDisclosureIndicator = NO;
-        [self.subscriptions addObject:logoutOption1];
     }
 }
 
@@ -85,7 +77,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     GoBusInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NotifyMeSubscriptionCellIdentifier" forIndexPath:indexPath];
-    
+    GoSettingsOption *settingOption = [self.subscriptions objectAtIndex:indexPath.row];
+    cell.travellerName.text = settingOption.optiontext;
+    if (settingOption.showDisclosureIndicator) {
+        cell.minimumFare.text = @"     Opt For     ";
+        cell.minimumFare.layer.borderColor = [UIColor colorWithRed:(75.0f/255.0f) green:(174.0f/255.0f) blue:(39.0f/255.0f) alpha:1.0f].CGColor;
+        cell.minimumFare.layer.borderWidth = 1.0;
+        cell.minimumFare.layer.cornerRadius = 1.0f;
+    } else {
+        cell.minimumFare.text = @"You are already Subscribed";
+    }
+    cell.busTypeName.text = nil;
+    cell.availableSeats.text = nil;
+    cell.departureToArrivalTime.text = nil;
     // Configure the cell...
     
     return cell;
@@ -94,7 +98,8 @@
 - (void)retireveFromUserDefaultsForIndex:(NSInteger)index {
     NSDictionary *standardUserDefaults = [[NSUserDefaults standardUserDefaults] valueForKey:@"Subscription"];
     if (standardUserDefaults) {
-        NSArray *subscription = [standardUserDefaults valueForKey:[NSString stringWithFormat:@"%ld", (long)index]];
+        GoSettingsOption *subscription = [NSKeyedUnarchiver unarchiveObjectWithData:[standardUserDefaults valueForKey:[NSString stringWithFormat:@"%ld", (long)index]]];
+        ;
         if (subscription) {
             [self.subscriptions addObject:subscription];
         }
@@ -102,25 +107,27 @@
 }
 
 - (void)saveToUserDefaultsForIndex:(NSInteger)index {
-    [[NSUserDefaults standardUserDefaults] setValue:@{self.subscriptions[index]: [NSString stringWithFormat:@"%ld", (long)index]} forKey:@"Subscription"];
+    GoSettingsOption *option = [self.subscriptions objectAtIndex:index];
+    option.showDisclosureIndicator = NO;
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.subscriptions[index]];
+    NSDictionary *dict = @{[NSString stringWithFormat:@"%ld", (long)index]:data};
+    [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"Subscription"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-/*
-#pragma mark - Table view delegate
-
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
-    
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+- (void)leftBarButtonItemPressed:(id)sender {
+    [[[GoLayoutHandler sharedInstance] sideMenu] presentLeftMenuViewController];
 }
-*/
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    GoHomeViewController *homeVC = [[GoHomeViewController alloc] initWithNibName:@"GoHomeViewController" bundle:nil];
+    homeVC.searchBusText = [self.subscriptions[indexPath.row] optiontext];
+    homeVC.homeCompletionBlock = ^void(NSString *destination, NSString *source, NSDate *date) {
+        
+    };
+    [self saveToUserDefaultsForIndex:indexPath.row];
+    [self.navigationController pushViewController:homeVC animated:YES];
+}
 
 /*
 #pragma mark - Navigation

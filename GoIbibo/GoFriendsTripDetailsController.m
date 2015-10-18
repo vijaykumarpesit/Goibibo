@@ -13,6 +13,7 @@
 #import "GoContactSyncEntry.h"
 #import "GoContactSync.h"
 #import <MessageUI/MessageUI.h>
+#import "GoLayoutHandler.h"
 
 @interface GoFriendsTripDetailsController ()<MFMessageComposeViewControllerDelegate>
 
@@ -26,7 +27,12 @@
     [super viewDidLoad];
     self.friendsList = [[NSMutableArray alloc] init];
     
+    self.title = @"Discover";
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"GoBusInfoCell" bundle:nil] forCellReuseIdentifier:@"FriendsTripsDetailsCellIdentifier"];
+    
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"left-side-bar-hamburger.png"] landscapeImagePhone:nil style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonItemPressed:)];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -79,6 +85,11 @@
    NSString *phoneNo =  [self.friendsList[indexPath.row] valueForKey:@"bookedUserPhoneNo"];
     [self showSMS:phoneNo];
 }
+
+- (void)leftBarButtonItemPressed:(id)sender {
+    [[[GoLayoutHandler sharedInstance] sideMenu] presentLeftMenuViewController];
+}
+
 /*
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
