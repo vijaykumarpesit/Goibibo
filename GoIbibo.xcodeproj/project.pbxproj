@@ -35,6 +35,10 @@
 		54A550F91BB160370000561B /* IconProfile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550F71BB160370000561B /* IconProfile@2x.png */; };
 		54A550FA1BB160370000561B /* IconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550F81BB160370000561B /* IconSettings@2x.png */; };
 		54A8CD111BB315F70091B02A /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A8CD101BB315F70091B02A /* calendar.png */; };
+		54ABCC1C1BD34015002C1038 /* GoFriendsTripDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ABCC1A1BD34015002C1038 /* GoFriendsTripDetailsController.m */; settings = {ASSET_TAGS = (); }; };
+		54ABCC1D1BD34015002C1038 /* GoFriendsTripDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54ABCC1B1BD34015002C1038 /* GoFriendsTripDetailsController.xib */; settings = {ASSET_TAGS = (); }; };
+		54ABCC211BD3425F002C1038 /* GoNotifyMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ABCC1F1BD3425F002C1038 /* GoNotifyMeViewController.m */; settings = {ASSET_TAGS = (); }; };
+		54ABCC221BD3425F002C1038 /* GoNotifyMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54ABCC201BD3425F002C1038 /* GoNotifyMeViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		54C4B2031BB3C09500110592 /* GoSearchPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C4B2011BB3C09500110592 /* GoSearchPlaceViewController.m */; };
 		54C4B2041BB3C09500110592 /* GoSearchPlaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C4B2021BB3C09500110592 /* GoSearchPlaceViewController.xib */; };
 		8AD3F0CA70A6BFBD52AFEC3D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29DF6E63E872EBD0B024D6DD /* libPods.a */; };
@@ -144,6 +148,12 @@
 		54A550F71BB160370000561B /* IconProfile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconProfile@2x.png"; sourceTree = "<group>"; };
 		54A550F81BB160370000561B /* IconSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconSettings@2x.png"; sourceTree = "<group>"; };
 		54A8CD101BB315F70091B02A /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
+		54ABCC191BD34015002C1038 /* GoFriendsTripDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoFriendsTripDetailsController.h; sourceTree = "<group>"; };
+		54ABCC1A1BD34015002C1038 /* GoFriendsTripDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoFriendsTripDetailsController.m; sourceTree = "<group>"; };
+		54ABCC1B1BD34015002C1038 /* GoFriendsTripDetailsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoFriendsTripDetailsController.xib; sourceTree = "<group>"; };
+		54ABCC1E1BD3425F002C1038 /* GoNotifyMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoNotifyMeViewController.h; sourceTree = "<group>"; };
+		54ABCC1F1BD3425F002C1038 /* GoNotifyMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoNotifyMeViewController.m; sourceTree = "<group>"; };
+		54ABCC201BD3425F002C1038 /* GoNotifyMeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoNotifyMeViewController.xib; sourceTree = "<group>"; };
 		54C4B2001BB3C09500110592 /* GoSearchPlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoSearchPlaceViewController.h; sourceTree = "<group>"; };
 		54C4B2011BB3C09500110592 /* GoSearchPlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoSearchPlaceViewController.m; sourceTree = "<group>"; };
 		54C4B2021BB3C09500110592 /* GoSearchPlaceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoSearchPlaceViewController.xib; sourceTree = "<group>"; };
@@ -429,6 +439,12 @@
 				B155BE731BD241A70074E72D /* GoHotelViewController.h */,
 				B155BE741BD241A70074E72D /* GoHotelViewController.m */,
 				B155BE751BD241A70074E72D /* GoHotelViewController.xib */,
+				54ABCC191BD34015002C1038 /* GoFriendsTripDetailsController.h */,
+				54ABCC1A1BD34015002C1038 /* GoFriendsTripDetailsController.m */,
+				54ABCC1B1BD34015002C1038 /* GoFriendsTripDetailsController.xib */,
+				54ABCC1E1BD3425F002C1038 /* GoNotifyMeViewController.h */,
+				54ABCC1F1BD3425F002C1038 /* GoNotifyMeViewController.m */,
+				54ABCC201BD3425F002C1038 /* GoNotifyMeViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -604,7 +620,9 @@
 				5458A8E51BB65F82008D9ED5 /* availableSeat.png in Resources */,
 				B1EDDED61BB10A4100518E0C /* Assets.xcassets in Resources */,
 				547A05D81BB3EF3F0079F1CC /* background.png in Resources */,
+				54ABCC221BD3425F002C1038 /* GoNotifyMeViewController.xib in Resources */,
 				5458A8E81BB686AA008D9ED5 /* buddySeat.png in Resources */,
+				54ABCC1D1BD34015002C1038 /* GoFriendsTripDetailsController.xib in Resources */,
 				54C4B2041BB3C09500110592 /* GoSearchPlaceViewController.xib in Resources */,
 				54A550CC1BB138A60000561B /* left-side-bar-hamburger@3x.png in Resources */,
 				B151F6811BB32D590017D908 /* contacts.plist in Resources */,
@@ -671,6 +689,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54ABCC211BD3425F002C1038 /* GoNotifyMeViewController.m in Sources */,
 				B130C8D11BD2786F00B1E0BA /* UIView+WebCacheOperation.m in Sources */,
 				B1EA1FEE1BB2F1BA00A6B580 /* GoUserModelManager.m in Sources */,
 				B1EDDEFB1BB14CBE00518E0C /* GoContactSyncEntry.m in Sources */,
@@ -712,6 +731,7 @@
 				B130C8C21BD2786F00B1E0BA /* MKAnnotationView+WebCache.m in Sources */,
 				B1EDDEE91BB10C6400518E0C /* UIViewController+RESideMenu.m in Sources */,
 				B130C8C61BD2786F00B1E0BA /* SDWebImageDecoder.m in Sources */,
+				54ABCC1C1BD34015002C1038 /* GoFriendsTripDetailsController.m in Sources */,
 				B130C8C51BD2786F00B1E0BA /* SDWebImageCompat.m in Sources */,
 				B130C8CF1BD2786F00B1E0BA /* UIImageView+HighlightedWebCache.m in Sources */,
 				B130C8C31BD2786F00B1E0BA /* NSData+ImageContentType.m in Sources */,

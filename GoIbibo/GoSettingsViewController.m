@@ -10,6 +10,9 @@
 #import "GoSettingsOption.h"
 #import <DigitsKit/DigitsKit.h>
 #import "GoLayoutHandler.h"
+#import "GoFriendsTripDetailsController.h"
+#import "GoNotifyMeViewController.h"
+#import "GoHomeViewController.h"
 
 @interface GoSettingsViewController ()
 
@@ -31,7 +34,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.tableView.contentInset = UIEdgeInsetsMake(65, 0, 10, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(65, 0, 10, 200);
     
     self.settingOptions = [NSMutableArray array];
     [self configureDataSource];
@@ -48,13 +51,27 @@
 - (void)configureDataSource {
     [self.settingOptions removeAllObjects];
     
+    GoSettingsOption *homeOption = [[GoSettingsOption alloc] init];
+    homeOption.imageName = @"IconSettings";
+    homeOption.optiontext = @"Home";
+    homeOption.showDisclosureIndicator = YES;
+    homeOption.indentationLevel = 0;
+    [self.settingOptions addObject:homeOption];
+
     GoSettingsOption *settingsOption = [[GoSettingsOption alloc] init];
     settingsOption.imageName = @"IconSettings";
-    settingsOption.optiontext = @"Settings";
+    settingsOption.optiontext = @"Notify Me";
     settingsOption.showDisclosureIndicator = YES;
     settingsOption.indentationLevel = 0;
     [self.settingOptions addObject:settingsOption];
-        
+    
+    GoSettingsOption *settingsOption1 = [[GoSettingsOption alloc] init];
+    settingsOption1.imageName = @"IconSettings";
+    settingsOption1.optiontext = @"Discover your travelling buddies";
+    settingsOption1.showDisclosureIndicator = YES;
+    settingsOption1.indentationLevel = 0;
+    [self.settingOptions addObject:settingsOption1];
+    
     GoSettingsOption *profileOption = [[GoSettingsOption alloc] init];
     profileOption.imageName = @"IconProfile";
     profileOption.optiontext = @"Profile";
@@ -98,12 +115,39 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == 0) {
+    if (indexPath.row == 4) {
         [[Digits sharedInstance] logOut];
         [GoLayoutHandler sharedInstance].sideMenu = nil;
         [[[UIApplication sharedApplication] delegate] window].rootViewController = [[GoLayoutHandler sharedInstance] sideMenu];
+    } else if (indexPath.row == 3) {
+        // Profile...
+    } else if (indexPath.row == 2) {
+        [[[GoLayoutHandler sharedInstance] sideMenu] hideMenuViewController];
+        if ([[[(UINavigationController *)[[[GoLayoutHandler sharedInstance] sideMenu] contentViewController] viewControllers] objectAtIndex:0] isKindOfClass:[GoFriendsTripDetailsController class]]) {
+            return;
+        }
+        GoFriendsTripDetailsController *friendsTrip = [[GoFriendsTripDetailsController alloc] initWithNibName:@"GoFriendsTripDetailsController" bundle:nil];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:friendsTrip];
+        [[[GoLayoutHandler sharedInstance] sideMenu] setContentViewController:navController animated:YES];
+    } else if (indexPath.row == 1) {
+        [[[GoLayoutHandler sharedInstance] sideMenu] hideMenuViewController];
+        if ([[[(UINavigationController *)[[[GoLayoutHandler sharedInstance] sideMenu] contentViewController] viewControllers] objectAtIndex:0] isKindOfClass:[GoNotifyMeViewController class]]) {
+            return;
+        }
+        GoNotifyMeViewController *notifyMeVC = [[GoNotifyMeViewController alloc] initWithNibName:@"GoSubscriptionViewController" bundle:nil];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:notifyMeVC];
+        [[[GoLayoutHandler sharedInstance] sideMenu] setContentViewController:navController animated:YES];
+    } else if (indexPath.row == 0) {
+        [[[GoLayoutHandler sharedInstance] sideMenu] hideMenuViewController];
+        if ([[[(UINavigationController *)[[[GoLayoutHandler sharedInstance] sideMenu] contentViewController] viewControllers] objectAtIndex:0] isKindOfClass:[GoHomeViewController class]]) {
+            return;
+        }
+        GoHomeViewController *homeVC = [[GoHomeViewController alloc] initWithNibName:@"GoHomeViewController" bundle:nil];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:homeVC];
+        [[[GoLayoutHandler sharedInstance] sideMenu] setContentViewController:navController animated:YES];
     }
 }
+
 
 /*
 #pragma mark - Navigation
