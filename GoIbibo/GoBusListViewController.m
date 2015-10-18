@@ -60,7 +60,9 @@
     
     PFObject *subscribeService = [PFObject objectWithClassName:@"SubscribeService"];
     subscribeService[@"phoneNumber"] = [[[GoUserModelManager sharedManager] currentUser] phoneNumber];
-    subscribeService[@"deviceToken"] = [[PFInstallation currentInstallation] deviceToken];
+    if ([[PFInstallation currentInstallation] deviceToken]) {
+        subscribeService[@"deviceToken"] = [[PFInstallation currentInstallation] deviceToken];
+    }
     //subscribeService[@"source"]
     //subscribeService[@"destination"]
     //subscribeService[@"departureDate"]
