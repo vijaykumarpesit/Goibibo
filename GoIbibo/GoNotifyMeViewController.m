@@ -87,7 +87,7 @@
         cell.minimumFare.layer.borderWidth = 1.0;
         cell.minimumFare.layer.cornerRadius = 1.0f;
     } else {
-        cell.minimumFare.text = @"You are already Subscribed";
+        cell.minimumFare.text = @"Subscribed";
     }
     cell.busTypeName.text = nil;
     cell.availableSeats.text = nil;
@@ -115,6 +115,7 @@
     NSDictionary *dict = @{[NSString stringWithFormat:@"%ld", (long)index]:data};
     [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"Subscription"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.tableView reloadData];
 }
 
 - (void)leftBarButtonItemPressed:(id)sender {

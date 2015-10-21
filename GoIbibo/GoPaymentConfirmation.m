@@ -112,7 +112,7 @@
                         NSString *deviceToken = subscription[@"deviceToken"];
                         PFQuery *query = [PFQuery queryWithClassName:@"SubscribeService"];
                         [query whereKey:@"deviceToken" equalTo:deviceToken];
-                        [PFPush sendPushMessageToQuery:query withMessage:[NSString stringWithFormat:@"%@ travel is matching with your subscription criteria",phoneNo] error:nil];
+                        [PFPush sendPushMessageToQuery:query withMessage:[NSString stringWithFormat:@"%@ travel is matching with your subscription criteria",[[[GoUserModelManager sharedManager] currentUser] phoneNumber]] error:nil];
                         
                     }
                 }

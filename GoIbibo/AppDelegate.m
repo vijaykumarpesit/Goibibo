@@ -13,6 +13,7 @@
 #import <Parse/Parse.h>
 #import "GoContactSync.h"
 #import "GoFriendsTripDetailsController.h"
+#import "RESideMenu.h"
 
 @interface AppDelegate ()
 
@@ -64,16 +65,19 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [PFPush handlePush:userInfo];
     
-    NSString *msisdn = userInfo[@"message"];
+    NSDictionary *aps = userInfo[@"aps"];
+    NSString *msisdn = aps[@"alert"];
+    msisdn = [msisdn substringToIndex:10];
     GoFriendsTripDetailsController *friendsTrip = [[GoFriendsTripDetailsController alloc] initWithNibName:@"GoFriendsTripDetailsController" bundle:nil];
     friendsTrip.selectedFriend = msisdn;
-    [self.window.rootViewController.navigationController pushViewController:friendsTrip animated:YES];
+    [(UINavigationController *)[(RESideMenu *)self.window.rootViewController contentViewController] pushViewController:friendsTrip animated:YES];
     
 }
 
 - (void)showHomeScreen {
     //Call this whenever you want to test twitter digits login
     //[[Digits sharedInstance] logOut];
+    
     self.window.rootViewController = [[GoLayoutHandler sharedInstance] sideMenu];
 }
 
