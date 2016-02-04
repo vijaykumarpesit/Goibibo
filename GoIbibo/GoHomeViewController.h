@@ -21,6 +21,7 @@ typedef void (^HomeCompletionBlock)(NSString *destination, NSString *source, NSD
 
 @property (strong, nonatomic) JTCalendarManager *calendarManager;
 @property (weak, nonatomic) IBOutlet UILabel *searchBusesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *assitance;
 @property (nonatomic, copy) NSString *searchBusText;
 @property (nonatomic, copy) HomeCompletionBlock homeCompletionBlock;
 

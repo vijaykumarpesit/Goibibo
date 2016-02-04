@@ -12,6 +12,7 @@
 #import "GoUserModelManager.h"
 #import "GoUser.h"
 #import "GoSearchPlaceViewController.h"
+#import "GoNotifyMeViewController.h"
 
 @interface GoHomeViewController ()
 
@@ -58,6 +59,8 @@
     self.destinationView.userInteractionEnabled = YES;
     [self configureAndAddTapGestureToView:self.searchBusesLabel andSelector:@selector(searchBusesLabelTapped:)];
     self.searchBusesLabel.userInteractionEnabled = YES;
+    [self configureAndAddTapGestureToView:self.assitance andSelector:@selector(assitanceLabelTapped:)];
+    self.assitance.userInteractionEnabled = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -158,6 +161,12 @@
         GoBusListViewController *vc = [[GoBusListViewController alloc] initWithSource:source destination:destination departureDate:(_dateSelected ? _dateSelected : _todayDate) arrivalDate:nil];
         [self.navigationController pushViewController:vc animated:YES];
     }
+}
+
+- (void)assitanceLabelTapped:(id)sender
+{
+    GoNotifyMeViewController *notifyMeViewController = [[GoNotifyMeViewController alloc] initWithNibName:@"GoNotifyMeViewController" bundle:nil];
+    [self.navigationController pushViewController:notifyMeViewController animated:YES];
 }
 
 #pragma mark - CalendarManager delegate

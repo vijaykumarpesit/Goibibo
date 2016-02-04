@@ -35,10 +35,10 @@
 		54A550F91BB160370000561B /* IconProfile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550F71BB160370000561B /* IconProfile@2x.png */; };
 		54A550FA1BB160370000561B /* IconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A550F81BB160370000561B /* IconSettings@2x.png */; };
 		54A8CD111BB315F70091B02A /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 54A8CD101BB315F70091B02A /* calendar.png */; };
-		54ABCC1C1BD34015002C1038 /* GoFriendsTripDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ABCC1A1BD34015002C1038 /* GoFriendsTripDetailsController.m */; settings = {ASSET_TAGS = (); }; };
-		54ABCC1D1BD34015002C1038 /* GoFriendsTripDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54ABCC1B1BD34015002C1038 /* GoFriendsTripDetailsController.xib */; settings = {ASSET_TAGS = (); }; };
-		54ABCC211BD3425F002C1038 /* GoNotifyMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ABCC1F1BD3425F002C1038 /* GoNotifyMeViewController.m */; settings = {ASSET_TAGS = (); }; };
-		54ABCC221BD3425F002C1038 /* GoNotifyMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54ABCC201BD3425F002C1038 /* GoNotifyMeViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		54ABCC1C1BD34015002C1038 /* GoFriendsTripDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ABCC1A1BD34015002C1038 /* GoFriendsTripDetailsController.m */; };
+		54ABCC1D1BD34015002C1038 /* GoFriendsTripDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54ABCC1B1BD34015002C1038 /* GoFriendsTripDetailsController.xib */; };
+		54ABCC211BD3425F002C1038 /* GoNotifyMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54ABCC1F1BD3425F002C1038 /* GoNotifyMeViewController.m */; };
+		54ABCC221BD3425F002C1038 /* GoNotifyMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54ABCC201BD3425F002C1038 /* GoNotifyMeViewController.xib */; };
 		54C4B2031BB3C09500110592 /* GoSearchPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C4B2011BB3C09500110592 /* GoSearchPlaceViewController.m */; };
 		54C4B2041BB3C09500110592 /* GoSearchPlaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C4B2021BB3C09500110592 /* GoSearchPlaceViewController.xib */; };
 		8AD3F0CA70A6BFBD52AFEC3D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29DF6E63E872EBD0B024D6DD /* libPods.a */; };
